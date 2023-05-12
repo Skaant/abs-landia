@@ -1,27 +1,19 @@
 import { derived, writable } from "svelte/store";
 import type { Row } from "../types/Row";
 import { generateRows } from "../helpers/generateRows";
-import {
-  CalculatedCell,
-  type CalculatedCellsIndex,
-  type CellsIndex,
-} from "../types/Cell";
+import { type CellsIndex } from "../types/Cell";
 import { generateCells } from "../helpers/generateCells";
 import type { Building, BuildingsIndex } from "../types/Building";
 import { BUILDINGS } from "../enums/buildings.enum";
 import { getCellsInExactRange } from "../helpers/getCellsInExactRange";
 
-export const x = 10;
-export const y = 10;
+export const LENGTH_X = 10;
+export const LENGTH_Y = 10;
 
-let _buildings: BuildingsIndex = {};
-export const buildings = writable<BuildingsIndex>({});
-buildings.subscribe((value) => console.log("b", value));
-
-export const cells = writable<CellsIndex>(generateCells(x, y));
+export const cells = writable<CellsIndex>(generateCells(LENGTH_X, LENGTH_Y));
 cells.subscribe((value) => console.log("c", value));
 
-let _calculatedCells: CalculatedCellsIndex;
+/* let _calculatedCells: CalculatedCellsIndex;
 export const calculatedCells = derived<
   [typeof buildings, typeof cells],
   CalculatedCellsIndex
@@ -93,4 +85,4 @@ export const calculatedCells = derived<
 export const rows = derived<typeof calculatedCells, Row[]>(
   calculatedCells,
   ($calculatedCells) => generateRows(x, y, $calculatedCells)
-);
+); */

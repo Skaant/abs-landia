@@ -1,43 +1,39 @@
 <script lang="ts">
   import { BUILDINGS } from "./enums/buildings.enum";
-  import { buildings, cells, rows } from "./stores/map.store";
-  import type { Building } from "./types/Building";
+  import { LENGTH_X, LENGTH_Y, cells } from "./stores/map.store";
+  import { buildings } from "./stores/buildings.store";
   import type { Cell } from "./types/Cell";
 
-  cells.subscribe(a => console.log(a))
-
   function onClick(cell: Cell) {
-    buildings.update((buildings) => {
-      const building = {
-        id: Object.values($buildings).length.toString(),
-        cellId: cell.id,
-        type: BUILDINGS.KOLOS_SEED,
-      } as Building;
-      $buildings[building.id] = building;
-      return buildings;
-    });
+    buildings.addBuilding(cell, BUILDINGS.KOLOS_SEED);
   }
+
+  const _rows = [...(new Array(LENGTH_X))].map((_, i) => [
+    ...(new Array(LENGTH_Y))
+  ].map((_, j) => `${i}-${j}`))
 </script>
 
 <div>
   <table>
-  {#each $rows as row}
+  {#if _rows}
+  {#each _rows as cellsId}
     <tr class="row">
-      {#each row.cells as cell}
+      {#each cellsId as cellId}
+        {@const cell = $cells[cellId]}
+        {@const building = cell.buildingId && $buildings[cell.buildingId]}
         <td
-          class={`cell ${cell.burned ? 'burned' : `wighld-${typeof cell.wighldModified == 'number' ? cell.wighldModified : cell.wighld}`}`}
-          on:click={() => {
-            onClick(cell)
-          }}
+          class={`cell ${cell.burned ? 'burned' : `wighld-${cell.wighld}`}`}
+          on:click={() => onClick(cell)}
           on:keydown={() => onClick(cell)}
         >
-          {typeof cell.wighldModified == 'number' ? cell.wighldModified : cell.wighld} {cell.wighldModifier || ''}
-          {cell.building?.type || ''}
+          {cell.wighld}
+          {building?.type || ''}
           {cell.burned ? '🔥' : ''}
         </td>
       {/each}
       </tr>
   {/each}
+  {/if}
 </table>
 </div>
 

@@ -1,8 +1,8 @@
-import { CalculatedCellsIndex } from "../types/Cell";
+import { CellsIndex } from "../types/Cell";
 import { generateCells } from "./generateCells";
 import { getCellsInExactRange } from "./getCellsInExactRange";
 
-const MOCK_CELLS = generateCells(10, 10) as CalculatedCellsIndex;
+const MOCK_CELLS = generateCells(10, 10) as CellsIndex;
 
 describe("getCellsInExactRange", () => {
   test("range 0", () => {

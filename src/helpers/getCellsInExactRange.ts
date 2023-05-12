@@ -1,11 +1,11 @@
-import type { CalculatedCell, CalculatedCellsIndex, Cell } from "../types/Cell";
+import type { CellsIndex, Cell } from "../types/Cell";
 
 export function getCellsInExactRange(
-  cell: CalculatedCell,
-  cells: CalculatedCellsIndex,
+  cell: Cell,
+  cells: CellsIndex,
   range: number
 ) {
-  const rangeCells: CalculatedCell[] = [];
+  const rangeCells: Cell[] = [];
   for (let i = cell.x - range; i <= cell.x + range; i++) {
     const diff = Math.abs(cell.x - i);
     if (diff === range) {
