@@ -1,17 +1,11 @@
-import { derived, writable } from "svelte/store";
-import type { Row } from "../types/Row";
-import { generateRows } from "../helpers/generateRows";
+import { writable } from "svelte/store";
 import { type CellsIndex } from "../types/Cell";
 import { generateCells } from "../helpers/generateCells";
-import type { Building, BuildingsIndex } from "../types/Building";
-import { BUILDINGS } from "../enums/buildings.enum";
-import { getCellsInExactRange } from "../helpers/getCellsInExactRange";
 
 export const LENGTH_X = 10;
 export const LENGTH_Y = 10;
 
 export const cells = writable<CellsIndex>(generateCells(LENGTH_X, LENGTH_Y));
-cells.subscribe((value) => console.log("c", value));
 
 /* let _calculatedCells: CalculatedCellsIndex;
 export const calculatedCells = derived<

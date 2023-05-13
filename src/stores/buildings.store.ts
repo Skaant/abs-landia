@@ -5,10 +5,11 @@ import { Cell } from "../types/Cell";
 import { BUILDINGS } from "../enums/buildings.enum";
 import { buildingUpdateCells } from "../helpers/buildingUpdateCells";
 
-const { update, subscribe } = writable<BuildingsIndex>({});
+const { update, subscribe, set } = writable<BuildingsIndex>({});
 
 export const buildings = {
   subscribe,
+  set,
   addBuilding(cell: Cell, buildingType: BUILDINGS) {
     const id = Object.values(get(buildings)).length.toString();
     const building = {
@@ -34,5 +35,3 @@ export const buildings = {
     update(({ [buildingId]: _, ...b }) => b);
   },
 };
-
-buildings.subscribe((b) => console.log("b", b));

@@ -5,6 +5,7 @@ export type Cell = {
   y: number;
   burned?: true;
   buildingId?: string;
+  zumId?: string;
 };
 
 export type CellsIndex = { [id: string]: Cell };

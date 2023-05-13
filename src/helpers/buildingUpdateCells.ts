@@ -3,6 +3,7 @@ import { Building } from "../types/Building";
 import { CellsIndex } from "../types/Cell";
 import { getCellsInExactRange } from "./getCellsInExactRange";
 
+/** @deprecated */
 export function buildingUpdateCells(
   building: Building,
   cells: CellsIndex
