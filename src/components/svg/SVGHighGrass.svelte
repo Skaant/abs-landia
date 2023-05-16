@@ -1,4 +1,4 @@
-<svg style="height: 100%; width: 100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<svg style="height: 80%; width: 80%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <path d="M0 0h512v512H0z" fill="#000000" fill-opacity="0"></path>
   <g class="" style="" transform="translate(0,0)">
     <path

@@ -1,6 +1,7 @@
 import { get } from "svelte/store";
 import { cells as cellsStore } from "../stores/map.store";
 import { Cell } from "../types/Cell";
+import { selection } from "../stores/selection.store";
 import { addBuildingToStore } from "./helpers/addBuildingToStore";
 import { createKolosSeedBuilding } from "./helpers/createKolosSeedBuilding";
 import { preUpdateCellsWithBuilding } from "./helpers/preUpdateCellsWithBuilding";
@@ -16,8 +17,12 @@ export function addKolosSeedOnCell(cell: Cell) {
   let cells = { ...get(cellsStore) };
   cells = preUpdateCellsWithBuilding(cells, building);
   cells = preUpdateCellsWithWighld(cells, cell);
-  const zums = createZumOnCells(getCellsInExactRange(cell, cells, 1));
+  const zums = createZumOnCells([
+    cell,
+    ...getCellsInExactRange(cell, cells, 1),
+  ]);
   addZumsToStore(zums);
   cells = preUpdateCellsWithZums(cells, zums);
   cellsStore.set(cells);
+  selection.set(undefined);
 }
