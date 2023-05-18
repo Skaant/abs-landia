@@ -2,6 +2,7 @@
   import { BUILDINGS } from "../enums/buildings.enum";
   import { selection } from "../stores/selection.store";
   import SvgKolosSeed from "./svg/SVGKolosSeed.svelte";
+  import { cycles } from "../stores/cycles.store";
 
   $: type = $selection?.type;
   $: id = $selection?.id;
@@ -31,6 +32,13 @@
     {:else}
       <SvgKolosSeed />
     {/if}
+  </div>
+  <div
+    class="toolbar-cell"
+    on:click={() => cycles.increment()}
+    on:keydown={() => cycles.increment()}
+  >
+    Prochain tour
   </div>
   <div class="toolbar-cell" />
 </div>

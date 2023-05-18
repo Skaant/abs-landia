@@ -5,6 +5,7 @@
   import Toolbar from "./components/Toolbar.svelte";
   import { selection } from "./stores/selection.store";
   import ToolbarBuildingSelectionCell from "./components/ToolbarBuildingSelectionCell.svelte";
+  import { cycles } from "./stores/cycles.store";
 
   const _rows = [...new Array(LENGTH_X)].map((_, i) =>
     [...new Array(LENGTH_Y)].map((_, j) => `${i}-${j}`)
@@ -12,6 +13,7 @@
 </script>
 
 <div>
+  <div>{$cycles}</div>
   <table id="grid">
     {#if _rows}
       {#each _rows as cellsId}
