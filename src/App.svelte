@@ -6,14 +6,16 @@
   import { selection } from "./stores/selection.store";
   import ToolbarBuildingSelectionCell from "./components/ToolbarBuildingSelectionCell.svelte";
   import { cycles } from "./stores/cycles.store";
+  import { holOngData } from "./stores/hol-ong-data.store";
 
   const _rows = [...new Array(LENGTH_X)].map((_, i) =>
     [...new Array(LENGTH_Y)].map((_, j) => `${i}-${j}`)
   );
 </script>
 
-<div>
-  <div>{$cycles}</div>
+<div id="layout">
+  <h1>ABS-LANDIA - L'EXPANS</h1>
+  <div>{$holOngData}</div>
   <table id="grid">
     {#if _rows}
       {#each _rows as cellsId}
@@ -30,12 +32,24 @@
       {/each}
     {/if}
   </table>
+  <div>{$cycles}</div>
   <Toolbar />
 </div>
 
 <style>
+  #layout {
+    background-color: #444;
+    padding: 56px 20px 144px;
+  }
+  h1 {
+    margin-top: 0;
+    padding: 20px;
+    font-size: 12px;
+    color: white;
+    text-align: center;
+  }
   #grid {
-    margin-bottom: 144px;
+    margin: 0 auto;
   }
   .row {
     display: flex;

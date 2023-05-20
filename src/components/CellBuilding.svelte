@@ -2,16 +2,20 @@
   import { BUILDINGS } from "../enums/buildings.enum";
   import { type Building } from "../types/Building";
   import SvgKolosSeed from "./svg/SVGKolosSeed.svelte";
+  import { BUILDINGS_DATA } from "../data/buildings.data";
+  import { getBuildingDescription } from "../helpers/getBuildingDescription";
 
   export let building: Building;
 
-  const buildingComponents = {
+  $: buildingData = BUILDINGS_DATA[building.type];
+
+  const buildingPictures = {
     [BUILDINGS.KOLOS_SEED]: SvgKolosSeed,
   };
 </script>
 
-<div class="cell-building">
-  <svelte:component this={buildingComponents[building.type]} />
+<div class="cell-building" title={getBuildingDescription(buildingData)}>
+  <svelte:component this={buildingPictures[building.type]} />
 </div>
 
 <style lang="scss">

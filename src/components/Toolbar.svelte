@@ -1,42 +1,61 @@
-<script>
+<script lang="ts">
   import { BUILDINGS } from "../enums/buildings.enum";
   import { selection } from "../stores/selection.store";
   import SvgKolosSeed from "./svg/SVGKolosSeed.svelte";
-  import { cycles } from "../stores/cycles.store";
+  import { passTurn } from "../use-cases/pass-turn/pass-turn";
+  import { getBuildingDescription } from "../helpers/getBuildingDescription";
+  import { BUILDINGS_DATA } from "../data/buildings.data";
+  import SvgDom from "./svg/SvgDom.svelte";
+  import SvgBaliseBlix from "./svg/SVGBaliseBlix.svelte";
+
+  const BUILDINGS_PICTURE = {
+    [BUILDINGS.KOLOS_SEED]: SvgKolosSeed,
+    [BUILDINGS.DOM]: SvgDom,
+    [BUILDINGS.BALISE_BLIX]: SvgBaliseBlix,
+  };
+
+  const AVAILABLE_BUILDINGS = [
+    BUILDINGS.KOLOS_SEED,
+    BUILDINGS.DOM,
+    BUILDINGS.BALISE_BLIX,
+  ];
 
   $: type = $selection?.type;
   $: id = $selection?.id;
-  $: kolosSeedSelected =
-    type === "toolbar-building" && id === BUILDINGS.KOLOS_SEED;
+  $: selectedBuildingId = type === "toolbar-building" && id;
 
-  function selectKolosSeed() {
-    if (kolosSeedSelected) {
+  function selectBuilding(buildingId: BUILDINGS) {
+    if (selectedBuildingId === buildingId) {
       selection.set(undefined);
       return;
     }
     selection.set({
       type: "toolbar-building",
-      id: BUILDINGS.KOLOS_SEED,
+      id: buildingId,
     });
   }
 </script>
 
 <div id="toolbar">
+  {#each AVAILABLE_BUILDINGS as buildingId}
+    {@const selected = selectedBuildingId == buildingId}
+    <div
+      class="toolbar-cell"
+      title={selected ? "" : getBuildingDescription(BUILDINGS_DATA[buildingId])}
+      on:click={() => selectBuilding(buildingId)}
+      on:keydown={() => selectBuilding(buildingId)}
+    >
+      {#if selected}
+        Annuler
+      {:else}
+        <svelte:component this={BUILDINGS_PICTURE[buildingId]} />
+      {/if}
+    </div>
+  {/each}
   <div
     class="toolbar-cell"
-    on:click={selectKolosSeed}
-    on:keydown={selectKolosSeed}
-  >
-    {#if kolosSeedSelected}
-      Annuler
-    {:else}
-      <SvgKolosSeed />
-    {/if}
-  </div>
-  <div
-    class="toolbar-cell"
-    on:click={() => cycles.increment()}
-    on:keydown={() => cycles.increment()}
+    on:click={() => passTurn()}
+    on:keydown={() => passTurn()}
   >
     Prochain tour
   </div>

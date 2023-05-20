@@ -1,3 +1,4 @@
+import { cellFactory } from "../factories/cell.factory";
 import type { Cell } from "../types/Cell";
 
 export function generateCells(x: number, y: number): { [key: number]: Cell } {
@@ -6,8 +7,9 @@ export function generateCells(x: number, y: number): { [key: number]: Cell } {
     for (let j = 0; j < x; j++) {
       const id = `${i}-${j}`;
       const random = Math.floor(Math.random() * 10);
-      cells[id] = {
-        id,
+      cells[id] = cellFactory({
+        x: i,
+        y: j,
         wighld:
           random < 1
             ? 0
@@ -20,9 +22,7 @@ export function generateCells(x: number, y: number): { [key: number]: Cell } {
             : random < 9
             ? 4
             : 5,
-        x: i,
-        y: j,
-      };
+      });
     }
   }
   return cells;

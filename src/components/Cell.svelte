@@ -23,6 +23,7 @@
   {#if zum}
     <div class="zum">
       <SvgCharacter />
+      <span>{zum.data}</span>
     </div>
   {/if}
 </td>
@@ -59,5 +60,6 @@
     right: 0;
     width: 65%;
     height: 65%;
+    display: flex;
   }
 </style>

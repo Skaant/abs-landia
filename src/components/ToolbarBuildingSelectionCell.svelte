@@ -6,6 +6,7 @@
   import CellWighld from "./CellWighld.svelte";
 
   export let cell: Cell;
+
   $: building = $buildings[cell.buildingId];
 </script>
 

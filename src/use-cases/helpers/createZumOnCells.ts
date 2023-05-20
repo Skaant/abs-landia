@@ -8,5 +8,6 @@ export function createZumOnCells(cells: Cell[]): Zum[] {
   return cells.map((cell, i) => ({
     id: `${initialId + i}`,
     cellId: cell.id,
+    data: 0,
   }));
 }

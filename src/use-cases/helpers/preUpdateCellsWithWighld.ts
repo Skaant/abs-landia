@@ -12,6 +12,7 @@ export function preUpdateCellsWithWighld(
         cell.wighld -= 3 - i;
         if (cell.wighld < 0) {
           cell.burned = true;
+          cell.wighld = 0;
         }
         cells[cell.id] = cell;
       });
