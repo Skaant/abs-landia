@@ -21,57 +21,60 @@
   ];
 
   $: type = $selection?.type;
-  $: id = $selection?.id;
-  $: selectedBuildingId = type === "toolbar-building" && id;
+  $: buildingType = $selection?.buildingType;
+  $: selectedBuildingType = type === "toolbar-building" && buildingType;
 
-  function selectBuilding(buildingId: BUILDINGS) {
-    if (selectedBuildingId === buildingId) {
+  function selectBuilding(buildingType: BUILDINGS) {
+    if (selectedBuildingType === buildingType) {
       selection.set(undefined);
       return;
     }
     selection.set({
       type: "toolbar-building",
-      id: buildingId,
+      buildingType,
     });
   }
 </script>
 
-<div id="toolbar">
-  {#each AVAILABLE_BUILDINGS as buildingId}
-    {@const selected = selectedBuildingId == buildingId}
-    <div
-      class="toolbar-cell"
-      title={selected ? "" : getBuildingDescription(BUILDINGS_DATA[buildingId])}
-      on:click={() => selectBuilding(buildingId)}
-      on:keydown={() => selectBuilding(buildingId)}
-    >
-      {#if selected}
-        Annuler
-      {:else}
-        <svelte:component this={BUILDINGS_PICTURE[buildingId]} />
-      {/if}
-    </div>
-  {/each}
-  <div
-    class="toolbar-cell"
-    on:click={() => passTurn()}
-    on:keydown={() => passTurn()}
-  >
-    Prochain tour
+<div id="toolbar-container">
+  <div id="toolbar">
+    {#each AVAILABLE_BUILDINGS as buildingId}
+      {@const selected = selectedBuildingType == buildingId}
+      <div
+        class="toolbar-cell"
+        title={selected
+          ? ""
+          : getBuildingDescription(BUILDINGS_DATA[buildingId])}
+        on:click={() => selectBuilding(buildingId)}
+        on:keydown={() => selectBuilding(buildingId)}
+      >
+        {#if selected}
+          Annuler
+        {:else}
+          <svelte:component this={BUILDINGS_PICTURE[buildingId]} />
+        {/if}
+      </div>
+    {/each}
+    <div class="toolbar-cell" />
   </div>
-  <div class="toolbar-cell" />
 </div>
 
 <style>
-  #toolbar {
+  #toolbar-container {
+    width: calc(100% - 112px - 16px);
+    overflow: auto;
     position: fixed;
-    left: 24px;
-    bottom: 24px;
+    bottom: 0;
+    left: calc(16vw - 48px);
+  }
+  #toolbar {
     height: 96px;
-    background-color: rgb(201, 145, 252);
+    width: max-content;
+    background-color: #eee6;
     display: flex;
     gap: 8px;
-    border-radius: 16px;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
     padding: 8px;
     box-sizing: border-box;
   }

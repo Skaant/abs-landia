@@ -4,6 +4,8 @@
   import SvgKolosSeed from "./svg/SVGKolosSeed.svelte";
   import { BUILDINGS_DATA } from "../data/buildings.data";
   import { getBuildingDescription } from "../helpers/getBuildingDescription";
+  import SvgDom from "./svg/SvgDom.svelte";
+  import SvgBaliseBlix from "./svg/SVGBaliseBlix.svelte";
 
   export let building: Building;
 
@@ -11,6 +13,8 @@
 
   const buildingPictures = {
     [BUILDINGS.KOLOS_SEED]: SvgKolosSeed,
+    [BUILDINGS.DOM]: SvgDom,
+    [BUILDINGS.BALISE_BLIX]: SvgBaliseBlix,
   };
 </script>
 
@@ -23,7 +27,8 @@
     position: absolute;
     top: -25%;
     left: -20%;
-    width: 100%;
-    height: 100%;
+    width: 80px;
+    height: 80px;
+    display: flex;
   }
 </style>

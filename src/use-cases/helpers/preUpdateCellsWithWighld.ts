@@ -1,6 +1,7 @@
 import { getCellsInExactRange } from "../../helpers/getCellsInExactRange";
 import { Cell, CellsIndex } from "../../types/Cell";
 
+/** @deprecated Use `preUpdateCellsWithRangeDecreasingWighld` instead */
 export function preUpdateCellsWithWighld(
   cells: CellsIndex,
   cell: Cell

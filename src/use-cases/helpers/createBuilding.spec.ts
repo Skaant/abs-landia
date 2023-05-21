@@ -1,12 +1,15 @@
 import { BUILDINGS } from "../../enums/buildings.enum";
 import { buildings } from "../../stores/buildings.store";
-import { createKolosSeedBuilding } from "./createKolosSeedBuilding";
+import { createBuilding } from "./createBuilding";
 
-describe("createKolosSeedBuilding", () => {
+describe("createBuilding", () => {
   it("should return a building with correct props", () => {
     buildings.set({});
     const CELL_ID = "3-3";
-    const { id, cellId, type } = createKolosSeedBuilding(CELL_ID);
+    const { id, cellId, type } = createBuilding({
+      cellId: CELL_ID,
+      type: BUILDINGS.KOLOS_SEED,
+    });
     expect(id).toBe("0");
     expect(cellId).toBe(CELL_ID);
     expect(type).toBe(BUILDINGS.KOLOS_SEED);
@@ -29,7 +32,10 @@ describe("createKolosSeedBuilding", () => {
         type: BUILDINGS.KOLOS_SEED,
       },
     });
-    const { id } = createKolosSeedBuilding("1-4");
+    const { id } = createBuilding({
+      cellId: "3-3",
+      type: BUILDINGS.KOLOS_SEED,
+    });
     expect(id).toBe("3");
   });
 });

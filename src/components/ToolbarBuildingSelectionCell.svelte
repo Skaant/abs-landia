@@ -1,22 +1,25 @@
 <script lang="ts">
   import { buildings } from "../stores/buildings.store";
+  import { type SelectionToolbarBuilding } from "../stores/selection.store";
   import { type Cell } from "../types/Cell";
-  import { addKolosSeedOnCell } from "../use-cases/addKolosSeedOnCell";
+  import { addBuildingOnCell } from "../use-cases/addBuildingOnCell/addBuildingOnCell";
   import CellBuilding from "./CellBuilding.svelte";
   import CellWighld from "./CellWighld.svelte";
 
+  export let selection: SelectionToolbarBuilding;
   export let cell: Cell;
 
-  $: building = $buildings[cell.buildingId];
+  $: selectedBuildingType = selection.buildingType;
+  $: buildingOnCell = $buildings[cell.buildingId];
 </script>
 
 <td
   class={`cell tbs-cell${cell.buildingId ? " tbs-cell--building" : ""}`}
-  on:click={() => addKolosSeedOnCell(cell)}
-  on:keydown={() => addKolosSeedOnCell(cell)}
+  on:click={() => addBuildingOnCell(selectedBuildingType, cell)}
+  on:keydown={() => addBuildingOnCell(selectedBuildingType, cell)}
 >
-  {#if building}
-    <CellBuilding {building} />
+  {#if buildingOnCell}
+    <CellBuilding building={buildingOnCell} />
   {/if}
   <CellWighld {cell} />
 </td>

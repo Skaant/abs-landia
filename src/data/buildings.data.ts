@@ -1,30 +1,6 @@
 import { BUILDING_PROPS } from "../enums/building-props.enum";
 import { BUILDINGS } from "../enums/buildings.enum";
-
-type BuildingProp =
-  | {
-      id: BUILDING_PROPS.ZUMS_MODIFICATION;
-      value: number;
-    }
-  | {
-      id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION;
-      value: number;
-      range: number;
-    }
-  | {
-      id: BUILDING_PROPS.WIGHLD_MODIFICATION;
-      value: number;
-    }
-  | {
-      id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION;
-      value: number;
-      range: number;
-    }
-  | {
-      id: BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD;
-      value: number;
-      range: number;
-    };
+import { BuildingProp } from "../types/BuildingProps";
 
 export type BuildingData = {
   id: BUILDINGS;
@@ -84,6 +60,11 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
       [BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD]: {
         id: BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD,
         value: 2,
+        range: 2,
+      },
+      [BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
+        id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION,
+        value: 1,
         range: 2,
       },
     },

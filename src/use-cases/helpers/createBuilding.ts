@@ -1,14 +1,15 @@
 import { get } from "svelte/store";
 import { buildings } from "../../stores/buildings.store";
 import { Building } from "../../types/Building";
-import { BUILDINGS } from "../../enums/buildings.enum";
 
-/** @deprecated use createBuilding instead */
-export function createKolosSeedBuilding(cellId: string): Building {
+export function createBuilding({
+  cellId,
+  type,
+}: Pick<Building, "cellId" | "type">): Building {
   const id = Object.values(get(buildings)).length.toString();
   return {
     id,
     cellId,
-    type: BUILDINGS.KOLOS_SEED,
+    type,
   };
 }

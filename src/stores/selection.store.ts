@@ -1,9 +1,11 @@
 import { writable } from "svelte/store";
+import { BUILDINGS } from "../enums/buildings.enum";
 
-export const selection = writable<
-  | undefined
-  | {
-      type: "toolbar-building";
-      id: string;
-    }
->(undefined);
+export type SelectionToolbarBuilding = {
+  type: "toolbar-building";
+  buildingType: BUILDINGS;
+};
+
+export const selection = writable<undefined | SelectionToolbarBuilding>(
+  undefined
+);
