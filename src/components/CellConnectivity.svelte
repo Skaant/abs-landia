@@ -2,32 +2,29 @@
   import { type Cell } from "../types/Cell";
   import SvgHighGrass from "./svg/SVGHighGrass.svelte";
   import SvgPathTile from "./svg/SVGPathTile.svelte";
+  import SvgCloudUpload from "./svg/SvgCloudUpload.svelte";
 
   export let cell: Cell;
 </script>
 
 <div
-  class={`cell-wighld${
-    cell.wighld < 0
-      ? " cell-wighld--burning"
+  class={`cell-connectivity${
+    cell.connectivity < 0
+      ? " cell-connectivity--burning"
       : cell.burned
-      ? " cell-wighld--burned"
+      ? " cell-connectivity--burned"
       : ""
   }`}
-  title={`Niveau de WIGHLD.
-Un niveau négatif rend stérile la cellule, même revenu à un niveau supérieur à 0, jusqu'à correction.`}
+  title={`Connectivité.
+Quantité de données transférable depuis cette case au HOL-ONG chaque cycle.`}
 >
-  {cell.wighld}
-  {#if cell.burned}
-    <SvgPathTile />
-  {:else}
-    <SvgHighGrass />
-  {/if}
+  {cell.connectivity}
+  <SvgCloudUpload />
 </div>
 
 <style lang="scss">
-  .cell-wighld {
-    top: 0;
+  .cell-connectivity {
+    top: 16%;
     right: 0;
     position: absolute;
     height: 16%;
@@ -37,9 +34,5 @@ Un niveau négatif rend stérile la cellule, même revenu à un niveau supérieu
     align-items: center;
     justify-content: center;
     padding: 2px 8px;
-    &--burned {
-      background-color: #333;
-      color: #fff;
-    }
   }
 </style>

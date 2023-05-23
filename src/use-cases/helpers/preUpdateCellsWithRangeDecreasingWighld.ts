@@ -17,7 +17,7 @@ export function preUpdateCellsWithRangeDecreasingWighld(
           if (cell.wighld < 0) {
             cell.burned = true;
             cell.wighld = 0;
-          }
+          } else if (cell.wighld > 5) cell.wighld = 5;
           cells[cell.id] = cell;
         });
     });

@@ -11,13 +11,20 @@ export type BuildingPropRangeDecreasingWighldModification = {
   range: number;
 };
 
+export type BuildingPropRangeUnburnAddWighld = {
+  id: BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD;
+  value: number;
+  range: number;
+};
+
+export type BuildingPropRangeConnectivityModification = {
+  id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION;
+  value: number;
+  range: number;
+};
+
 export type BuildingProp =
   | BuildingPropZumsModification
-  | {
-      id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION;
-      value: number;
-      range: number;
-    }
   | {
       id: BUILDING_PROPS.WIGHLD_MODIFICATION;
       value: number;
@@ -27,4 +34,6 @@ export type BuildingProp =
       id: BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD;
       value: number;
       range: number;
-    };
+    }
+  | BuildingPropRangeUnburnAddWighld
+  | BuildingPropRangeConnectivityModification;

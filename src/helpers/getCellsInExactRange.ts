@@ -1,5 +1,6 @@
 import type { CellsIndex, Cell } from "../types/Cell";
 
+/** In a ring, not in an area. */
 export function getCellsInExactRange(
   cell: Cell,
   cells: CellsIndex,

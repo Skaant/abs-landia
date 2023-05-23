@@ -2,7 +2,7 @@ import { CellsIndex } from "../types/Cell";
 import { generateCells } from "./generateCells";
 import { getCellsInExactRange } from "./getCellsInExactRange";
 
-const MOCK_CELLS = generateCells(10, 10) as CellsIndex;
+const MOCK_CELLS = generateCells(6, 6) as CellsIndex;
 
 describe("getCellsInExactRange", () => {
   test("range 0", () => {

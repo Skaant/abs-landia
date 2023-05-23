@@ -4,6 +4,7 @@
   import { type Cell } from "../types/Cell";
   import { addBuildingOnCell } from "../use-cases/addBuildingOnCell/addBuildingOnCell";
   import CellBuilding from "./CellBuilding.svelte";
+  import CellConnectivity from "./CellConnectivity.svelte";
   import CellWighld from "./CellWighld.svelte";
 
   export let selection: SelectionToolbarBuilding;
@@ -22,6 +23,7 @@
     <CellBuilding building={buildingOnCell} />
   {/if}
   <CellWighld {cell} />
+  <CellConnectivity {cell} />
 </td>
 
 <style lang="scss">

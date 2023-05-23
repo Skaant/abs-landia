@@ -3,6 +3,7 @@
   import { zums } from "../stores/zums.store";
   import { type Cell } from "../types/Cell";
   import CellBuilding from "./CellBuilding.svelte";
+  import CellConnectivity from "./CellConnectivity.svelte";
   import CellWighld from "./CellWighld.svelte";
   import SvgCharacter from "./svg/SVGCharacter.svelte";
 
@@ -17,6 +18,7 @@
   }`}
 >
   <CellWighld {cell} />
+  <CellConnectivity {cell} />
   {#if building}
     <CellBuilding {building} />
   {/if}
