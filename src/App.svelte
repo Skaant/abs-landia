@@ -8,6 +8,7 @@
   import LayoutHolOngData from "./components/LayoutHolOngData.svelte";
   import LayoutCycles from "./components/LayoutCycles.svelte";
   import CellSelectionZum from "./components/CellSelectionZum.svelte";
+  import LayoutGlobalRessources from "./components/LayoutGlobalRessources.svelte";
 
   const _rows = [...new Array(LENGTH_X)]
     .map((_, i) => [...new Array(LENGTH_Y)].map((_, j) => `${i}-${j}`))
@@ -16,6 +17,7 @@
 
 <div id="layout">
   <h1>ABS-LANDIA - L'EXPANS</h1>
+  <LayoutGlobalRessources />
   <LayoutHolOngData />
   <div id="grid-container">
     <table id="grid">
