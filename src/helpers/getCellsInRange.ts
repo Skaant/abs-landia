@@ -3,7 +3,6 @@ import { Cell, CellsIndex } from "../types/Cell";
 export function getCellsInRange(cells: CellsIndex, cell: Cell, range: number) {
   const cellsInRange: Cell[] = [];
   for (let i = cell.x - range + 1; i <= cell.x + range - 1; i++) {
-    console.log("i", i);
     const diff = Math.abs(cell.x - i);
     if (diff === range - 1) {
       const id = `${i}-${cell.y}`;
@@ -14,7 +13,6 @@ export function getCellsInRange(cells: CellsIndex, cell: Cell, range: number) {
         j <= cell.y + (range - diff) - 1;
         j++
       ) {
-        console.log("j", diff, j);
         const id = `${i}-${j}`;
         if (cells[id]) cellsInRange.push(cells[id]);
       }

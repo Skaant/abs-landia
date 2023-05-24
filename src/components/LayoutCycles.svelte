@@ -1,6 +1,6 @@
 <script lang="ts">
   import { cycles } from "../stores/cycles.store";
-  import { passTurn } from "../use-cases/pass-turn/pass-turn";
+  import { passTurn } from "../use-cases/passTurn/passTurn";
 </script>
 
 <div id="cycles">

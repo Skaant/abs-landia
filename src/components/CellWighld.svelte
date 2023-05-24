@@ -14,8 +14,9 @@
       ? " cell-wighld--burned"
       : ""
   }`}
-  title={`Niveau de WIGHLD.
-Un niveau négatif rend stérile la cellule, même revenu à un niveau supérieur à 0, jusqu'à correction.`}
+  title={`Niveau de WIGHLD
+
+Un niveau négatif rend stérile la cellule, même revenu à un niveau supérieur à 0, jusqu'à correction par une balise BLIX.`}
 >
   {cell.wighld}
   {#if cell.burned}
@@ -37,6 +38,7 @@ Un niveau négatif rend stérile la cellule, même revenu à un niveau supérieu
     align-items: center;
     justify-content: center;
     padding: 2px 8px;
+    cursor: help;
     &--burned {
       background-color: #333;
       color: #fff;

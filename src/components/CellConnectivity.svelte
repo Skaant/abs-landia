@@ -15,8 +15,9 @@
       ? " cell-connectivity--burned"
       : ""
   }`}
-  title={`Connectivité.
-Quantité de données transférable depuis cette case au HOL-ONG chaque cycle.`}
+  title={`Connectivité
+
+Quantité d'idées transférable au HOL-ONG à chaque cycle depuis cette case.`}
 >
   {cell.connectivity}
   <SvgCloudUpload />
@@ -34,5 +35,6 @@ Quantité de données transférable depuis cette case au HOL-ONG chaque cycle.`}
     align-items: center;
     justify-content: center;
     padding: 2px 8px;
+    cursor: help;
   }
 </style>

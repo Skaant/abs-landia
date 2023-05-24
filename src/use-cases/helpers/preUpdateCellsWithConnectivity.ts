@@ -13,7 +13,7 @@ export function preUpdateCellsWithConnectivity(
     if (_cell.connectivity < 0) {
       _cell.connectivity = 0;
     }
-    cells[cell.id] = _cell;
+    cells[_cell.id] = _cell;
   });
   return cells;
 }

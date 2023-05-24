@@ -5,7 +5,7 @@
   import CellBuilding from "./CellBuilding.svelte";
   import CellConnectivity from "./CellConnectivity.svelte";
   import CellWighld from "./CellWighld.svelte";
-  import SvgCharacter from "./svg/SVGCharacter.svelte";
+  import CellZum from "./CellZum.svelte";
 
   export let cell: Cell;
   $: building = $buildings[cell.buildingId];
@@ -23,10 +23,7 @@
     <CellBuilding {building} />
   {/if}
   {#if zum}
-    <div class="zum">
-      <SvgCharacter />
-      <span>{zum.data}</span>
-    </div>
+    <CellZum {zum} />
   {/if}
 </td>
 
@@ -52,16 +49,5 @@
   }
   .wighld-5 {
     background-color: rgb(191, 104, 253);
-  }
-  .cell--zum {
-    border-bottom-right-radius: 0;
-  }
-  .zum {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 65%;
-    height: 65%;
-    display: flex;
   }
 </style>

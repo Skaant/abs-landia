@@ -4,9 +4,10 @@
   import Cell from "./components/Cell.svelte";
   import Toolbar from "./components/Toolbar.svelte";
   import { selection } from "./stores/selection.store";
-  import ToolbarBuildingSelectionCell from "./components/ToolbarBuildingSelectionCell.svelte";
+  import CellSelectionToolbarBuilding from "./components/CellSelectionToolbarBuilding.svelte";
   import LayoutHolOngData from "./components/LayoutHolOngData.svelte";
   import LayoutCycles from "./components/LayoutCycles.svelte";
+  import CellSelectionZum from "./components/CellSelectionZum.svelte";
 
   const _rows = [...new Array(LENGTH_X)]
     .map((_, i) => [...new Array(LENGTH_Y)].map((_, j) => `${i}-${j}`))
@@ -24,7 +25,9 @@
             {#each cellsId as cellId}
               {@const cell = $cells[cellId]}
               {#if $selection?.type === "toolbar-building"}
-                <ToolbarBuildingSelectionCell selection={$selection} {cell} />
+                <CellSelectionToolbarBuilding selection={$selection} {cell} />
+              {:else if $selection?.type === "zum"}
+                <CellSelectionZum selection={$selection} {cell} />
               {:else}
                 <Cell {cell} />
               {/if}

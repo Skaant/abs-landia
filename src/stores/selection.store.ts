@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { get, writable } from "svelte/store";
 import { BUILDINGS } from "../enums/buildings.enum";
 
 export type SelectionToolbarBuilding = {
@@ -6,6 +6,24 @@ export type SelectionToolbarBuilding = {
   buildingType: BUILDINGS;
 };
 
-export const selection = writable<undefined | SelectionToolbarBuilding>(
-  undefined
-);
+export type SelectionZum = {
+  type: "zum";
+  zumId: string;
+};
+
+type Selection = undefined | SelectionToolbarBuilding | SelectionZum;
+
+const { subscribe, set, update } = writable<Selection>(undefined);
+
+export const selection = {
+  subscribe,
+  set,
+  update,
+  toggle(_selection: Selection) {
+    if (JSON.stringify(_selection) === JSON.stringify(get(selection))) {
+      set(undefined);
+    } else {
+      set(_selection);
+    }
+  },
+};

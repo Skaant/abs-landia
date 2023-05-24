@@ -5,7 +5,7 @@
 </script>
 
 <div id="hol-ong-data">
-  <h2>Données transférées au HOL-ONG</h2>
+  <h2>Idées transférées au HOL-ONG</h2>
   <SvgHolOng />
   <p>{$holOngData} / {HOL_ONG_DATA_GOAL}</p>
 </div>

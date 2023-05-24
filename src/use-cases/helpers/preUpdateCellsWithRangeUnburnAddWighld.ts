@@ -15,7 +15,7 @@ export function preUpdateCellsWithRangeUnburnAddWighld(
       if (_cell.wighld > 5) {
         _cell.wighld = 5;
       }
-      cells[cell.id] = _cell;
+      cells[_cell.id] = _cell;
     });
   return cells;
 }

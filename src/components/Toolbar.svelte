@@ -2,7 +2,7 @@
   import { BUILDINGS } from "../enums/buildings.enum";
   import { selection } from "../stores/selection.store";
   import SvgKolosSeed from "./svg/SVGKolosSeed.svelte";
-  import { passTurn } from "../use-cases/pass-turn/pass-turn";
+  import { passTurn } from "../use-cases/passTurn/passTurn";
   import { getBuildingDescription } from "../helpers/getBuildingDescription";
   import { BUILDINGS_DATA } from "../data/buildings.data";
   import SvgDom from "./svg/SvgDom.svelte";
@@ -21,15 +21,11 @@
   ];
 
   $: type = $selection?.type;
-  $: buildingType = $selection?.buildingType;
+  $: buildingType = $selection?.["buildingType"];
   $: selectedBuildingType = type === "toolbar-building" && buildingType;
 
   function selectBuilding(buildingType: BUILDINGS) {
-    if (selectedBuildingType === buildingType) {
-      selection.set(undefined);
-      return;
-    }
-    selection.set({
+    selection.toggle({
       type: "toolbar-building",
       buildingType,
     });
@@ -44,7 +40,8 @@
         class="toolbar-cell"
         title={selected
           ? ""
-          : getBuildingDescription(BUILDINGS_DATA[buildingId])}
+          : `${getBuildingDescription(BUILDINGS_DATA[buildingId])}
+Cliquez sur le bâtiment pour le construire.`}
         on:click={() => selectBuilding(buildingId)}
         on:keydown={() => selectBuilding(buildingId)}
       >

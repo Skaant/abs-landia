@@ -30,5 +30,6 @@
     width: 80px;
     height: 80px;
     display: flex;
+    cursor: help;
   }
 </style>
