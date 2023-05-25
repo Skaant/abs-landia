@@ -2,11 +2,13 @@ import { BUILDING_PROPS } from "../enums/building-props.enum";
 import { BUILDINGS } from "../enums/buildings.enum";
 import { BuildingProp } from "../types/BuildingProps";
 
+export type BuildingDataProps = { [id in BUILDING_PROPS]?: BuildingProp };
+
 export type BuildingData = {
   id: BUILDINGS;
   name: string;
   description: string;
-  props: { [id in BUILDING_PROPS]?: BuildingProp };
+  props: BuildingDataProps;
 };
 
 export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
@@ -15,6 +17,14 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
     name: "KOLOS-SEED",
     description: "Bâtiment de départ de la colonie.",
     props: {
+      [BUILDING_PROPS.WA_MODIFICATION]: {
+        id: BUILDING_PROPS.WA_MODIFICATION,
+        value: 5,
+      },
+      [BUILDING_PROPS.JING_MODIFICATION]: {
+        id: BUILDING_PROPS.JING_MODIFICATION,
+        value: 5,
+      },
       [BUILDING_PROPS.ZUMS_MODIFICATION]: {
         id: BUILDING_PROPS.ZUMS_MODIFICATION,
         value: 5,
@@ -36,6 +46,14 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
     name: "DOM",
     description: "Subvient aux besoins des ZUMS : eau, logement, nourriture.",
     props: {
+      [BUILDING_PROPS.WA_COST]: {
+        id: BUILDING_PROPS.WA_COST,
+        value: 1,
+      },
+      [BUILDING_PROPS.JING_COST]: {
+        id: BUILDING_PROPS.JING_COST,
+        value: 1,
+      },
       [BUILDING_PROPS.ZUMS_MODIFICATION]: {
         id: BUILDING_PROPS.ZUMS_MODIFICATION,
         value: 3,
@@ -57,6 +75,14 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
     name: "Balise BLIX",
     description: "Restore les parcelles brulées et augmente le WIGHLD autour.",
     props: {
+      [BUILDING_PROPS.WA_COST]: {
+        id: BUILDING_PROPS.WA_COST,
+        value: 3,
+      },
+      [BUILDING_PROPS.JING_COST]: {
+        id: BUILDING_PROPS.JING_COST,
+        value: 1,
+      },
       [BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD]: {
         id: BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD,
         value: 2,

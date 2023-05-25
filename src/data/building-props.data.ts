@@ -8,6 +8,22 @@ export type BuildingPropData = {
 export const BUILDING_PROPS_DATA: {
   [id in BUILDING_PROPS]?: BuildingPropData;
 } = {
+  [BUILDING_PROPS.WA_COST]: {
+    id: BUILDING_PROPS.WA_COST,
+    name: "Coût en WA",
+  },
+  [BUILDING_PROPS.JING_COST]: {
+    id: BUILDING_PROPS.JING_COST,
+    name: "Coût en JING",
+  },
+  [BUILDING_PROPS.WA_MODIFICATION]: {
+    id: BUILDING_PROPS.WA_MODIFICATION,
+    name: "Évolution de la quantité de WA",
+  },
+  [BUILDING_PROPS.JING_MODIFICATION]: {
+    id: BUILDING_PROPS.JING_MODIFICATION,
+    name: "Évolution de la quantité de JING",
+  },
   [BUILDING_PROPS.ZUMS_MODIFICATION]: {
     id: BUILDING_PROPS.ZUMS_MODIFICATION,
     name: "Évolution du nombre de ZUMS",

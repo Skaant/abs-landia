@@ -1,7 +1,7 @@
 import { get } from "svelte/store";
 import { cells as cellsStore } from "../../stores/map.store";
 import { BUILDINGS } from "../../enums/buildings.enum";
-import { Cell } from "../../types/Cell";
+import { Cell, CellsIndex } from "../../types/Cell";
 import { addBuildingToStore } from "../helpers/addBuildingToStore";
 import { createBuilding } from "../helpers/createBuilding";
 import { preUpdateCellsWithBuilding } from "../helpers/preUpdateCellsWithBuilding";
@@ -20,6 +20,11 @@ import { preUpdateCellsWithZums } from "../helpers/preUpdateCellsWithZums";
 import { selection } from "../../stores/selection.store";
 import { preUpdateCellsWithConnectivity } from "../helpers/preUpdateCellsWithConnectivity";
 import { preUpdateCellsWithRangeUnburnAddWighld } from "../helpers/preUpdateCellsWithRangeUnburnAddWighld";
+import { buildingPropsPipe } from "./helpers/buildingPropsPipe";
+import {
+  GlobalRessources,
+  globalRessources as globalRessourcesStore,
+} from "../../stores/global-ressources.store";
 
 export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
   const building = createBuilding({
@@ -30,9 +35,24 @@ export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
   let cells = { ...get(cellsStore) };
   cells = preUpdateCellsWithBuilding(cells, building);
 
-  /* Condition props application */
+  // Condition props application
 
   const { props } = BUILDINGS_DATA[type];
+  let globalRessources = { ...get(globalRessourcesStore) };
+  const pipeResult = buildingPropsPipe(
+    {
+      cells,
+      globalRessources,
+    },
+    props
+  );
+  cells = pipeResult.cells as CellsIndex;
+  globalRessources = pipeResult.globalRessources as GlobalRessources;
+  /**
+   * All next `if` statements are obsolete.
+   *
+   * Should be reworked to match the new `apply...` shape functions.
+   */
   if (props[BUILDING_PROPS.ZUMS_MODIFICATION]) {
     const zums = createZumOnCells(
       cells,
@@ -70,6 +90,9 @@ export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
     );
   }
 
+  // Sauvegarde
+
+  globalRessourcesStore.set(globalRessources);
   cellsStore.set(cells);
   selection.set(undefined);
 }
