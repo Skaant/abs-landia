@@ -33,6 +33,18 @@ export type BuildingPropZumsModification = {
   value: number;
 };
 
+export type BuildingPropWighldRangeModification = {
+  id: BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION;
+  value: number;
+  range: number;
+};
+
+export type BuildingPropWighldExactRangeModification = {
+  id: BUILDING_PROPS.WIGHLD_EXACT_RANGE_MODIFICATION;
+  value: number;
+  range: number;
+};
+
 export type BuildingPropRangeDecreasingWighldModification = {
   id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION;
   value: number;
@@ -51,16 +63,34 @@ export type BuildingPropRangeConnectivityModification = {
   range: number;
 };
 
+export type BuildingPropWaMaxModification = {
+  id: BUILDING_PROPS.WA_MAX_MODIFICATION;
+  value: number;
+};
+
+export type BuildingPropJingMaxModification = {
+  id: BUILDING_PROPS.JING_MAX_MODIFICATION;
+  value: number;
+};
+
+export type BuildingPropWaProdModification = {
+  id: BUILDING_PROPS.WA_PROD_MODIFICATION;
+  value: number;
+};
+
+export type BuildingPropJingProdModification = {
+  id: BUILDING_PROPS.JING_PROD_MODIFICATION;
+  value: number;
+};
+
 export type BuildingProp =
   | BuildingPropWaCost
   | BuildingPropJingCost
   | BuildingPropWaModification
   | BuildingPropJingModification
   | BuildingPropZumsModification
-  | {
-      id: BUILDING_PROPS.WIGHLD_MODIFICATION;
-      value: number;
-    }
+  | BuildingPropWighldRangeModification
+  | BuildingPropWighldExactRangeModification
   | BuildingPropRangeDecreasingWighldModification
   | {
       id: BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD;
@@ -68,4 +98,8 @@ export type BuildingProp =
       range: number;
     }
   | BuildingPropRangeUnburnAddWighld
-  | BuildingPropRangeConnectivityModification;
+  | BuildingPropRangeConnectivityModification
+  | BuildingPropWaMaxModification
+  | BuildingPropJingMaxModification
+  | BuildingPropWaProdModification
+  | BuildingPropJingProdModification;

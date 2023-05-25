@@ -19,7 +19,8 @@ export function applyGlobalRessourcesCostOrModification(
     | BuildingPropWaModification
     | BuildingPropJingModification
 ) {
-  if (!globalRessources) throw new Error("Ressources store is not defined");
+  if (!globalRessources)
+    throw new Error("Global ressources store is not defined");
   let ressource: RESSOURCES;
   switch (id) {
     case BUILDING_PROPS.WA_COST:
@@ -46,7 +47,10 @@ export function applyGlobalRessourcesCostOrModification(
     ...pipeStore,
     globalRessources: {
       ...globalRessources,
-      [ressource]: (globalRessources[ressource] || 0) + diff,
+      [ressource]: {
+        ...globalRessources[ressource],
+        value: globalRessources[ressource].value + diff,
+      },
     },
   } as PipeStores;
 }

@@ -2,12 +2,24 @@ import { writable } from "svelte/store";
 import { RESSOURCES } from "../enums/ressources.enum";
 
 export type GlobalRessources = {
-  [ressource in Extract<RESSOURCES, "wa" | "jing">]: number;
+  [ressource in Extract<RESSOURCES, "wa" | "jing">]: {
+    value: number;
+    maximum: number;
+    evolution: number;
+  };
 };
 
 const INITIAL_GLOBAL_RESSOURCES: GlobalRessources = {
-  [RESSOURCES.WA]: 0,
-  [RESSOURCES.JING]: 0,
+  [RESSOURCES.WA]: {
+    value: 0,
+    maximum: 0,
+    evolution: 0,
+  },
+  [RESSOURCES.JING]: {
+    value: 0,
+    maximum: 0,
+    evolution: 0,
+  },
 };
 
 const { subscribe, set, update } = writable<GlobalRessources>(

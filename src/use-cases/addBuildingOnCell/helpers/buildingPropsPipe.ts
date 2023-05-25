@@ -2,11 +2,14 @@ import { BuildingDataProps } from "../../../data/buildings.data";
 import { BUILDING_PROPS } from "../../../enums/building-props.enum";
 import {
   BuildingPropJingCost,
+  BuildingPropJingMaxModification,
   BuildingPropJingModification,
   BuildingPropWaCost,
+  BuildingPropWaMaxModification,
   BuildingPropWaModification,
 } from "../../../types/BuildingProps";
 import { applyGlobalRessourcesCostOrModification } from "../../helpers/applyGlobalRessourcesCostOrModification";
+import { applyGlobalRessourcesMaxModification } from "../../helpers/applyGlobalRessourcesMaxModification";
 import { PipeStores } from "../types/PipeStores";
 
 export function buildingPropsPipe(
@@ -29,6 +32,14 @@ export function buildingPropsPipe(
             | BuildingPropJingModification
         );
         break;
+      case BUILDING_PROPS.WA_MAX_MODIFICATION:
+      case BUILDING_PROPS.JING_MAX_MODIFICATION:
+        pipeStores = applyGlobalRessourcesMaxModification(
+          pipeStores,
+          prop as
+            | BuildingPropWaMaxModification
+            | BuildingPropJingMaxModification
+        );
     }
   });
   return pipeStores;

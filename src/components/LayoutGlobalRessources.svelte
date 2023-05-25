@@ -4,9 +4,9 @@
   import { RESSOURCES_DATA } from "../data/ressources.data";
 
   $: _globalRessources = Object.entries($globalRessources).map(
-    ([name, value]) => ({
+    ([name, values]) => ({
       ressource: name as RESSOURCES,
-      value,
+      ...values,
     })
   );
 </script>
@@ -16,7 +16,11 @@
   <div id="ressources-value">
     {#each _globalRessources as item}
       {@const { name, summary } = RESSOURCES_DATA[item.ressource]}
-      <p title={summary}>{name}: {item.value}</p>
+      <p title={summary}>
+        {name}: {item.value} ({item.evolution > 0
+          ? `+${item.evolution}`
+          : item.evolution}) / {item.maximum}
+      </p>
     {/each}
   </div>
 </div>

@@ -39,6 +39,14 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         value: 2.5,
         range: 3,
       },
+      [BUILDING_PROPS.WA_MAX_MODIFICATION]: {
+        id: BUILDING_PROPS.WA_MAX_MODIFICATION,
+        value: 5,
+      },
+      [BUILDING_PROPS.JING_MAX_MODIFICATION]: {
+        id: BUILDING_PROPS.JING_MAX_MODIFICATION,
+        value: 5,
+      },
     },
   },
   [BUILDINGS.DOM]: {
@@ -66,6 +74,67 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
       [BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION]: {
         id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION,
         value: 1.5,
+        range: 2,
+      },
+    },
+  },
+  [BUILDINGS.CUVE_VORTEX]: {
+    id: BUILDINGS.CUVE_VORTEX,
+    name: "Cuve-vortex",
+    description: "Récupère l'excédent d'eau du sol et le stocke.",
+    props: {
+      [BUILDING_PROPS.WA_COST]: {
+        id: BUILDING_PROPS.WA_COST,
+        value: 1,
+      },
+      [BUILDING_PROPS.JING_COST]: {
+        id: BUILDING_PROPS.JING_COST,
+        value: 2,
+      },
+      [BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION]: {
+        id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION,
+        value: 0.5,
+        range: 3,
+      },
+      [BUILDING_PROPS.WA_PROD_MODIFICATION]: {
+        id: BUILDING_PROPS.WA_PROD_MODIFICATION,
+        value: 2,
+      },
+      [BUILDING_PROPS.WA_MAX_MODIFICATION]: {
+        id: BUILDING_PROPS.WA_MAX_MODIFICATION,
+        value: 10,
+      },
+    },
+  },
+  [BUILDINGS.SILO_A_JING]: {
+    id: BUILDINGS.SILO_A_JING,
+    name: "Silo à JING",
+    description: "Transformation des matières premières en JING, et stockage.",
+    props: {
+      [BUILDING_PROPS.WA_COST]: {
+        id: BUILDING_PROPS.WA_COST,
+        value: 2,
+      },
+      [BUILDING_PROPS.JING_COST]: {
+        id: BUILDING_PROPS.JING_COST,
+        value: 1,
+      },
+      [BUILDING_PROPS.JING_PROD_MODIFICATION]: {
+        id: BUILDING_PROPS.JING_PROD_MODIFICATION,
+        value: 1,
+      },
+      [BUILDING_PROPS.JING_MAX_MODIFICATION]: {
+        id: BUILDING_PROPS.JING_MAX_MODIFICATION,
+        value: 10,
+      },
+      [BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION]: {
+        id: BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION,
+        value: -2,
+        range: 1,
+      },
+      [BUILDING_PROPS.WIGHLD_EXACT_RANGE_MODIFICATION]: {
+        id: BUILDING_PROPS.WIGHLD_EXACT_RANGE_MODIFICATION,
+        value: 1,
         range: 2,
       },
     },
