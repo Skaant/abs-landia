@@ -5,7 +5,7 @@ export type GlobalRessources = {
   [ressource in Extract<RESSOURCES, "wa" | "jing">]: {
     value: number;
     maximum: number;
-    evolution: number;
+    production: number;
   };
 };
 
@@ -13,12 +13,12 @@ const INITIAL_GLOBAL_RESSOURCES: GlobalRessources = {
   [RESSOURCES.WA]: {
     value: 0,
     maximum: 0,
-    evolution: 0,
+    production: 0,
   },
   [RESSOURCES.JING]: {
     value: 0,
     maximum: 0,
-    evolution: 0,
+    production: 0,
   },
 };
 

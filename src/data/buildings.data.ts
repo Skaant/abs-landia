@@ -92,13 +92,13 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         value: 2,
       },
       [BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION]: {
-        id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION,
+        id: BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION,
         value: 0.5,
         range: 3,
       },
       [BUILDING_PROPS.WA_PROD_MODIFICATION]: {
         id: BUILDING_PROPS.WA_PROD_MODIFICATION,
-        value: 2,
+        value: 1,
       },
       [BUILDING_PROPS.WA_MAX_MODIFICATION]: {
         id: BUILDING_PROPS.WA_MAX_MODIFICATION,

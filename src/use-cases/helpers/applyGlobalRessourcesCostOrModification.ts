@@ -43,13 +43,17 @@ export function applyGlobalRessourcesCostOrModification(
       diff = value;
       break;
   }
+  let newValue = globalRessources[ressource].value + diff;
+  if (newValue < 0) newValue = 0;
+  if (newValue > globalRessources[ressource].maximum)
+    newValue = globalRessources[ressource].maximum;
   return {
     ...pipeStore,
     globalRessources: {
       ...globalRessources,
       [ressource]: {
         ...globalRessources[ressource],
-        value: globalRessources[ressource].value + diff,
+        value: newValue,
       },
     },
   } as PipeStores;

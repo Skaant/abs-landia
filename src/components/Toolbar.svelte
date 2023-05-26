@@ -2,21 +2,26 @@
   import { BUILDINGS } from "../enums/buildings.enum";
   import { selection } from "../stores/selection.store";
   import SvgKolosSeed from "./svg/SVGKolosSeed.svelte";
-  import { passTurn } from "../use-cases/passTurn/passTurn";
   import { getBuildingDescription } from "../helpers/getBuildingDescription";
   import { BUILDINGS_DATA } from "../data/buildings.data";
   import SvgDom from "./svg/SvgDom.svelte";
   import SvgBaliseBlix from "./svg/SVGBaliseBlix.svelte";
+  import SvgCuveVortex from "./svg/SVGCuveVortex.svelte";
+  import SvgSiloAJing from "./svg/SVGSiloAJing.svelte";
 
   const BUILDINGS_PICTURE = {
     [BUILDINGS.KOLOS_SEED]: SvgKolosSeed,
     [BUILDINGS.DOM]: SvgDom,
+    [BUILDINGS.CUVE_VORTEX]: SvgCuveVortex,
+    [BUILDINGS.SILO_A_JING]: SvgSiloAJing,
     [BUILDINGS.BALISE_BLIX]: SvgBaliseBlix,
   };
 
   const AVAILABLE_BUILDINGS = [
     BUILDINGS.KOLOS_SEED,
     BUILDINGS.DOM,
+    BUILDINGS.CUVE_VORTEX,
+    BUILDINGS.SILO_A_JING,
     BUILDINGS.BALISE_BLIX,
   ];
 

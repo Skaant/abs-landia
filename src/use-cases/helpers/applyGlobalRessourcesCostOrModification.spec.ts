@@ -18,7 +18,7 @@ import { RESSOURCES } from "../../enums/ressources.enum";
 describe("applyGlobalRessourcesCostOrModification", () => {
   test("should apply WA_COST", () => {
     globalRessources.reset({
-      [RESSOURCES.WA]: { value: 10, maximum: 10, evolution: 0 },
+      [RESSOURCES.WA]: { value: 10, maximum: 10, production: 0 },
     });
     const result = applyGlobalRessourcesCostOrModification(
       {
@@ -33,7 +33,7 @@ describe("applyGlobalRessourcesCostOrModification", () => {
   });
   test("should apply JING_COST", () => {
     globalRessources.reset({
-      [RESSOURCES.JING]: { value: 2, maximum: 10, evolution: 0 },
+      [RESSOURCES.JING]: { value: 2, maximum: 10, production: 0 },
     });
     const result = applyGlobalRessourcesCostOrModification(
       {
@@ -49,7 +49,7 @@ describe("applyGlobalRessourcesCostOrModification", () => {
   });
   test("should apply WA_MODIFICATION", () => {
     globalRessources.reset({
-      [RESSOURCES.WA]: { value: 0, maximum: 10, evolution: 0 },
+      [RESSOURCES.WA]: { value: 0, maximum: 10, production: 0 },
     });
     const result = applyGlobalRessourcesCostOrModification(
       {
@@ -64,7 +64,7 @@ describe("applyGlobalRessourcesCostOrModification", () => {
   });
   test("should apply JING_MODIFICATION", () => {
     globalRessources.reset({
-      [RESSOURCES.JING]: { value: 5, maximum: 10, evolution: 0 },
+      [RESSOURCES.JING]: { value: 5, maximum: 10, production: 0 },
     });
     const result = applyGlobalRessourcesCostOrModification(
       {
@@ -77,5 +77,40 @@ describe("applyGlobalRessourcesCostOrModification", () => {
     const { [RESSOURCES.JING]: jing } =
       result.globalRessources as GlobalRessources;
     expect(jing.value).toBe(10);
+  });
+  describe("should not overcome boundaries", () => {
+    test("should not overcome maximum", () => {
+      globalRessources.reset({
+        [RESSOURCES.JING]: { value: 10, maximum: 10, production: 0 },
+      });
+      const result = applyGlobalRessourcesCostOrModification(
+        {
+          globalRessources: get(globalRessources),
+        },
+        {
+          id: BUILDING_PROPS.JING_MODIFICATION,
+          value: 5,
+        } as BuildingPropJingModification
+      );
+      const { [RESSOURCES.JING]: jing } =
+        result.globalRessources as GlobalRessources;
+      expect(jing.value).toBe(10);
+    });
+    test("should not go lower 0", () => {
+      globalRessources.reset({
+        [RESSOURCES.WA]: { value: 0, maximum: 5, production: 1 },
+      });
+      const result = applyGlobalRessourcesCostOrModification(
+        {
+          globalRessources: get(globalRessources),
+        },
+        BUILDINGS_DATA[BUILDINGS.CUVE_VORTEX].props[
+          BUILDING_PROPS.WA_COST
+        ] as BuildingPropWaCost
+      );
+      const { [RESSOURCES.WA]: wa } =
+        result.globalRessources as GlobalRessources;
+      expect(wa.value).toBe(0);
+    });
   });
 });

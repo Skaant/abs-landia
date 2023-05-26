@@ -6,40 +6,43 @@ import {
   GlobalRessources,
   globalRessources,
 } from "../../stores/global-ressources.store";
-import { BuildingPropWaMaxModification } from "../../types/BuildingProps";
+import {
+  BuildingPropJingProdModification,
+  BuildingPropWaProdModification,
+} from "../../types/BuildingProps";
 import { RESSOURCES } from "../../enums/ressources.enum";
-import { applyGlobalRessourcesMaxModification } from "./applyGlobalRessourcesMaxModification";
+import { applyGlobalRessourcesProdModification } from "./applyGlobalRessourcesProdModification";
 
-describe("applyGlobalRessourcesMaxModification", () => {
-  test("should apply WA_MAX_MODIFICATION", () => {
+describe("applyGlobalRessourcesProdModification", () => {
+  test("should apply WA_PROD_MODIFICATION", () => {
     globalRessources.reset({
-      [RESSOURCES.WA]: { value: 0, maximum: 0, production: 0 },
+      [RESSOURCES.WA]: { value: 0, maximum: 20, production: 5 },
     });
-    const result = applyGlobalRessourcesMaxModification(
+    const result = applyGlobalRessourcesProdModification(
       {
         globalRessources: get(globalRessources),
       },
-      BUILDINGS_DATA[BUILDINGS.KOLOS_SEED].props[
-        BUILDING_PROPS.WA_MAX_MODIFICATION
-      ] as BuildingPropWaMaxModification
+      BUILDINGS_DATA[BUILDINGS.CUVE_VORTEX].props[
+        BUILDING_PROPS.WA_PROD_MODIFICATION
+      ] as BuildingPropWaProdModification
     );
     const { [RESSOURCES.WA]: wa } = result.globalRessources as GlobalRessources;
-    expect(wa.maximum).toBe(5);
+    expect(wa.production).toBe(6);
   });
-  test("should apply JING_MAX_MODIFICATION", () => {
+  test("should apply JING_PROD_MODIFICATION", () => {
     globalRessources.reset({
       [RESSOURCES.JING]: { value: 5, maximum: 10, production: 0 },
     });
-    const result = applyGlobalRessourcesMaxModification(
+    const result = applyGlobalRessourcesProdModification(
       {
         globalRessources: get(globalRessources),
       },
       BUILDINGS_DATA[BUILDINGS.SILO_A_JING].props[
-        BUILDING_PROPS.JING_MAX_MODIFICATION
-      ] as BuildingPropWaMaxModification
+        BUILDING_PROPS.JING_PROD_MODIFICATION
+      ] as BuildingPropJingProdModification
     );
     const { [RESSOURCES.JING]: jing } =
       result.globalRessources as GlobalRessources;
-    expect(jing.maximum).toBe(20);
+    expect(jing.production).toBe(1);
   });
 });

@@ -6,6 +6,8 @@
   import { getBuildingDescription } from "../helpers/getBuildingDescription";
   import SvgDom from "./svg/SvgDom.svelte";
   import SvgBaliseBlix from "./svg/SVGBaliseBlix.svelte";
+  import SvgCuveVortex from "./svg/SVGCuveVortex.svelte";
+  import SvgSiloAJing from "./svg/SVGSiloAJing.svelte";
 
   export let building: Building;
 
@@ -15,6 +17,8 @@
     [BUILDINGS.KOLOS_SEED]: SvgKolosSeed,
     [BUILDINGS.DOM]: SvgDom,
     [BUILDINGS.BALISE_BLIX]: SvgBaliseBlix,
+    [BUILDINGS.CUVE_VORTEX]: SvgCuveVortex,
+    [BUILDINGS.SILO_A_JING]: SvgSiloAJing,
   };
 </script>
 
