@@ -127,15 +127,50 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         id: BUILDING_PROPS.JING_MAX_MODIFICATION,
         value: 10,
       },
-      [BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION]: {
-        id: BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION,
-        value: -2,
-        range: 1,
-      },
       [BUILDING_PROPS.WIGHLD_EXACT_RANGE_MODIFICATION]: {
         id: BUILDING_PROPS.WIGHLD_EXACT_RANGE_MODIFICATION,
+        value: [-2, 1],
+        range: [1, 2],
+      },
+    },
+  },
+  [BUILDINGS.BALISE_HOL_ONG]: {
+    id: BUILDINGS.BALISE_HOL_ONG,
+    name: "Balise HOL-ONG",
+    description: "Fluidifie localement les échanges avec le HOL-ONG.",
+    props: {
+      [BUILDING_PROPS.WA_COST]: {
+        id: BUILDING_PROPS.WA_COST,
+        value: 2,
+      },
+      [BUILDING_PROPS.JING_COST]: {
+        id: BUILDING_PROPS.JING_COST,
+        value: 2,
+      },
+      [BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION]: {
+        id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION,
+        value: 3,
+        range: 3,
+      },
+    },
+  },
+  [BUILDINGS.BALISE_FRFF]: {
+    id: BUILDINGS.BALISE_FRFF,
+    name: "Balise FRFF",
+    description: "Augmente le niveau de WIGHLD des cases environnantes.",
+    props: {
+      [BUILDING_PROPS.WA_COST]: {
+        id: BUILDING_PROPS.WA_COST,
+        value: 3,
+      },
+      [BUILDING_PROPS.JING_COST]: {
+        id: BUILDING_PROPS.JING_COST,
+        value: 2,
+      },
+      [BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
+        id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION,
         value: 1,
-        range: 2,
+        range: 4,
       },
     },
   },
@@ -150,7 +185,7 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
       },
       [BUILDING_PROPS.JING_COST]: {
         id: BUILDING_PROPS.JING_COST,
-        value: 1,
+        value: 2,
       },
       [BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD]: {
         id: BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD,
@@ -161,6 +196,10 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION,
         value: 1,
         range: 3,
+      },
+      [BUILDING_PROPS.WA_PROD_MODIFICATION]: {
+        id: BUILDING_PROPS.WA_PROD_MODIFICATION,
+        value: 0.5,
       },
     },
   },

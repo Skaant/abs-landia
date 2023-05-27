@@ -41,8 +41,8 @@ export type BuildingPropWighldRangeModification = {
 
 export type BuildingPropWighldExactRangeModification = {
   id: BUILDING_PROPS.WIGHLD_EXACT_RANGE_MODIFICATION;
-  value: number;
-  range: number;
+  value: number | number[];
+  range: number | number[];
 };
 
 export type BuildingPropRangeDecreasingWighldModification = {

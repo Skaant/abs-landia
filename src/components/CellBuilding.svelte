@@ -8,6 +8,8 @@
   import SvgBaliseBlix from "./svg/SVGBaliseBlix.svelte";
   import SvgCuveVortex from "./svg/SVGCuveVortex.svelte";
   import SvgSiloAJing from "./svg/SVGSiloAJing.svelte";
+  import SvgBaliseHolOng from "./svg/SVGBaliseHolOng.svelte";
+  import SvgBaliseFrff from "./svg/SVGBaliseFrff.svelte";
 
   export let building: Building;
 
@@ -16,9 +18,11 @@
   const buildingPictures = {
     [BUILDINGS.KOLOS_SEED]: SvgKolosSeed,
     [BUILDINGS.DOM]: SvgDom,
-    [BUILDINGS.BALISE_BLIX]: SvgBaliseBlix,
     [BUILDINGS.CUVE_VORTEX]: SvgCuveVortex,
     [BUILDINGS.SILO_A_JING]: SvgSiloAJing,
+    [BUILDINGS.BALISE_HOL_ONG]: SvgBaliseHolOng,
+    [BUILDINGS.BALISE_FRFF]: SvgBaliseFrff,
+    [BUILDINGS.BALISE_BLIX]: SvgBaliseBlix,
   };
 </script>
 

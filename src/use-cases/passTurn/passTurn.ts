@@ -17,5 +17,10 @@ export function passTurn() {
   _zums = transfer[0];
   cycles.increment();
   holOngData.increment(transfer[1]);
+  if (get(holOngData) >= 1000) {
+    alert(`1000 idées envoyées au HOL-ONG ?
+    
+Mamène, tu es fort le veau !`);
+  }
   zums.set(_zums);
 }

@@ -10,8 +10,8 @@ import * as _applyModification from "../../helpers/applyGlobalRessourcesCostOrMo
 describe("buildingPropsPipe", () => {
   test("base wa & jing costs application", () => {
     globalRessources.reset({
-      [RESSOURCES.WA]: { value: 4, maximum: 0, production: 0 },
-      [RESSOURCES.JING]: { value: 10, maximum: 0, production: 0 },
+      [RESSOURCES.WA]: { value: 4, maximum: 5, production: 0 },
+      [RESSOURCES.JING]: { value: 10, maximum: 10, production: 0 },
     });
     const pipeResult = buildingPropsPipe(
       {

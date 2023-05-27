@@ -44,7 +44,8 @@ export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
       cells,
       globalRessources,
     },
-    props
+    props,
+    { cell }
   );
   cells = pipeResult.cells as CellsIndex;
   globalRessources = pipeResult.globalRessources as GlobalRessources;

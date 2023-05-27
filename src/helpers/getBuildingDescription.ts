@@ -39,11 +39,21 @@ ${topProps
       ? `
   
 ${otherProps
-  .map(
-    (prop) =>
-      `${BUILDING_PROPS_DATA[prop.id]?.name || prop.id} : ${
-        prop.value > 0 ? "+" : ""
-      }${prop.value}${prop["range"] ? ` (portée : ${prop["range"]})` : ""}`
+  .map((prop) =>
+    Array.isArray(prop.value)
+      ? prop.value
+          .map(
+            (value, index) =>
+              `${BUILDING_PROPS_DATA[prop.id]?.name || prop.id} : ${
+                value > 0 ? "+" : ""
+              }${value} (portée : ${
+                (prop as { range: number[] }).range[index]
+              })`
+          )
+          .join("\n")
+      : `${BUILDING_PROPS_DATA[prop.id]?.name || prop.id} : ${
+          prop.value > 0 ? "+" : ""
+        }${prop.value}${prop["range"] ? ` (portée : ${prop["range"]})` : ""}`
   )
   .join("\n")}`
       : ""

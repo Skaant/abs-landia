@@ -28,13 +28,13 @@ export const BUILDING_PROPS_DATA: {
     id: BUILDING_PROPS.ZUMS_MODIFICATION,
     name: "Évolution du nombre de ZUMS",
   },
-  [BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION]: {
-    id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION,
-    name: "Évolution de la connectivité autour",
-  },
   [BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION]: {
     id: BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION,
     name: "Évolution du WIGHLD autour",
+  },
+  [BUILDING_PROPS.WIGHLD_EXACT_RANGE_MODIFICATION]: {
+    id: BUILDING_PROPS.WIGHLD_EXACT_RANGE_MODIFICATION,
+    name: "Évolution du WIGHLD à une portée précise",
   },
   [BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
     id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION,
@@ -43,5 +43,25 @@ export const BUILDING_PROPS_DATA: {
   [BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD]: {
     id: BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD,
     name: "Restauration et évolution du WIGHLD autour",
+  },
+  [BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION]: {
+    id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION,
+    name: "Évolution de la connectivité autour",
+  },
+  [BUILDING_PROPS.WA_MAX_MODIFICATION]: {
+    id: BUILDING_PROPS.WA_MAX_MODIFICATION,
+    name: "Évolution du stock maximal de WA",
+  },
+  [BUILDING_PROPS.JING_MAX_MODIFICATION]: {
+    id: BUILDING_PROPS.JING_MAX_MODIFICATION,
+    name: "Évolution du stock maximal de JING",
+  },
+  [BUILDING_PROPS.WA_PROD_MODIFICATION]: {
+    id: BUILDING_PROPS.WA_PROD_MODIFICATION,
+    name: "Évolution de la production de WA",
+  },
+  [BUILDING_PROPS.JING_PROD_MODIFICATION]: {
+    id: BUILDING_PROPS.JING_PROD_MODIFICATION,
+    name: "Évolution de la production de JING",
   },
 };
