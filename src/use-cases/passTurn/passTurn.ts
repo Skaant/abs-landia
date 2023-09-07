@@ -7,9 +7,12 @@ import { cycles } from "../../stores/cycles.store";
 import { holOngData } from "../../stores/hol-ong-data.store";
 import { globalRessources } from "../../stores/global-ressources.store";
 import { addGlobalRessourcesProduction } from "./addGlobalRessourcesProduction";
+import { mutateCellsWighld } from "./helpers/mutateCellsWighld";
 
 export function passTurn() {
-  const _cells = get(cells);
+  let _cells = get(cells);
+  _cells = mutateCellsWighld(_cells);
+  cells.set(_cells);
   globalRessources.set(addGlobalRessourcesProduction(get(globalRessources)));
   let _zums = { ...get(zums) };
   _zums = addDataToEveryZum(_zums, _cells);
