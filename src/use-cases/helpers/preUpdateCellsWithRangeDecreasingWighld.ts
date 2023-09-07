@@ -13,11 +13,11 @@ export function preUpdateCellsWithRangeDecreasingWighld(
       rangeCells
         .filter((cell) => !cell.burned)
         .forEach((cell) => {
-          cell.wighld += (range - i) * value;
-          if (cell.wighld < 0) {
+          cell.effectiveWighld += (range - i) * value;
+          if (cell.effectiveWighld < 0) {
             cell.burned = true;
-            cell.wighld = 0;
-          } else if (cell.wighld > 5) cell.wighld = 5;
+            cell.effectiveWighld = 0;
+          } else if (cell.effectiveWighld > 5) cell.effectiveWighld = 5;
           cells[cell.id] = cell;
         });
     });

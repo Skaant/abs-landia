@@ -20,11 +20,11 @@ export function applyCellsWighldExactRangeModification(
       rangeCells
         .filter((cell) => !cell.burned)
         .forEach((cell) => {
-          cell.wighld += values[i];
-          if (cell.wighld < 0) {
+          cell.effectiveWighld += values[i];
+          if (cell.effectiveWighld < 0) {
             cell.burned = true;
-            cell.wighld = 0;
-          } else if (cell.wighld > 5) cell.wighld = 5;
+            cell.effectiveWighld = 0;
+          } else if (cell.effectiveWighld > 5) cell.effectiveWighld = 5;
           (cells as CellsIndex)[cell.id] = cell;
         });
     });

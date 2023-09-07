@@ -9,13 +9,13 @@ describe("preUpdateCellsWithRangeUnburnAddWighld", () => {
   it("should remove burned and add 2 wighld from cells in range", () => {
     const MOCK_CELLS = generateCells(5, 5);
     MOCK_CELLS["2-2"].burned = true;
-    MOCK_CELLS["2-2"].wighld = 0;
+    MOCK_CELLS["2-2"].effectiveWighld = 0;
     MOCK_CELLS["2-1"].burned = true;
-    MOCK_CELLS["2-1"].wighld = 0;
+    MOCK_CELLS["2-1"].effectiveWighld = 0;
     MOCK_CELLS["3-2"].burned = true;
-    MOCK_CELLS["3-2"].wighld = 0;
-    MOCK_CELLS["0-2"].wighld = 4;
-    MOCK_CELLS["3-1"].wighld = 1;
+    MOCK_CELLS["3-2"].effectiveWighld = 0;
+    MOCK_CELLS["0-2"].effectiveWighld = 4;
+    MOCK_CELLS["3-1"].effectiveWighld = 1;
     const _cells = preUpdateCellsWithRangeUnburnAddWighld(
       MOCK_CELLS,
       MOCK_CELLS["2-2"],
@@ -24,12 +24,12 @@ describe("preUpdateCellsWithRangeUnburnAddWighld", () => {
       ] as BuildingPropRangeUnburnAddWighld
     );
     expect(_cells["2-2"].burned).toBe(undefined);
-    expect(_cells["2-2"].wighld).toBe(2);
+    expect(_cells["2-2"].effectiveWighld).toBe(2);
     expect(_cells["2-1"].burned).toBe(undefined);
-    expect(_cells["2-1"].wighld).toBe(2);
+    expect(_cells["2-1"].effectiveWighld).toBe(2);
     expect(_cells["3-2"].burned).toBe(undefined);
-    expect(_cells["3-2"].wighld).toBe(2);
-    expect(_cells["0-2"].wighld).toBe(4);
-    expect(_cells["3-1"].wighld).toBe(1);
+    expect(_cells["3-2"].effectiveWighld).toBe(2);
+    expect(_cells["0-2"].effectiveWighld).toBe(4);
+    expect(_cells["3-1"].effectiveWighld).toBe(1);
   });
 });

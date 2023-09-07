@@ -3,7 +3,8 @@ export type Cell = {
   x: number;
   y: number;
   burned?: true;
-  wighld: number;
+  intrinsicWighld: number;
+  effectiveWighld: number;
   connectivity: number;
   buildingId?: string;
   zumId?: string;

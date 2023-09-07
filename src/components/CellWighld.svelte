@@ -8,7 +8,7 @@
 
 <div
   class={`cell-wighld${
-    cell.wighld < 0
+    cell.effectiveWighld < 0
       ? " cell-wighld--burning"
       : cell.burned
       ? " cell-wighld--burned"
@@ -18,7 +18,7 @@
 
 Un niveau négatif rend stérile la cellule, même revenu à un niveau supérieur à 0, jusqu'à correction par une balise BLIX.`}
 >
-  {cell.wighld}
+  {cell.effectiveWighld}
   {#if cell.burned}
     <SvgPathTile />
   {:else}

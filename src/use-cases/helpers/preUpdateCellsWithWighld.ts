@@ -10,10 +10,10 @@ export function preUpdateCellsWithWighld(
     .map((_, i) => getCellsInExactRange(cell, cells, i))
     .forEach((rangeCells, i) => {
       rangeCells.forEach((cell) => {
-        cell.wighld -= 3 - i;
-        if (cell.wighld < 0) {
+        cell.effectiveWighld -= 3 - i;
+        if (cell.effectiveWighld < 0) {
           cell.burned = true;
-          cell.wighld = 0;
+          cell.effectiveWighld = 0;
         }
         cells[cell.id] = cell;
       });

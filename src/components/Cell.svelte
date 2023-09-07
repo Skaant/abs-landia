@@ -13,7 +13,7 @@
 </script>
 
 <td
-  class={`cell ${cell.burned ? "burned" : `wighld-${cell.wighld}`}${
+  class={`cell ${cell.burned ? "burned" : `wighld-${cell.effectiveWighld}`}${
     cell.zumId ? " cell--zum" : ""
   }`}
 >

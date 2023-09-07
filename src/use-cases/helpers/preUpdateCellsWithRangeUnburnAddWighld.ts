@@ -11,9 +11,9 @@ export function preUpdateCellsWithRangeUnburnAddWighld(
     .filter((_cell) => _cell.burned)
     .forEach((_cell) => {
       delete _cell.burned;
-      _cell.wighld += value;
-      if (_cell.wighld > 5) {
-        _cell.wighld = 5;
+      _cell.effectiveWighld += value;
+      if (_cell.effectiveWighld > 5) {
+        _cell.effectiveWighld = 5;
       }
       cells[_cell.id] = _cell;
     });

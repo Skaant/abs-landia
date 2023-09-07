@@ -9,9 +9,9 @@ import { applyCellsWighldExactRangeModification } from "./applyCellsWighldExactR
 describe("applyCellsWighldExactRangeModification", () => {
   test("correctly apply modification", () => {
     const MOCK_CELLS = generateCells(3, 3);
-    MOCK_CELLS["1-1"].wighld = 5;
-    MOCK_CELLS["1-2"].wighld = 5;
-    MOCK_CELLS["2-1"].wighld = 0;
+    MOCK_CELLS["1-1"].effectiveWighld = 5;
+    MOCK_CELLS["1-2"].effectiveWighld = 5;
+    MOCK_CELLS["2-1"].effectiveWighld = 0;
     const cells = applyCellsWighldExactRangeModification(
       {
         cells: MOCK_CELLS,
@@ -22,8 +22,8 @@ describe("applyCellsWighldExactRangeModification", () => {
       MOCK_CELLS["1-1"]
     ).cells as CellsIndex;
     expect(cells).toBeDefined();
-    expect(cells["1-1"].wighld).toBe(3);
-    expect(cells["1-2"].wighld).toBe(5);
-    expect(cells["2-1"].wighld).toBe(1);
+    expect(cells["1-1"].effectiveWighld).toBe(3);
+    expect(cells["1-2"].effectiveWighld).toBe(5);
+    expect(cells["2-1"].effectiveWighld).toBe(1);
   });
 });
