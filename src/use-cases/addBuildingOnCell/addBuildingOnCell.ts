@@ -63,15 +63,6 @@ export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
     addZumsToStore(zums);
     cells = preUpdateCellsWithZums(cells, zums);
   }
-  if (props[BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION]) {
-    cells = preUpdateCellsWithRangeDecreasingWighld(
-      cells,
-      cell,
-      props[
-        BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION
-      ] as BuildingPropRangeDecreasingWighldModification
-    );
-  }
   if (props[BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD]) {
     cells = preUpdateCellsWithRangeUnburnAddWighld(
       cells,

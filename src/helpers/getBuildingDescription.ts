@@ -1,3 +1,4 @@
+import { AURAS_DATA } from "../data/auras.data";
 import { BUILDING_PROPS_DATA } from "../data/building-props.data";
 import { BuildingData } from "../data/buildings.data";
 import { BUILDING_PROPS } from "../enums/building-props.enum";
@@ -13,9 +14,9 @@ export function getBuildingDescription({
   const [topProps, otherProps] = Object.entries(props).reduce(
     (acc, [id, prop]) => {
       if (TOP_BUILDING_PROPS.includes(id as BUILDING_PROPS)) {
-        acc[0].push(prop);
+        acc[0].push(prop as BuildingProp);
       } else {
-        acc[1].push(prop);
+        acc[1].push(prop as BuildingProp);
       }
       return acc;
     },
@@ -44,16 +45,22 @@ ${otherProps
       ? prop.value
           .map(
             (value, index) =>
-              `${BUILDING_PROPS_DATA[prop.id]?.name || prop.id} : ${
-                value > 0 ? "+" : ""
-              }${value} (portée : ${
+              `${
+                BUILDING_PROPS_DATA[prop.id]?.name ||
+                AURAS_DATA[prop.id]?.name ||
+                prop.id
+              } : ${value > 0 ? "+" : ""}${value} (portée : ${
                 (prop as { range: number[] }).range[index]
               })`
           )
           .join("\n")
-      : `${BUILDING_PROPS_DATA[prop.id]?.name || prop.id} : ${
-          prop.value > 0 ? "+" : ""
-        }${prop.value}${prop["range"] ? ` (portée : ${prop["range"]})` : ""}`
+      : `${
+          BUILDING_PROPS_DATA[prop.id]?.name ||
+          AURAS_DATA[prop.id]?.name ||
+          prop.id
+        } : ${prop.value > 0 ? "+" : ""}${prop.value}${
+          prop["range"] ? ` (portée : ${prop["range"]})` : ""
+        }`
   )
   .join("\n")}`
       : ""

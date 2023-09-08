@@ -1,4 +1,8 @@
 import { BUILDING_PROPS } from "../enums/building-props.enum";
+import {
+  AuraRangeConnectivityModification,
+  AuraRangeDecreasingWighldModification,
+} from "./Auras";
 
 /**
  * `BuildingPropWaCost.value` will be negated,
@@ -45,6 +49,7 @@ export type BuildingPropWighldExactRangeModification = {
   range: number | number[];
 };
 
+/** @deprecated Use aura instead */
 export type BuildingPropRangeDecreasingWighldModification = {
   id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION;
   value: number;
@@ -57,6 +62,7 @@ export type BuildingPropRangeUnburnAddWighld = {
   range: number;
 };
 
+/** @deprecated Use aura instead */
 export type BuildingPropRangeConnectivityModification = {
   id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION;
   value: number;
@@ -92,6 +98,7 @@ export type BuildingProp =
   | BuildingPropWighldRangeModification
   | BuildingPropWighldExactRangeModification
   | BuildingPropRangeDecreasingWighldModification
+  | AuraRangeDecreasingWighldModification
   | {
       id: BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD;
       value: number;
@@ -99,6 +106,7 @@ export type BuildingProp =
     }
   | BuildingPropRangeUnburnAddWighld
   | BuildingPropRangeConnectivityModification
+  | AuraRangeConnectivityModification
   | BuildingPropWaMaxModification
   | BuildingPropJingMaxModification
   | BuildingPropWaProdModification

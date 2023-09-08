@@ -1,3 +1,5 @@
+import { AuraEffect } from "./AuraEffects";
+
 export type Cell = {
   id: string;
   x: number;
@@ -9,6 +11,7 @@ export type Cell = {
   connectivity: number;
   buildingId?: string;
   zumId?: string;
+  auraEffects?: AuraEffect[];
 };
 
 export type CellsIndex = { [id: string]: Cell };

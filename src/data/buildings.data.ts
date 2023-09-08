@@ -1,8 +1,11 @@
+import { AURAS } from "../enums/auras.enum";
 import { BUILDING_PROPS } from "../enums/building-props.enum";
 import { BUILDINGS } from "../enums/buildings.enum";
 import { BuildingProp } from "../types/BuildingProps";
 
-export type BuildingDataProps = { [id in BUILDING_PROPS]?: BuildingProp };
+export type BuildingDataProps = {
+  [id in BUILDING_PROPS & AURAS]?: BuildingProp;
+};
 
 export type BuildingData = {
   id: BUILDINGS;
@@ -29,13 +32,13 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         id: BUILDING_PROPS.ZUMS_MODIFICATION,
         value: 5,
       },
-      [BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
-        id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION,
+      [AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
+        id: AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION,
         value: -1,
         range: 3,
       },
-      [BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION]: {
-        id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION,
+      [AURAS.RANGE_CONNECTIVITY_MODIFICATION]: {
+        id: AURAS.RANGE_CONNECTIVITY_MODIFICATION,
         value: 2.5,
         range: 3,
       },
@@ -66,10 +69,10 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         id: BUILDING_PROPS.ZUMS_MODIFICATION,
         value: 3,
       },
-      [BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
-        id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION,
+      [AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
+        id: AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION,
         value: -1,
-        range: 3,
+        range: 2,
       },
       [BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION]: {
         id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION,

@@ -1,5 +1,7 @@
 import { BuildingDataProps } from "../../../data/buildings.data";
+import { AURAS } from "../../../enums/auras.enum";
 import { BUILDING_PROPS } from "../../../enums/building-props.enum";
+import { AuraRangeDecreasingWighldModification } from "../../../types/Auras";
 import {
   BuildingPropJingCost,
   BuildingPropJingMaxModification,
@@ -12,6 +14,7 @@ import {
   BuildingPropWighldExactRangeModification,
 } from "../../../types/BuildingProps";
 import { Cell } from "../../../types/Cell";
+import { applyCellsAuraRangeDecreasingWighldModification } from "../../helpers/applyCellsAuraRangeDecreasingWighldModification";
 import { applyCellsWighldExactRangeModification } from "../../helpers/applyCellsWighldExactRangeModification";
 import { applyGlobalRessourcesCostOrModification } from "../../helpers/applyGlobalRessourcesCostOrModification";
 import { applyGlobalRessourcesMaxModification } from "../../helpers/applyGlobalRessourcesMaxModification";
@@ -45,6 +48,14 @@ export function buildingPropsPipe(
         pipeStores = applyCellsWighldExactRangeModification(
           pipeStores,
           prop as BuildingPropWighldExactRangeModification,
+          cell
+        );
+        break;
+      case AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION:
+        if (!cell) throw new Error("Cell is not defined");
+        pipeStores = applyCellsAuraRangeDecreasingWighldModification(
+          pipeStores,
+          prop as AuraRangeDecreasingWighldModification,
           cell
         );
         break;
