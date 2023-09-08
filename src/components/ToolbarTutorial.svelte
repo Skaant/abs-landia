@@ -25,7 +25,9 @@
     padding: 32px;
     box-sizing: border-box;
   }
-  #toolbar-tutorial-image > svg {
+  #toolbar-tutorial-image {
     max-height: 300px;
+    display: flex;
+    justify-content: center;
   }
 </style>
