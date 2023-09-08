@@ -150,8 +150,8 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         id: BUILDING_PROPS.JING_COST,
         value: 2,
       },
-      [BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION]: {
-        id: BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION,
+      [AURAS.RANGE_CONNECTIVITY_MODIFICATION]: {
+        id: AURAS.RANGE_CONNECTIVITY_MODIFICATION,
         value: 3,
         range: 3,
       },
@@ -170,8 +170,8 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         id: BUILDING_PROPS.JING_COST,
         value: 2,
       },
-      [BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
-        id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION,
+      [AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
+        id: AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION,
         value: 1,
         range: 4,
       },
@@ -195,8 +195,8 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         value: 2,
         range: 3,
       },
-      [BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
-        id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION,
+      [AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
+        id: AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION,
         value: 1,
         range: 3,
       },

@@ -1,7 +1,10 @@
 import { BuildingDataProps } from "../../../data/buildings.data";
 import { AURAS } from "../../../enums/auras.enum";
 import { BUILDING_PROPS } from "../../../enums/building-props.enum";
-import { AuraRangeDecreasingWighldModification } from "../../../types/Auras";
+import {
+  AuraRangeConnectivityModification,
+  AuraRangeDecreasingWighldModification,
+} from "../../../types/Auras";
 import {
   BuildingPropJingCost,
   BuildingPropJingMaxModification,
@@ -15,6 +18,7 @@ import {
 } from "../../../types/BuildingProps";
 import { Cell } from "../../../types/Cell";
 import { applyCellsAuraRangeDecreasingWighldModification } from "../../helpers/applyCellsAuraRangeDecreasingWighldModification";
+import { applyCellsAuraRangeConnectivityModification } from "../../helpers/applyCellsAuraRangeExactConnectivityModification";
 import { applyCellsWighldExactRangeModification } from "../../helpers/applyCellsWighldExactRangeModification";
 import { applyGlobalRessourcesCostOrModification } from "../../helpers/applyGlobalRessourcesCostOrModification";
 import { applyGlobalRessourcesMaxModification } from "../../helpers/applyGlobalRessourcesMaxModification";
@@ -56,6 +60,14 @@ export function buildingPropsPipe(
         pipeStores = applyCellsAuraRangeDecreasingWighldModification(
           pipeStores,
           prop as AuraRangeDecreasingWighldModification,
+          cell
+        );
+        break;
+      case AURAS.RANGE_CONNECTIVITY_MODIFICATION:
+        if (!cell) throw new Error("Cell is not defined");
+        pipeStores = applyCellsAuraRangeConnectivityModification(
+          pipeStores,
+          prop as AuraRangeConnectivityModification,
           cell
         );
         break;

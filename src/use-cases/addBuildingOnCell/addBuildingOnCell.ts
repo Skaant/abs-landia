@@ -7,10 +7,7 @@ import { createBuilding } from "../helpers/createBuilding";
 import { preUpdateCellsWithBuilding } from "../helpers/preUpdateCellsWithBuilding";
 import { BUILDINGS_DATA } from "../../data/buildings.data";
 import { BUILDING_PROPS } from "../../enums/building-props.enum";
-import { preUpdateCellsWithRangeDecreasingWighld } from "../helpers/preUpdateCellsWithRangeDecreasingWighld";
 import {
-  BuildingPropRangeConnectivityModification,
-  BuildingPropRangeDecreasingWighldModification,
   BuildingPropRangeUnburnAddWighld,
   BuildingPropZumsModification,
 } from "../../types/BuildingProps";
@@ -18,7 +15,6 @@ import { createZumOnCells } from "../helpers/createZumOnCells";
 import { addZumsToStore } from "../helpers/addZumsToStore";
 import { preUpdateCellsWithZums } from "../helpers/preUpdateCellsWithZums";
 import { selection } from "../../stores/selection.store";
-import { preUpdateCellsWithConnectivity } from "../helpers/preUpdateCellsWithConnectivity";
 import { preUpdateCellsWithRangeUnburnAddWighld } from "../helpers/preUpdateCellsWithRangeUnburnAddWighld";
 import { buildingPropsPipe } from "./helpers/buildingPropsPipe";
 import {
@@ -70,15 +66,6 @@ export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
       props[
         BUILDING_PROPS.RANGE_UNBURN_ADD_WIGHLD
       ] as BuildingPropRangeUnburnAddWighld
-    );
-  }
-  if (props[BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION]) {
-    cells = preUpdateCellsWithConnectivity(
-      cells,
-      cell,
-      props[
-        BUILDING_PROPS.RANGE_CONNECTIVITY_MODIFICATION
-      ] as BuildingPropRangeConnectivityModification
     );
   }
 
