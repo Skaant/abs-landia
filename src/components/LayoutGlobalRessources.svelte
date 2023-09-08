@@ -3,25 +3,21 @@
   import { globalRessources } from "../stores/global-ressources.store";
   import { RESSOURCES_DATA } from "../data/ressources.data";
 
-  $: _globalRessources = Object.entries($globalRessources).map(
-    ([name, values]) => ({
-      ressource: name as RESSOURCES,
-      ...values,
-    })
-  );
+  $: ressources = [RESSOURCES.WA, RESSOURCES.JING].map((ressource) => ({
+    ressource,
+    ...$globalRessources[ressource],
+  }));
 </script>
 
 <div id="global-ressources">
   <h2>Ressources courantes</h2>
   <div id="ressources-value">
-    {#each _globalRessources as item}
+    {#each ressources as item}
       {@const { name, summary } = RESSOURCES_DATA[item.ressource]}
       <p title={summary}>
         {name}: {item.value}{item.production !== 0
           ? ` (+${item.production})`
-          : ""}{item.ressource !== RESSOURCES.DATA_CORES && item.maximum !== 0
-          ? ` / ${item.maximum}`
-          : ""}
+          : ""}{item.maximum !== 0 ? ` / ${item.maximum}` : ""}
       </p>
     {/each}
   </div>
@@ -48,6 +44,7 @@
   }
   #ressources-value {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
   }
 </style>

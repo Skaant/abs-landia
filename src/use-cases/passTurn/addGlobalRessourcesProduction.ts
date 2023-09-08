@@ -6,7 +6,12 @@ export function addGlobalRessourcesProduction(
 ): GlobalRessources {
   return {
     ...globalRessources,
-    ...[RESSOURCES.WA, RESSOURCES.JING].reduce((acc, ressource) => {
+    ...[
+      RESSOURCES.WA,
+      RESSOURCES.JING,
+      RESSOURCES.HOL_ONG_DATA,
+      RESSOURCES.DATA_CORES,
+    ].reduce((acc, ressource) => {
       let newValue =
         globalRessources[ressource].value +
         globalRessources[ressource].production;

@@ -9,32 +9,36 @@ export type RessourceData = {
 export const RESSOURCES_DATA: { [id in RESSOURCES]?: RessourceData } = {
   [RESSOURCES.WA]: {
     id: RESSOURCES.WA,
-    name: "WA",
-    summary: `La WA est une des deux ressources de base, avec le JING.
+    name: "💧 WA",
+    summary: `Le 💧 WA est une des deux ressources de base, avec le 🫘 JING.
     
-Elle est utilisée pour faire pousser des bâtiments.
+Il est utilisé pour faire pousser des bâtiments.
 
-Elle est produite par divers bâtiments.
+Il est produit par divers bâtiments.
 
-- La WA c'est la fraîcheur et l'humidité.`,
+- Le 💧 WA c'est la fraîcheur et l'humidité.`,
   },
   [RESSOURCES.JING]: {
     id: RESSOURCES.JING,
-    name: "JING",
-    summary: `Le JING est une des deux ressources de base, avec la WA.
+    name: "🫘 JING",
+    summary: `Le 🫘 JING est une des deux ressources de base, avec le 💧 WA.
 
 Il est utilisé pour faire pousser des bâtiments.
 
 Il est produit par divers bâtiments.
 
-- Le JING c'est le fluide et la vitalité.`,
+- Le 🫘 JING c'est le fluide et la vitalité.`,
   },
   [RESSOURCES.ZUMS]: {
     id: RESSOURCES.ZUMS,
     name: "ZUMS",
   },
+  [RESSOURCES.HOL_ONG_DATA]: {
+    id: RESSOURCES.HOL_ONG_DATA,
+    name: "🌐💡 Données du HOL-ONG",
+  },
   [RESSOURCES.DATA_CORES]: {
     id: RESSOURCES.DATA_CORES,
-    name: "Noyau de données",
+    name: "🟢 Noyau de données",
   },
 };
