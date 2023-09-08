@@ -15,6 +15,11 @@ export function applyCellsAuraRangeConnectivityModification(
 ): PipeStores {
   if (!cells) throw new Error("cells is undefined");
   getCellsInRange(cells, cell, range).forEach((_cell) => {
+    if (!_cell.auraEffects) _cell.auraEffects = [];
+    _cell.auraEffects.push({
+      id: AURA_EFFECTS.CONNECTIVITY_MODIFICATION,
+      value,
+    });
     _cell.connectivity += value;
     if (_cell.connectivity < 0) {
       _cell.connectivity = 0;

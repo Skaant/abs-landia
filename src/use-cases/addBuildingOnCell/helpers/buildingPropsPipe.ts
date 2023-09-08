@@ -18,7 +18,7 @@ import {
 } from "../../../types/BuildingProps";
 import { Cell } from "../../../types/Cell";
 import { applyCellsAuraRangeDecreasingWighldModification } from "../../helpers/applyCellsAuraRangeDecreasingWighldModification";
-import { applyCellsAuraRangeConnectivityModification } from "../../helpers/applyCellsAuraRangeExactConnectivityModification";
+import { applyCellsAuraRangeConnectivityModification } from "../../helpers/applyCellsAuraRangeConnectivityModification";
 import { applyCellsWighldExactRangeModification } from "../../helpers/applyCellsWighldExactRangeModification";
 import { applyGlobalRessourcesCostOrModification } from "../../helpers/applyGlobalRessourcesCostOrModification";
 import { applyGlobalRessourcesMaxModification } from "../../helpers/applyGlobalRessourcesMaxModification";

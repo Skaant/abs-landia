@@ -1,15 +1,31 @@
 <script lang="ts">
+  import { AURA_EFFECTS } from "../enums/aura-effects.enum";
   import { buildings } from "../stores/buildings.store";
   import { zums } from "../stores/zums.store";
   import { type Cell } from "../types/Cell";
+  import CellAura from "./CellAura.svelte";
   import CellBuilding from "./CellBuilding.svelte";
   import CellConnectivity from "./CellConnectivity.svelte";
   import CellWighld from "./CellWighld.svelte";
   import CellZum from "./CellZum.svelte";
 
+  const AURA_EFFECTS_ORDER = [
+    AURA_EFFECTS.WIGHLD_MODIFICATION,
+    AURA_EFFECTS.CONNECTIVITY_MODIFICATION,
+  ];
+
   export let cell: Cell;
   $: building = $buildings[cell.buildingId];
   $: zum = $zums[cell.zumId];
+  $: auras = (cell.auraEffects || []).sort((a, b) => {
+    if (
+      a.id === AURA_EFFECTS.WIGHLD_MODIFICATION &&
+      b.id === AURA_EFFECTS.WIGHLD_MODIFICATION
+    ) {
+      return b.value - a.value;
+    }
+    return AURA_EFFECTS_ORDER.indexOf(a.id) - AURA_EFFECTS_ORDER.indexOf(b.id);
+  });
 </script>
 
 <td
@@ -17,14 +33,17 @@
     cell.zumId ? " cell--zum" : ""
   }`}
 >
-  <CellWighld {cell} />
-  <CellConnectivity {cell} />
+  {#each auras as aura}
+    <CellAura {aura} />
+  {/each}
   {#if building}
     <CellBuilding {building} />
   {/if}
   {#if zum}
     <CellZum {zum} />
   {/if}
+  <CellWighld {cell} />
+  <CellConnectivity {cell} />
 </td>
 
 <style lang="scss">
