@@ -1,6 +1,7 @@
 import { BUILDING_PROPS } from "../../enums/building-props.enum";
 import { RESSOURCES } from "../../enums/ressources.enum";
 import {
+  BuildingPropDataCoresModification,
   BuildingPropJingCost,
   BuildingPropJingModification,
   BuildingPropWaCost,
@@ -18,6 +19,7 @@ export function applyGlobalRessourcesCostOrModification(
     | BuildingPropJingCost
     | BuildingPropWaModification
     | BuildingPropJingModification
+    | BuildingPropDataCoresModification
 ) {
   if (!globalRessources)
     throw new Error("Global ressources store is not defined");
@@ -31,6 +33,9 @@ export function applyGlobalRessourcesCostOrModification(
     case BUILDING_PROPS.JING_MODIFICATION:
       ressource = RESSOURCES.JING;
       break;
+    case BUILDING_PROPS.DATA_CORES_MODIFICATION:
+      ressource = RESSOURCES.DATA_CORES;
+      break;
   }
   let diff: number;
   switch (id) {
@@ -40,6 +45,9 @@ export function applyGlobalRessourcesCostOrModification(
       break;
     case BUILDING_PROPS.WA_MODIFICATION:
     case BUILDING_PROPS.JING_MODIFICATION:
+      diff = value;
+      break;
+    case BUILDING_PROPS.DATA_CORES_MODIFICATION:
       diff = value;
       break;
   }

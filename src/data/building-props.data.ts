@@ -28,6 +28,10 @@ export const BUILDING_PROPS_DATA: {
     id: BUILDING_PROPS.ZUMS_MODIFICATION,
     name: "Évolution du nombre de ZUMS",
   },
+  [BUILDING_PROPS.DATA_CORES_MODIFICATION]: {
+    id: BUILDING_PROPS.DATA_CORES_MODIFICATION,
+    name: "Évolution du nombre de noyaux de données",
+  },
   [BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION]: {
     id: BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION,
     name: "Évolution du WIGHLD autour",

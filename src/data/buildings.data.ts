@@ -32,6 +32,10 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
         id: BUILDING_PROPS.ZUMS_MODIFICATION,
         value: 5,
       },
+      [BUILDING_PROPS.DATA_CORES_MODIFICATION]: {
+        id: BUILDING_PROPS.DATA_CORES_MODIFICATION,
+        value: 1,
+      },
       [AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION]: {
         id: AURAS.RANGE_DECREASING_WIGHLD_MODIFICATION,
         value: -1,

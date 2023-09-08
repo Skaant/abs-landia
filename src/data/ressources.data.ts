@@ -33,4 +33,8 @@ Il est produit par divers bâtiments.
     id: RESSOURCES.ZUMS,
     name: "ZUMS",
   },
+  [RESSOURCES.DATA_CORES]: {
+    id: RESSOURCES.DATA_CORES,
+    name: "Noyau de données",
+  },
 };

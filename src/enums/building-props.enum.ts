@@ -9,6 +9,7 @@ export enum BUILDING_PROPS {
   WA_MODIFICATION = "wa-modification",
   JING_MODIFICATION = "jing-modification",
   ZUMS_MODIFICATION = "zums-modification",
+  DATA_CORES_MODIFICATION = "data-cores-modification",
   WIGHLD_RANGE_MODIFICATION = "wighld-range-modification",
   WIGHLD_EXACT_RANGE_MODIFICATION = "wighld-exact-range-modification",
   RANGE_DECREASING_WIGHLD_MODIFICATION = "wighld-modification",

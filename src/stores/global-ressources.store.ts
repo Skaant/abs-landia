@@ -20,6 +20,11 @@ const INITIAL_GLOBAL_RESSOURCES: GlobalRessources = {
     maximum: 0,
     production: 0,
   },
+  [RESSOURCES.DATA_CORES]: {
+    value: 0,
+    maximum: 1000,
+    production: 0,
+  },
 };
 
 const { subscribe, set, update } = writable<GlobalRessources>(

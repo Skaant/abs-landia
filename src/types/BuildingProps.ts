@@ -37,6 +37,11 @@ export type BuildingPropZumsModification = {
   value: number;
 };
 
+export type BuildingPropDataCoresModification = {
+  id: BUILDING_PROPS.DATA_CORES_MODIFICATION;
+  value: number;
+};
+
 export type BuildingPropWighldRangeModification = {
   id: BUILDING_PROPS.WIGHLD_RANGE_MODIFICATION;
   value: number;
@@ -95,6 +100,7 @@ export type BuildingProp =
   | BuildingPropWaModification
   | BuildingPropJingModification
   | BuildingPropZumsModification
+  | BuildingPropDataCoresModification
   | BuildingPropWighldRangeModification
   | BuildingPropWighldExactRangeModification
   | BuildingPropRangeDecreasingWighldModification

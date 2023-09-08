@@ -6,6 +6,7 @@ import {
   AuraRangeDecreasingWighldModification,
 } from "../../../types/Auras";
 import {
+  BuildingPropDataCoresModification,
   BuildingPropJingCost,
   BuildingPropJingMaxModification,
   BuildingPropJingModification,
@@ -37,6 +38,7 @@ export function buildingPropsPipe(
       case BUILDING_PROPS.JING_COST:
       case BUILDING_PROPS.WA_MODIFICATION:
       case BUILDING_PROPS.JING_MODIFICATION:
+      case BUILDING_PROPS.DATA_CORES_MODIFICATION:
         pipeStores = applyGlobalRessourcesCostOrModification(
           pipeStores,
           prop as
@@ -45,6 +47,7 @@ export function buildingPropsPipe(
             | BuildingPropJingCost
             | BuildingPropWaModification
             | BuildingPropJingModification
+            | BuildingPropDataCoresModification
         );
         break;
       case BUILDING_PROPS.WIGHLD_EXACT_RANGE_MODIFICATION:

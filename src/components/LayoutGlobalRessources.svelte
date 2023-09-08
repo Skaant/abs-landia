@@ -17,9 +17,11 @@
     {#each _globalRessources as item}
       {@const { name, summary } = RESSOURCES_DATA[item.ressource]}
       <p title={summary}>
-        {name}: {item.value} ({item.production > 0
-          ? `+${item.production}`
-          : item.production}) / {item.maximum}
+        {name}: {item.value}{item.production !== 0
+          ? ` (+${item.production})`
+          : ""}{item.ressource !== RESSOURCES.DATA_CORES && item.maximum !== 0
+          ? ` / ${item.maximum}`
+          : ""}
       </p>
     {/each}
   </div>
