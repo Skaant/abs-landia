@@ -14,6 +14,7 @@
   import { globalRessources } from "../stores/global-ressources.store";
   import SvgBaliseHolOng from "./svg/SVGBaliseHolOng.svelte";
   import SvgBaliseFrff from "./svg/SVGBaliseFrff.svelte";
+  import ToolbarTutorial from "./ToolbarTutorial.svelte";
 
   const BUILDINGS_PICTURE = {
     [BUILDINGS.KOLOS_SEED]: SvgKolosSeed,
@@ -29,6 +30,7 @@
   $: buildingType = $selection?.["buildingType"];
   $: selectedBuildingType = type === "toolbar-building" && buildingType;
   $: buildingsList = getToolbarAvailableBuildings($buildings);
+  $: tutorial = buildingsList[0] === BUILDINGS.KOLOS_SEED;
 
   function selectBuilding(buildingType: BUILDINGS) {
     selection.toggle({
@@ -39,44 +41,49 @@
 </script>
 
 <div id="toolbar-container">
-  <div id="toolbar">
-    {#each buildingsList as buildingId}
-      {@const disabled = !checkBuildingCost(buildingId, $globalRessources)}
-      {@const selected = selectedBuildingType == buildingId}
-      <div
-        class={`toolbar-cell${disabled ? " toolbar-cell--disabled" : ""}`}
-        title={selected
-          ? ""
-          : `${getBuildingDescription(BUILDINGS_DATA[buildingId])}
+  {#if tutorial && !$selection}
+    <ToolbarTutorial {selectBuilding} />
+  {:else}
+    <div id="toolbar">
+      {#each buildingsList as buildingId}
+        {@const disabled = !checkBuildingCost(buildingId, $globalRessources)}
+        {@const selected = selectedBuildingType == buildingId}
+        <div
+          class={`toolbar-cell${disabled ? " toolbar-cell--disabled" : ""}`}
+          title={selected
+            ? ""
+            : `${getBuildingDescription(BUILDINGS_DATA[buildingId])}
 Cliquez sur le bâtiment pour le construire.`}
-        on:click={() => selectBuilding(buildingId)}
-        on:keydown={() => selectBuilding(buildingId)}
-      >
-        {#if selected}
-          Annuler
-        {:else}
-          <svelte:component this={BUILDINGS_PICTURE[buildingId]} />
-        {/if}
-      </div>
-    {/each}
-    <div class="toolbar-cell" />
-  </div>
+          on:click={() => selectBuilding(buildingId)}
+          on:keydown={() => selectBuilding(buildingId)}
+        >
+          {#if selected}
+            Annuler
+          {:else}
+            <svelte:component this={BUILDINGS_PICTURE[buildingId]} />
+          {/if}
+        </div>
+      {/each}
+      <div class="toolbar-cell" />
+    </div>
+  {/if}
 </div>
 
 <style lang="scss">
   #toolbar-container {
-    width: calc(100% - 112px - 16px);
+    width: 100%;
     overflow: auto;
     position: fixed;
     bottom: 0;
-    left: calc(16vw - 48px);
+    display: flex;
+    justify-content: center;
   }
   #toolbar {
     height: 96px;
     width: max-content;
-    background-color: #eee6;
     display: flex;
     gap: 8px;
+    background-color: #eee6;
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     padding: 8px;

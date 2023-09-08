@@ -9,16 +9,22 @@
   import LayoutCycles from "./components/LayoutCycles.svelte";
   import CellSelectionZum from "./components/CellSelectionZum.svelte";
   import LayoutGlobalRessources from "./components/LayoutGlobalRessources.svelte";
+  import { buildings } from "./stores/buildings.store";
 
   const _rows = [...new Array(LENGTH_X)]
     .map((_, i) => [...new Array(LENGTH_Y)].map((_, j) => `${i}-${j}`))
     .reverse();
+
+  $: tutorialDone = Object.keys($buildings).length;
 </script>
 
 <div id="layout">
-  <h1>ABS-LANDIA - L'EXPANS</h1>
-  <LayoutGlobalRessources />
-  <LayoutHolOngData />
+  {JSON.stringify(tutorialDone)}
+  <p>Un vent souffle sur la forêt en contrebas ...</p>
+  {#if tutorialDone}
+    <LayoutGlobalRessources />
+    <LayoutHolOngData />
+  {/if}
   <div id="grid-container">
     <table id="grid">
       {#if _rows}
@@ -39,7 +45,9 @@
       {/if}
     </table>
   </div>
-  <LayoutCycles />
+  {#if tutorialDone}
+    <LayoutCycles />
+  {/if}
   <Toolbar />
 </div>
 
@@ -48,7 +56,7 @@
     background-color: #444;
     padding: 56px 8px 144px;
   }
-  h1 {
+  p {
     margin-top: 0;
     padding: 20px;
     font-size: 12px;
