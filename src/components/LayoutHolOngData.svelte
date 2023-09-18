@@ -1,24 +1,29 @@
 <script lang="ts">
   import { globalRessources } from "../stores/global-ressources.store";
+  import { UIState } from "../stores/ui-state.store";
   import SvgHolOng from "./svg/SVGHolOng.svelte";
   import { HOL_ONG_DATA_GOAL } from "../data/game.data";
   import { RESSOURCES } from "../enums/ressources.enum";
+  import { UI_ELEMENTS } from "../enums/ui-elements.enum";
 
   $: holOngData = $globalRessources[RESSOURCES.HOL_ONG_DATA];
   $: dataCores = $globalRessources[RESSOURCES.DATA_CORES];
 </script>
 
 <div id="hol-ong-data">
-  <h2>Idées transférées au HOL-ONG</h2>
   <SvgHolOng />
-  <p>{holOngData.value} / {HOL_ONG_DATA_GOAL}</p>
-  <button
-    class={`data-cores${dataCores.value > 0 ? " data-cores--available" : ""}`}
-  >
-    {dataCores.value > 0
-      ? `Noyaux de données disponibles (${dataCores.value})`
-      : "Research virtual VAULT"}
-  </button>
+  <div id="data-content">
+    <h2>Idées transférées au HOL-ONG</h2>
+    <p>{holOngData.value} / {HOL_ONG_DATA_GOAL}</p>
+    <button
+      class={`data-cores${dataCores.value > 0 ? " data-cores--available" : ""}`}
+      on:click={() => UIState.set(UI_ELEMENTS.RESEARCHES)}
+    >
+      {dataCores.value > 0
+        ? `Noyaux de données disponibles (${dataCores.value})`
+        : "Research virtual VAULT"}
+    </button>
+  </div>
 </div>
 
 <style lang="scss">
@@ -27,13 +32,11 @@
     z-index: 16;
     top: 0;
     right: 0;
-    background-color: #eee6;
+    background-color: #fffe;
     border-bottom-left-radius: 16px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     padding: 8px;
-    color: white;
   }
   h2 {
     font-size: 12px;

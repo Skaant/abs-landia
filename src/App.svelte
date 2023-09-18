@@ -9,19 +9,32 @@
   import LayoutCycles from "./components/LayoutCycles.svelte";
   import CellSelectionZum from "./components/CellSelectionZum.svelte";
   import LayoutGlobalRessources from "./components/LayoutGlobalRessources.svelte";
-  import { buildings } from "./stores/buildings.store";
+  import { tutorial } from "./stores/tutorial.store";
+  import Tutorial1Modal from "./components/Tutorial1Modal.svelte";
+  import Tutorial2Modal from "./components/Tutorial2Modal.svelte";
+  import { UIState } from "./stores/ui-state.store";
+  import { UI_ELEMENTS } from "./enums/ui-elements.enum";
+  import ResearchesModal from "./components/ResearchesModal.svelte";
 
   const _rows = [...new Array(LENGTH_X)]
     .map((_, i) => [...new Array(LENGTH_Y)].map((_, j) => `${i}-${j}`))
     .reverse();
 
-  $: tutorialDone = Object.keys($buildings).length;
+  $: tutorialStep = $tutorial.step;
+  $: researchesOpen = $UIState[UI_ELEMENTS.RESEARCHES];
 </script>
 
 <div id="layout">
-  {JSON.stringify(tutorialDone)}
-  <p>Un vent souffle sur la forêt en contrebas ...</p>
-  {#if tutorialDone}
+  {#if tutorialStep === 0 && !$selection}
+    <Tutorial1Modal />
+  {/if}
+  {#if tutorialStep === 1 && !researchesOpen}
+    <Tutorial2Modal />
+  {/if}
+  {#if researchesOpen}
+    <ResearchesModal />
+  {/if}
+  {#if tutorialStep >= 2}
     <LayoutGlobalRessources />
     <LayoutHolOngData />
   {/if}
@@ -45,16 +58,16 @@
       {/if}
     </table>
   </div>
-  {#if tutorialDone}
+  {#if tutorialStep >= 2}
     <LayoutCycles />
+    <Toolbar />
   {/if}
-  <Toolbar />
 </div>
 
 <style>
   #layout {
     background-color: #444;
-    padding: 56px 8px 144px;
+    padding: 56px 0 144px;
   }
   p {
     margin-top: 0;

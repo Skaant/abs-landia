@@ -15,6 +15,7 @@ import { createZumOnCells } from "../helpers/createZumOnCells";
 import { addZumsToStore } from "../helpers/addZumsToStore";
 import { preUpdateCellsWithZums } from "../helpers/preUpdateCellsWithZums";
 import { selection } from "../../stores/selection.store";
+import { tutorial } from "../../stores/tutorial.store";
 import { preUpdateCellsWithRangeUnburnAddWighld } from "../helpers/preUpdateCellsWithRangeUnburnAddWighld";
 import { buildingPropsPipe } from "./helpers/buildingPropsPipe";
 import {
@@ -23,6 +24,8 @@ import {
 } from "../../stores/global-ressources.store";
 
 export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
+  if (type === BUILDINGS.KOLOS_SEED)
+    tutorial.set({ ...get(tutorial), step: 1 });
   const building = createBuilding({
     cellId: cell.id,
     type,
