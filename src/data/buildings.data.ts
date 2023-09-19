@@ -161,6 +161,25 @@ export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
       },
     },
   },
+  [BUILDINGS.DATA_CORES_DIFFUSOR]: {
+    id: BUILDINGS.DATA_CORES_DIFFUSOR,
+    name: "Diffuseur de noyaux de données",
+    description: "Génère lentement de nouveaux noyaux de données.",
+    props: {
+      [BUILDING_PROPS.WA_COST]: {
+        id: BUILDING_PROPS.WA_COST,
+        value: 3,
+      },
+      [BUILDING_PROPS.JING_COST]: {
+        id: BUILDING_PROPS.JING_COST,
+        value: 2,
+      },
+      [BUILDING_PROPS.DATA_CORES_PROD_BY_CONNECTIVITY]: {
+        id: BUILDING_PROPS.DATA_CORES_PROD_BY_CONNECTIVITY,
+        value: 0.05,
+      },
+    },
+  },
   [BUILDINGS.BALISE_FRFF]: {
     id: BUILDINGS.BALISE_FRFF,
     name: "Balise FRFF",

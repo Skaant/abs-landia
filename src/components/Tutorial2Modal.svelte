@@ -3,7 +3,6 @@
   import { UIState } from "../stores/ui-state.store";
   import Modal from "./Modal.svelte";
   import { UI_ELEMENTS } from "../enums/ui-elements.enum";
-  import SvgHolOng from "./svg/SVGHolOng.svelte";
   import SvgTutorial2 from "./svg/SVGTutorial2.svelte";
 
   function openReasearches() {

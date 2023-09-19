@@ -36,6 +36,7 @@
     justify-content: center;
   }
   .modal--card {
+    position: relative;
     width: 500px;
     background-color: #eeed;
     border-radius: 16px;

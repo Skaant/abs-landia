@@ -19,4 +19,5 @@ export enum BUILDING_PROPS {
   JING_PROD_MODIFICATION = "jing-prod-modification",
   WA_MAX_MODIFICATION = "wa-max-modification",
   JING_MAX_MODIFICATION = "jing-max-modification",
+  DATA_CORES_PROD_BY_CONNECTIVITY = "data-cores-prod-by-connectivity",
 }

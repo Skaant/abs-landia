@@ -94,6 +94,11 @@ export type BuildingPropJingProdModification = {
   value: number;
 };
 
+export type BuildingPropDataCoresProdByConnectivity = {
+  id: BUILDING_PROPS.DATA_CORES_PROD_BY_CONNECTIVITY;
+  value: number;
+};
+
 export type BuildingProp =
   | BuildingPropWaCost
   | BuildingPropJingCost
@@ -116,4 +121,5 @@ export type BuildingProp =
   | BuildingPropWaMaxModification
   | BuildingPropJingMaxModification
   | BuildingPropWaProdModification
-  | BuildingPropJingProdModification;
+  | BuildingPropJingProdModification
+  | BuildingPropDataCoresProdByConnectivity;

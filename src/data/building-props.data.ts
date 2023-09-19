@@ -68,4 +68,8 @@ export const BUILDING_PROPS_DATA: {
     id: BUILDING_PROPS.JING_PROD_MODIFICATION,
     name: "Évolution de la production de JING",
   },
+  [BUILDING_PROPS.DATA_CORES_PROD_BY_CONNECTIVITY]: {
+    id: BUILDING_PROPS.DATA_CORES_PROD_BY_CONNECTIVITY,
+    name: "Production de noyaux de données selon la connectivité de la cellule.",
+  },
 };

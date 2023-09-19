@@ -26,7 +26,7 @@
     amplifier a vie qu'iels trouveront là.
   </p>
   <button on:click={() => selectBuilding()}>
-    Choisissez un point d'impact sur le terrain en contrebas
+    Observez le terrain pour choisir un point d'atterissage.
   </button>
 </Modal>
 
