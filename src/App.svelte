@@ -10,11 +10,11 @@
   import CellSelectionZum from "./components/CellSelectionZum.svelte";
   import LayoutGlobalRessources from "./components/LayoutGlobalRessources.svelte";
   import { tutorial } from "./stores/tutorial.store";
-  import Tutorial1Modal from "./components/Tutorial1Modal.svelte";
-  import Tutorial2Modal from "./components/Tutorial2Modal.svelte";
   import { UIState } from "./stores/ui-state.store";
   import { UI_ELEMENTS } from "./enums/ui-elements.enum";
   import ResearchesModal from "./components/ResearchesModal.svelte";
+  import LayoutTips from "./components/LayoutTips.svelte";
+  import TipSwitch from "./components/TipSwitch.svelte";
 
   const _rows = [...new Array(LENGTH_X)]
     .map((_, i) => [...new Array(LENGTH_Y)].map((_, j) => `${i}-${j}`))
@@ -25,11 +25,8 @@
 </script>
 
 <div id="layout">
-  {#if tutorialStep === 0 && !$selection}
-    <Tutorial1Modal />
-  {/if}
-  {#if tutorialStep === 1 && !researchesOpen}
-    <Tutorial2Modal />
+  {#if $UIState.tip}
+    <TipSwitch tip={$UIState.tip} />
   {/if}
   {#if researchesOpen}
     <ResearchesModal />
@@ -38,6 +35,7 @@
     <LayoutGlobalRessources />
     <LayoutHolOngData />
   {/if}
+  <LayoutTips />
   <div id="grid-container">
     <table id="grid">
       {#if _rows}
@@ -68,13 +66,6 @@
   #layout {
     background-color: #444;
     padding: 56px 0 144px;
-  }
-  p {
-    margin-top: 0;
-    padding: 20px;
-    font-size: 12px;
-    color: white;
-    text-align: center;
   }
   #grid-container {
     width: 100%;

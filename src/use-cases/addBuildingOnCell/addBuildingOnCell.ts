@@ -22,10 +22,16 @@ import {
   GlobalRessources,
   globalRessources as globalRessourcesStore,
 } from "../../stores/global-ressources.store";
+import { TIPS } from "../../enums/tips.enum";
 
 export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
-  if (type === BUILDINGS.KOLOS_SEED)
-    tutorial.set({ ...get(tutorial), step: 1 });
+  if (type === BUILDINGS.KOLOS_SEED) {
+    tutorial.setTutorialStep(1);
+    tutorial.mutateTips(
+      [TIPS.ATTERRISSAGE],
+      [TIPS.ATTERRISSAGE_REUSSI, TIPS.BRULURE]
+    );
+  }
   const building = createBuilding({
     cellId: cell.id,
     type,

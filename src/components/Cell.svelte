@@ -4,6 +4,7 @@
   import { zums } from "../stores/zums.store";
   import { type Cell } from "../types/Cell";
   import CellAura from "./CellAura.svelte";
+  import CellBackground from "./CellBackground.svelte";
   import CellBuilding from "./CellBuilding.svelte";
   import CellConnectivity from "./CellConnectivity.svelte";
   import CellWighld from "./CellWighld.svelte";
@@ -15,6 +16,7 @@
   ];
 
   export let cell: Cell;
+
   $: building = $buildings[cell.buildingId];
   $: zum = $zums[cell.zumId];
   $: auras = (cell.auraEffects || []).sort((a, b) => {
@@ -33,6 +35,7 @@
     cell.zumId ? " cell--zum" : ""
   }`}
 >
+  <CellBackground {cell} />
   {#each auras as aura}
     <CellAura {aura} />
   {/each}

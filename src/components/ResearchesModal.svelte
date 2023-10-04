@@ -25,10 +25,7 @@
   $: dataCoresCount = $globalRessources[RESSOURCES.DATA_CORES].value;
 
   function dismiss() {
-    UIState.set({
-      ...get(UIState),
-      [UI_ELEMENTS.RESEARCHES]: false,
-    });
+    UIState.toggleElement(UI_ELEMENTS.RESEARCHES);
   }
 </script>
 

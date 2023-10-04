@@ -14,7 +14,6 @@
   import { globalRessources } from "../stores/global-ressources.store";
   import SvgBaliseHolOng from "./svg/SVGBaliseHolOng.svelte";
   import SvgBaliseFrff from "./svg/SVGBaliseFrff.svelte";
-  import ToolbarTutorial from "./Tutorial1Modal.svelte";
 
   const BUILDINGS_PICTURE = {
     [BUILDINGS.KOLOS_SEED]: SvgKolosSeed,
