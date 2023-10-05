@@ -13,13 +13,7 @@
 </script>
 
 <div
-  class={`cell-wighld${
-    cell.effectiveWighld < 0
-      ? " cell-wighld--burning"
-      : cell.burned
-      ? " cell-wighld--burned"
-      : ""
-  }`}
+  class={`cell-wighld${cell.burned ? " cell-wighld--burned" : ""}`}
   title={`Niveau effectif de WIGHLD
 
 Un niveau négatif rend stérile la cellule, même revenu à un niveau supérieur à 0, jusqu'à correction par une balise BLIX.`}

@@ -45,31 +45,32 @@
   {#if zum}
     <CellZum {zum} />
   {/if}
-  <CellWighld {cell} />
-  <CellConnectivity {cell} />
 </td>
 
 <style lang="scss">
+  .cell {
+    border-radius: 10px;
+  }
   .burned {
     background-color: #333;
     color: #fff;
   }
   .wighld-0 {
-    background-color: #aaa;
+    background-color: #888;
   }
   .wighld-1 {
-    background-color: rgb(242, 237, 106);
+    background-color: #f2ed6a;
   }
   .wighld-2 {
-    background-color: rgb(166, 241, 125);
+    background-color: #a6f17d;
   }
   .wighld-3 {
-    background-color: rgb(49, 213, 74);
+    background-color: #31d54a;
   }
   .wighld-4 {
-    background-color: rgb(0, 138, 126);
+    background-color: #31b197;
   }
   .wighld-5 {
-    background-color: rgb(191, 104, 253);
+    background-color: #bf68fd;
   }
 </style>
