@@ -17,7 +17,7 @@
     <p>{holOngData.value} / {HOL_ONG_DATA_GOAL}</p>
     <button
       class={`data-cores${dataCores.value > 0 ? " data-cores--available" : ""}`}
-      on:click={() => UIState.set(UI_ELEMENTS.RESEARCHES)}
+      on:click={() => UIState.toggleElement(UI_ELEMENTS.RESEARCHES)}
     >
       {dataCores.value > 0
         ? `Noyaux de données disponibles (${dataCores.value})`

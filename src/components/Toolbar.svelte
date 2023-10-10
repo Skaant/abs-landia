@@ -14,6 +14,7 @@
   import { globalRessources } from "../stores/global-ressources.store";
   import SvgBaliseHolOng from "./svg/SVGBaliseHolOng.svelte";
   import SvgBaliseFrff from "./svg/SVGBaliseFrff.svelte";
+  import { researches } from "../stores/researches.store";
 
   const BUILDINGS_PICTURE = {
     [BUILDINGS.KOLOS_SEED]: SvgKolosSeed,
@@ -28,7 +29,7 @@
   $: type = $selection?.type;
   $: buildingType = $selection?.["buildingType"];
   $: selectedBuildingType = type === "toolbar-building" && buildingType;
-  $: buildingsList = getToolbarAvailableBuildings($buildings);
+  $: buildingsList = getToolbarAvailableBuildings($buildings, $researches);
 
   function selectBuilding(buildingType: BUILDINGS) {
     selection.toggle({

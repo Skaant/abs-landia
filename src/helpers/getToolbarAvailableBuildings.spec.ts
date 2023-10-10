@@ -1,24 +1,42 @@
-import { get } from "svelte/store";
 import { BUILDINGS } from "../enums/buildings.enum";
-import { buildings } from "../stores/buildings.store";
+import { RESEARCHES } from "../enums/researches.enum";
 import { getToolbarAvailableBuildings } from "./getToolbarAvailableBuildings";
 
 describe("getToolbarAvailableBuildings", () => {
   test("if no building has been built yet, should return only KOLOS-SEED", () => {
-    buildings.set({});
-    expect(getToolbarAvailableBuildings(get(buildings))).toEqual([
+    expect(getToolbarAvailableBuildings({}, {})).toEqual([
       BUILDINGS.KOLOS_SEED,
     ]);
   });
-  test("if at least one building has been built, should return all building but KOLOS-SEED", () => {
-    buildings.set({
-      [BUILDINGS.KOLOS_SEED]: {
-        id: "0",
-        type: BUILDINGS.KOLOS_SEED,
-        cellId: "0-0",
-      },
-    });
-    expect(getToolbarAvailableBuildings(get(buildings))).toEqual([
+  test("KOLOS-SEED built but setup protocole not researched", () => {
+    expect(
+      getToolbarAvailableBuildings(
+        {
+          [BUILDINGS.KOLOS_SEED]: {
+            id: "0",
+            type: BUILDINGS.KOLOS_SEED,
+            cellId: "0-0",
+          },
+        },
+        {}
+      )
+    ).toEqual([]);
+  });
+  test("KOLOS-SEED built but setup protocole researched", () => {
+    expect(
+      getToolbarAvailableBuildings(
+        {
+          [BUILDINGS.KOLOS_SEED]: {
+            id: "0",
+            type: BUILDINGS.KOLOS_SEED,
+            cellId: "0-0",
+          },
+        },
+        {
+          [RESEARCHES.COLONY_SETUP_PROTOCOLE]: true,
+        }
+      )
+    ).toEqual([
       BUILDINGS.DOM,
       BUILDINGS.CUVE_VORTEX,
       BUILDINGS.SILO_A_JING,
