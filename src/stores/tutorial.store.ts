@@ -45,4 +45,11 @@ export const tutorial = {
       };
     });
   },
+  historizeTip: (tip: TIPS) => {
+    update((state) => ({
+      ...state,
+      tips: state.tips.filter((t) => t !== tip),
+      tipsHistory: [...state.tipsHistory, tip],
+    }));
+  },
 };

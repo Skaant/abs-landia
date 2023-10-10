@@ -33,6 +33,8 @@
   {/if}
   {#if tutorialStep >= 2}
     <LayoutGlobalRessources />
+  {/if}
+  {#if tutorialStep >= 1}
     <LayoutHolOngData />
   {/if}
   <LayoutTips />
@@ -56,10 +58,10 @@
       {/if}
     </table>
   </div>
-  {#if tutorialStep >= 2}
+  {#if tutorialStep >= 1}
     <LayoutCycles />
-    <Toolbar />
   {/if}
+  <Toolbar />
 </div>
 
 <style>

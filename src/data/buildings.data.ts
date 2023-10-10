@@ -17,7 +17,7 @@ export type BuildingData = {
 export const BUILDINGS_DATA: { [id in BUILDINGS]: BuildingData } = {
   [BUILDINGS.KOLOS_SEED]: {
     id: BUILDINGS.KOLOS_SEED,
-    name: "KOLOS-SEED",
+    name: "Capsule-graine",
     description: "Bâtiment de départ de la colonie.",
     props: {
       [BUILDING_PROPS.WA_MODIFICATION]: {

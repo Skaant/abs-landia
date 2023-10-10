@@ -44,7 +44,9 @@
       {@const disabled = !checkBuildingCost(buildingId, $globalRessources)}
       {@const selected = selectedBuildingType == buildingId}
       <div
-        class={`toolbar-cell${disabled ? " toolbar-cell--disabled" : ""}`}
+        class={`toolbar-cell${disabled ? " toolbar-cell--disabled" : ""}${
+          selected ? " toolbar-cell--selected" : ""
+        }`}
         title={selected
           ? ""
           : `${getBuildingDescription(BUILDINGS_DATA[buildingId])}
@@ -55,47 +57,55 @@ Cliquez sur le bâtiment pour le construire.`}
         {#if selected}
           Annuler
         {:else}
-          <svelte:component this={BUILDINGS_PICTURE[buildingId]} />
+          <div class="building-name">{BUILDINGS_DATA[buildingId].name}</div>
+          <div class="building-picture">
+            <svelte:component this={BUILDINGS_PICTURE[buildingId]} />
+          </div>
         {/if}
       </div>
     {/each}
-    <div class="toolbar-cell" />
   </div>
 </div>
 
 <style lang="scss">
   #toolbar-container {
     width: 100%;
-    overflow: auto;
     position: fixed;
-    bottom: 0;
+    bottom: 24px;
     display: flex;
     justify-content: center;
   }
   #toolbar {
-    height: 96px;
     width: max-content;
     display: flex;
     gap: 8px;
-    background-color: #eee6;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    padding: 8px;
     box-sizing: border-box;
   }
   .toolbar-cell {
-    width: 80px;
-    height: 80px;
-    background-color: blueviolet;
-    border-radius: 10px;
+    width: 124px;
+    height: 178px;
+    background-color: #eee;
+    color: #111;
+    border-radius: 16px;
     cursor: pointer;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    color: white;
+    padding: 16px 8px 12px;
+    box-shadow: #8886 0 0 8px 8px;
     &--disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
+    &--selected {
+      justify-content: center;
+      background-color: #5fd;
+    }
+  }
+  .building-name {
+    margin-bottom: 16px;
+  }
+  .building-picture {
+    width: 96px;
   }
 </style>

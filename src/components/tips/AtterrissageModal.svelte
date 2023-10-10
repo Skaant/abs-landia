@@ -5,25 +5,9 @@
   import { UIState } from "../../stores/ui-state.store";
   import TipModal from "../TipModal.svelte";
   import SvgKolosSeedTravelling from "../svg/SVGKolosSeedTravelling.svelte";
-
-  function selectKolosSeed() {
-    selection.set({
-      type: "toolbar-building",
-      buildingType: BUILDINGS.KOLOS_SEED,
-    });
-    UIState.setTip(undefined);
-  }
 </script>
 
-<TipModal
-  tip={TIPS.ATTERRISSAGE}
-  actions={[
-    {
-      label: "Choisir un point d'atterissage",
-      action: selectKolosSeed,
-    },
-  ]}
->
+<TipModal tip={TIPS.ATTERRISSAGE}>
   <div id="toolbar-tutorial-image">
     <SvgKolosSeedTravelling />
   </div>
@@ -34,6 +18,10 @@
   <p>
     À son bord, les ZUMS, ces primates très évolués, attendent de débarquer pour
     <b>amplifier la vie</b> qu'iels trouveront là.
+  </p>
+  <p>
+    <b>Cliquez sur la capsule-graine</b> en bas de l'écran et choisissez l'emplacement
+    de son atterissage !
   </p>
 </TipModal>
 

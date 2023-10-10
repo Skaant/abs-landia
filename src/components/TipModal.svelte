@@ -33,6 +33,8 @@
     indexOf < $tutorial.tips.length - 1 &&
     $tutorial.tips[indexOf + 1];
   $: nextTipData = nextTip && TIPS_DATA[nextTip];
+
+  $: archived = $tutorial.tipsHistory.includes(tip);
 </script>
 
 <Modal dismiss={dismissTip}>
@@ -55,21 +57,34 @@
     </button>
   </div>
   <h2>
-    {_tip.type === "tutorial" ? "💡" : _tip.type === "quest" ? "🏆" : "✅"}
+    {_tip.type === "tutorial" ? "💡" : _tip.type === "quest" ? "🏆" : "🏆✅"}
     {_tip.name}
   </h2>
   <slot />
-  {#if actions}
-    <div class="tip-modal-actions">
-      {#each actions as { label, action }}
-        <button class="ui-button" on:click={action}>{label}</button>
-      {/each}
-    </div>
-  {/if}
+  <div class="tip-modal-actions">
+    {#each actions || [] as { label, action }}
+      <button class="ui-button" on:click={action}>{label}</button>
+    {/each}
+    {#if _tip.type === "tutorial" && !archived}
+      <button
+        class="ui-button"
+        on:click={() => {
+          tutorial.historizeTip(tip);
+          dismissTip();
+        }}
+      >
+        Archiver
+      </button>
+    {/if}
+    <button class="ui-button" on:click={dismissTip}>Fermer</button>
+  </div>
 </Modal>
 
 <style lang="scss">
   .tip-modal-actions {
     margin-top: 34px;
+    > button {
+      margin-bottom: 8px;
+    }
   }
 </style>

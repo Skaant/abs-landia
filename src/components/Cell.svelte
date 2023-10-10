@@ -6,8 +6,6 @@
   import CellAura from "./CellAura.svelte";
   import CellBackground from "./CellBackground.svelte";
   import CellBuilding from "./CellBuilding.svelte";
-  import CellConnectivity from "./CellConnectivity.svelte";
-  import CellWighld from "./CellWighld.svelte";
   import CellZum from "./CellZum.svelte";
 
   const AURA_EFFECTS_ORDER = [
