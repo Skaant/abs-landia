@@ -11,6 +11,7 @@ import {
   BuildingPropJingMaxModification,
   BuildingPropJingModification,
   BuildingPropJingProdModification,
+  BuildingPropRangeDecreasingWighldModification,
   BuildingPropWaCost,
   BuildingPropWaMaxModification,
   BuildingPropWaModification,
@@ -26,6 +27,7 @@ import { applyGlobalRessourcesMaxModification } from "../../helpers/applyGlobalR
 import { applyGlobalRessourcesProdModification } from "../../helpers/applyGlobalRessourcesProdModification";
 import { PipeStores } from "../types/PipeStores";
 import { getBuildingPropsByPriority } from "./getBuildingPropsByPriority";
+import { applyCellsRangeDecreasingWighldModification } from "../../helpers/applyCellsRangeDecreasingWighldModification";
 
 export function buildingPropsPipe(
   pipeStores: PipeStores,
@@ -55,6 +57,14 @@ export function buildingPropsPipe(
         pipeStores = applyCellsWighldExactRangeModification(
           pipeStores,
           prop as BuildingPropWighldExactRangeModification,
+          cell
+        );
+        break;
+      case BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION:
+        if (!cell) throw new Error("Cell is not defined");
+        pipeStores = applyCellsRangeDecreasingWighldModification(
+          pipeStores,
+          prop as BuildingPropRangeDecreasingWighldModification,
           cell
         );
         break;

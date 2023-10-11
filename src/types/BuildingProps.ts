@@ -54,7 +54,6 @@ export type BuildingPropWighldExactRangeModification = {
   range: number | number[];
 };
 
-/** @deprecated Use aura instead */
 export type BuildingPropRangeDecreasingWighldModification = {
   id: BUILDING_PROPS.RANGE_DECREASING_WIGHLD_MODIFICATION;
   value: number;
