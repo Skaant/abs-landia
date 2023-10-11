@@ -30,7 +30,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: calc(100% + 38px);
+    height: calc(100% + 38px);
+    margin: -19px;
   }
 </style>
