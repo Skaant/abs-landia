@@ -31,10 +31,8 @@
   {#if researchesOpen}
     <ResearchesModal />
   {/if}
-  {#if tutorialStep >= 2}
-    <LayoutGlobalRessources />
-  {/if}
   {#if tutorialStep >= 1}
+    <LayoutGlobalRessources />
     <LayoutHolOngData />
   {/if}
   <LayoutTips />
