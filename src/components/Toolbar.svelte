@@ -2,7 +2,7 @@
   import { BUILDINGS } from "../enums/buildings.enum";
   import { selection } from "../stores/selection.store";
   import { buildings } from "../stores/buildings.store";
-  import SvgKolosSeed from "./svg/SVGKolosSeed.svelte";
+  import SvgKolosSeed from "./svg/buildings/SVGKolosSeed.svelte";
   import { getBuildingDescription } from "../helpers/getBuildingDescription";
   import { BUILDINGS_DATA } from "../data/buildings.data";
   import SvgDom from "./svg/SvgDom.svelte";
@@ -107,6 +107,6 @@ Cliquez sur le bâtiment pour le construire.`}
     margin-bottom: 16px;
   }
   .building-picture {
-    width: 96px;
+    width: 100%;
   }
 </style>

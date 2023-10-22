@@ -1,7 +1,7 @@
 <script lang="ts">
   import { BUILDINGS } from "../enums/buildings.enum";
   import { type Building } from "../types/Building";
-  import SvgKolosSeed from "./svg/SVGKolosSeed.svelte";
+  import SvgKolosSeed from "./svg/buildings/SVGKolosSeed.svelte";
   import { BUILDINGS_DATA } from "../data/buildings.data";
   import { getBuildingDescription } from "../helpers/getBuildingDescription";
   import SvgDom from "./svg/SvgDom.svelte";
@@ -33,10 +33,10 @@
 <style lang="scss">
   .cell-building {
     position: absolute;
-    top: -25%;
-    left: -20%;
-    width: 80px;
-    height: 80px;
+    bottom: 10%;
+    right: -20%;
+    width: 160px;
+    height: 160px;
     display: flex;
     cursor: help;
   }
