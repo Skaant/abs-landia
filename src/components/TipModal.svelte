@@ -4,6 +4,7 @@
   import { UIState } from "../stores/ui-state.store";
   import { tutorial } from "../stores/tutorial.store";
   import { TIPS } from "../enums/tips.enum";
+  import { getTipTypeIcon } from "../helpers/getTipTypeIcon";
 
   export let tip: TIPS;
   export let actions:
@@ -12,6 +13,7 @@
         label: string;
         action: () => void;
       }[] = undefined;
+  export let disabledArchive = false;
 
   function selectTip(tip: TIPS) {
     UIState.setTip(tip);
@@ -57,7 +59,7 @@
     </button>
   </div>
   <h2>
-    {_tip.type === "tutorial" ? "💡" : _tip.type === "quest" ? "🏆" : "🏆✅"}
+    {getTipTypeIcon(_tip.type)}
     {_tip.name}
   </h2>
   <slot />
@@ -65,12 +67,12 @@
     {#each actions || [] as { label, action }}
       <button class="ui-button" on:click={action}>{label}</button>
     {/each}
-    {#if _tip.type === "tutorial" && !archived}
+    {#if !disabledArchive && !archived}
       <button
         class="ui-button"
         on:click={() => {
           tutorial.historizeTip(tip);
-          dismissTip();
+          selectTip(nextTip);
         }}
       >
         Archiver
@@ -86,5 +88,10 @@
     > button {
       margin-bottom: 8px;
     }
+  }
+  :global(#toolbar-tutorial-image) {
+    max-height: 300px;
+    display: flex;
+    justify-content: center;
   }
 </style>

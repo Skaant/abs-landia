@@ -29,7 +29,12 @@ export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
     tutorial.setTutorialStep(1);
     tutorial.mutateTips(
       [TIPS.ATTERRISSAGE],
-      [TIPS.ATTERRISSAGE_REUSSI, TIPS.BRULURE]
+      [
+        TIPS.ATTERRISSAGE_REUSSI,
+        TIPS.HOL_ZONG,
+        TIPS.GENERATION_IDEES,
+        TIPS.TRANSFERT_IDEES,
+      ]
     );
   }
   const building = createBuilding({

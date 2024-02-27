@@ -17,11 +17,3 @@
     bâtiments spécialisés pour régénérer le terrain.
   </p>
 </TipModal>
-
-<style lang="scss">
-  #toolbar-tutorial-image {
-    max-height: 300px;
-    display: flex;
-    justify-content: center;
-  }
-</style>

@@ -1,9 +1,26 @@
 <script lang="ts">
   import { TIPS } from "../../enums/tips.enum";
+  import { selectTip } from "../../stores/helpers/selectTip";
+  import { tutorial } from "../../stores/tutorial.store";
   import TipModal from "../TipModal.svelte";
 </script>
 
-<TipModal tip={TIPS.ATTERRISSAGE_REUSSI}>
+<TipModal
+  tip={TIPS.ATTERRISSAGE_REUSSI}
+  actions={[
+    {
+      label: "Continuer l'aventure",
+      action: () => {
+        tutorial.mutateTips(
+          [TIPS.ATTERRISSAGE_REUSSI],
+          [TIPS.CONNEXION_REQUISE]
+        );
+        selectTip(TIPS.CONNEXION_REQUISE);
+      },
+    },
+  ]}
+  disabledArchive={true}
+>
   <p>
     Dans un grand fracas, la capsule-graine s'est écrasé à la surface d'une
     terre inconnue.
@@ -13,11 +30,3 @@
     idées, au contact de ce nouveau WIGHLD.
   </p>
 </TipModal>
-
-<style lang="scss">
-  #toolbar-tutorial-image {
-    max-height: 300px;
-    display: flex;
-    justify-content: center;
-  }
-</style>

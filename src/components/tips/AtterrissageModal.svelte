@@ -1,8 +1,5 @@
 <script lang="ts">
-  import { BUILDINGS } from "../../enums/buildings.enum";
   import { TIPS } from "../../enums/tips.enum";
-  import { selection } from "../../stores/selection.store";
-  import { UIState } from "../../stores/ui-state.store";
   import TipModal from "../TipModal.svelte";
   import SvgKolosSeedTravelling from "../svg/SVGKolosSeedTravelling.svelte";
 </script>
@@ -24,11 +21,3 @@
     de son atterissage !
   </p>
 </TipModal>
-
-<style lang="scss">
-  #toolbar-tutorial-image {
-    max-height: 300px;
-    display: flex;
-    justify-content: center;
-  }
-</style>

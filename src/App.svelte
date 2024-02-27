@@ -32,8 +32,10 @@
     <ResearchesModal />
   {/if}
   {#if tutorialStep >= 1}
-    <LayoutGlobalRessources />
     <LayoutHolOngData />
+  {/if}
+  {#if tutorialStep >= 2}
+    <LayoutGlobalRessources />
   {/if}
   <LayoutTips />
   <div id="grid-container">

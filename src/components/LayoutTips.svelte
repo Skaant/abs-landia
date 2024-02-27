@@ -1,13 +1,8 @@
 <script lang="ts">
   import { tutorial } from "../stores/tutorial.store";
-  import { UIState } from "../stores/ui-state.store";
+  import { selectTip } from "../stores/helpers/selectTip";
   import { TIPS_DATA } from "../data/tips.data";
-  import { TIPS } from "../enums/tips.enum";
-
-  function selectTip(tip: TIPS) {
-    UIState.setTip(tip);
-    tutorial.readTip(tip);
-  }
+  import { getTipTypeIcon } from "../helpers/getTipTypeIcon";
 
   let open = false;
 
@@ -36,8 +31,14 @@
       on:click={() => selectTip(tip)}
       title={`Ouvrir ${_tip.name}`}
     >
-      {_tip.type === "tutorial" ? "💡" : _tip.type === "quest" ? "🏆" : "🏆✅"}
-      {tipsRead[tip] ? "📜" : `👀${_tip.type === "tutorial" ? "❕" : "❗"}`}
+      {getTipTypeIcon(_tip.type)}
+      {tipsRead[tip]
+        ? "📜"
+        : `👀${
+            _tip.type === "quest" || _tip.type === "quest-achieved"
+              ? "❗"
+              : "❕"
+          }`}
       {_tip.name}
     </button>
   {/each}
@@ -49,12 +50,12 @@
         on:click={() => selectTip(tip)}
         title={`Ouvrir ${_tip.name}`}
       >
-        {_tip.type === "tutorial"
+        {_tip.type === "gameplay"
           ? "💡"
           : _tip.type === "quest"
           ? "🏆"
           : "🏆✅"}
-        {tipsRead[tip] ? "📜" : `👀${_tip.type === "tutorial" ? "❕" : "❗"}`}
+        {tipsRead[tip] ? "📜" : `👀${_tip.type === "gameplay" ? "❕" : "❗"}`}
         {_tip.name}
       </button>
     {/each}

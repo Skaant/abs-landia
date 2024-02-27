@@ -10,7 +10,7 @@ type TutorialState = {
 
 const { subscribe, set, update } = writable<TutorialState>({
   step: 0,
-  tips: [TIPS.ATTERRISSAGE, TIPS.TERRAIN, TIPS.WIGHLD],
+  tips: [TIPS.ATTERRISSAGE, TIPS.EXPANS, TIPS.TERRAIN, TIPS.WIGHLD],
   tipsRead: { [TIPS.ATTERRISSAGE]: true },
   tipsHistory: [],
 });
@@ -36,6 +36,7 @@ export const tutorial = {
     update((state) => {
       const tipsRead = { ...state.tipsRead };
       remove.forEach((tip) => delete tipsRead[tip]);
+      // idea : after add, if tips > 10, auto archive oldest
       return {
         ...state,
         tips: [
