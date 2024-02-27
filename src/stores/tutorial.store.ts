@@ -10,8 +10,8 @@ type TutorialState = {
 
 const { subscribe, set, update } = writable<TutorialState>({
   step: 0,
-  tips: [TIPS.ATTERRISSAGE, TIPS.EXPANS, TIPS.TERRAIN, TIPS.WIGHLD],
-  tipsRead: { [TIPS.ATTERRISSAGE]: true },
+  tips: [TIPS.ATTERRISSAGE_IMMINENT, TIPS.EXPANS, TIPS.TERRAIN, TIPS.WIGHLD],
+  tipsRead: { [TIPS.ATTERRISSAGE_IMMINENT]: true },
   tipsHistory: [],
 });
 
@@ -19,6 +19,7 @@ export const tutorial = {
   subscribe,
   /** @deprecated Use specific setters instead */
   set,
+  update,
   setTutorialStep: (step: number) =>
     update((state) => ({
       ...state,
@@ -32,20 +33,6 @@ export const tutorial = {
         [tip]: true,
       },
     })),
-  mutateTips: (remove: TIPS[], add: TIPS[]) => {
-    update((state) => {
-      const tipsRead = { ...state.tipsRead };
-      remove.forEach((tip) => delete tipsRead[tip]);
-      // idea : after add, if tips > 10, auto archive oldest
-      return {
-        ...state,
-        tips: [
-          ...state.tips.filter((tip) => !remove.includes(tip)),
-          ...(add || []),
-        ],
-      };
-    });
-  },
   historizeTip: (tip: TIPS) => {
     update((state) => ({
       ...state,

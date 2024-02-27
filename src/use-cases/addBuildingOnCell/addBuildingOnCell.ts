@@ -22,21 +22,16 @@ import {
   GlobalRessources,
   globalRessources as globalRessourcesStore,
 } from "../../stores/global-ressources.store";
-import { TIPS } from "../../enums/tips.enum";
+import { mutateTips } from "../../stores/helpers/mutateTips";
+import { TIPS_TRANSITIONS } from "../../enums/tips-transitions.enum";
 
 export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
+  // Tutorial step 0
   if (type === BUILDINGS.KOLOS_SEED) {
     tutorial.setTutorialStep(1);
-    tutorial.mutateTips(
-      [TIPS.ATTERRISSAGE],
-      [
-        TIPS.ATTERRISSAGE_REUSSI,
-        TIPS.HOL_ZONG,
-        TIPS.GENERATION_IDEES,
-        TIPS.TRANSFERT_IDEES,
-      ]
-    );
+    mutateTips(TIPS_TRANSITIONS.ATTERRISSAGE_REUSSI);
   }
+
   const building = createBuilding({
     cellId: cell.id,
     type,

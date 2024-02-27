@@ -9,7 +9,7 @@ type UIStateIndex = {
 
 const { subscribe, set, update } = writable<UIStateIndex>({
   [UI_ELEMENTS.RESEARCHES]: false,
-  [UI_ELEMENTS.TIP]: TIPS.ATTERRISSAGE,
+  [UI_ELEMENTS.TIP]: TIPS.ATTERRISSAGE_IMMINENT,
 });
 
 export const UIState = {

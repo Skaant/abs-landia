@@ -12,8 +12,8 @@ export const TIPS_DATA: { [id in TIPS]?: TipData } = {
     name: "L'EXPANS",
     type: "lore",
   },
-  [TIPS.ATTERRISSAGE]: {
-    id: TIPS.ATTERRISSAGE,
+  [TIPS.ATTERRISSAGE_IMMINENT]: {
+    id: TIPS.ATTERRISSAGE_IMMINENT,
     name: "Atterrissage imminent !",
     type: "quest",
   },

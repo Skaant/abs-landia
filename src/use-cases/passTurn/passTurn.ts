@@ -12,6 +12,8 @@ import { RESSOURCES } from "../../enums/ressources.enum";
 import { tutorial } from "../../stores/tutorial.store";
 import { TIPS } from "../../enums/tips.enum";
 import { selectTip } from "../../stores/helpers/selectTip";
+import { mutateTips } from "../../stores/helpers/mutateTips";
+import { TIPS_TRANSITIONS } from "../../enums/tips-transitions.enum";
 
 export function passTurn() {
   let _cells = get(cells);
@@ -32,8 +34,7 @@ export function passTurn() {
     _globalRessources[RESSOURCES.HOL_ONG_DATA].value >= 10
   ) {
     tutorial.setTutorialStep(2);
-    tutorial.mutateTips([TIPS.CONNEXION_REQUISE], [TIPS.CONNEXION_ETABLIE]);
-    selectTip(TIPS.CONNEXION_ETABLIE);
+    mutateTips(TIPS_TRANSITIONS.CONNEXION_REQUISE);
   }
   if (_globalRessources[RESSOURCES.HOL_ONG_DATA].value >= HOL_ONG_DATA_GOAL) {
     alert(`Victoire !`);

@@ -1,8 +1,9 @@
 <script lang="ts">
   import { TIPS } from "../../enums/tips.enum";
-  import { selectTip } from "../../stores/helpers/selectTip";
   import { tutorial } from "../../stores/tutorial.store";
+  import { mutateTips } from "../../stores/helpers/mutateTips";
   import TipModal from "../TipModal.svelte";
+  import { TIPS_TRANSITIONS } from "../../enums/tips-transitions.enum";
 </script>
 
 <TipModal
@@ -10,13 +11,7 @@
   actions={[
     {
       label: "Continuer l'aventure",
-      action: () => {
-        tutorial.mutateTips(
-          [TIPS.ATTERRISSAGE_REUSSI],
-          [TIPS.CONNEXION_REQUISE]
-        );
-        selectTip(TIPS.CONNEXION_REQUISE);
-      },
+      action: () => mutateTips(TIPS_TRANSITIONS.ATTERRISSAGE_REUSSI),
     },
   ]}
   disabledArchive={true}

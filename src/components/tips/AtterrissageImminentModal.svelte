@@ -4,7 +4,7 @@
   import SvgKolosSeedTravelling from "../svg/SVGKolosSeedTravelling.svelte";
 </script>
 
-<TipModal tip={TIPS.ATTERRISSAGE}>
+<TipModal tip={TIPS.ATTERRISSAGE_IMMINENT}>
   <div id="toolbar-tutorial-image">
     <SvgKolosSeedTravelling />
   </div>
@@ -17,7 +17,9 @@
     <b>amplifier la vie</b> qu'iels trouveront là.
   </p>
   <p>
-    <b>Cliquez sur la capsule-graine</b> en bas de l'écran et choisissez l'emplacement
-    de son atterissage !
+    <b
+      >🏆 Cliquez sur la capsule-graine en bas de l'écran et choisissez
+      l'emplacement de son atterissage.</b
+    >
   </p>
 </TipModal>

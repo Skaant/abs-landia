@@ -1,6 +1,6 @@
 <script lang="ts">
   import { TIPS } from "../enums/tips.enum";
-  import AtterrissageModal from "./tips/AtterrissageModal.svelte";
+  import AtterrissageImminentModal from "./tips/AtterrissageImminentModal.svelte";
   import AtterrissageReussiModal from "./tips/AtterrissageReussiModal.svelte";
   import BatimentsModal from "./tips/BatimentsModal.svelte";
   import BrulureModal from "./tips/BrulureModal.svelte";
@@ -19,7 +19,7 @@
 
   const MODALS = {
     [TIPS.EXPANS]: ExpansModal,
-    [TIPS.ATTERRISSAGE]: AtterrissageModal,
+    [TIPS.ATTERRISSAGE_IMMINENT]: AtterrissageImminentModal,
     [TIPS.TERRAIN]: TerrainModal,
     [TIPS.WIGHLD]: WighldModal,
     [TIPS.ATTERRISSAGE_REUSSI]: AtterrissageReussiModal,

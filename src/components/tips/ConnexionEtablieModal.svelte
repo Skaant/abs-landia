@@ -1,7 +1,7 @@
 <script lang="ts">
+  import { TIPS_TRANSITIONS } from "../../enums/tips-transitions.enum";
   import { TIPS } from "../../enums/tips.enum";
-  import { selectTip } from "../../stores/helpers/selectTip";
-  import { tutorial } from "../../stores/tutorial.store";
+  import { mutateTips } from "../../stores/helpers/mutateTips";
   import TipModal from "../TipModal.svelte";
   import SvgHolOng from "../svg/SVGHolOng.svelte";
 </script>
@@ -11,13 +11,7 @@
   actions={[
     {
       label: "Continuer",
-      action: () => {
-        tutorial.mutateTips(
-          [TIPS.CONNEXION_ETABLIE],
-          [TIPS.PREMIERS_PAS, TIPS.NOYAUX_DE_DONNEES, TIPS.BATIMENTS]
-        );
-        selectTip(TIPS.PREMIERS_PAS);
-      },
+      action: () => mutateTips(TIPS_TRANSITIONS.CONNEXION_ETABLIE),
     },
   ]}
   disabledArchive={true}

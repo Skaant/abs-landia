@@ -26,7 +26,9 @@
     conscience collective depuis notre point d'atterrissage.
   </p>
   <p>
-    Passez au cycle suivant autant de fois que nécessaire pour atteindre 10
-    idées au HOL-ZONG.
+    <b>
+      🏆 Passez au cycle suivant autant de fois que nécessaire pour atteindre 10
+      idées au HOL-ZONG.</b
+    >
   </p>
 </TipModal>
