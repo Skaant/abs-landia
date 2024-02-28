@@ -1,13 +1,8 @@
 <script lang="ts">
   import "./styles/grid.scss";
-  import { LENGTH_X, LENGTH_Y, cells } from "./stores/map.store";
-  import Cell from "./components/Cell.svelte";
   import Toolbar from "./components/Toolbar.svelte";
-  import { selection } from "./stores/selection.store";
-  import CellSelectionToolbarBuilding from "./components/CellSelectionToolbarBuilding.svelte";
   import LayoutHolOngData from "./components/LayoutHolOngData.svelte";
   import LayoutCycles from "./components/LayoutCycles.svelte";
-  import CellSelectionZum from "./components/CellSelectionZum.svelte";
   import LayoutGlobalRessources from "./components/LayoutGlobalRessources.svelte";
   import { tutorial } from "./stores/tutorial.store";
   import { UIState } from "./stores/ui-state.store";
@@ -15,10 +10,7 @@
   import ResearchesModal from "./components/ResearchesModal.svelte";
   import LayoutTips from "./components/LayoutTips.svelte";
   import TipSwitch from "./components/TipSwitch.svelte";
-
-  const _rows = [...new Array(LENGTH_X)]
-    .map((_, i) => [...new Array(LENGTH_Y)].map((_, j) => `${i}-${j}`))
-    .reverse();
+  import Grid from "./components/Grid.svelte";
 
   $: tutorialStep = $tutorial.step;
   $: researchesOpen = $UIState[UI_ELEMENTS.RESEARCHES];
@@ -38,26 +30,7 @@
     <LayoutGlobalRessources />
   {/if}
   <LayoutTips />
-  <div id="grid-container">
-    <table id="grid">
-      {#if _rows}
-        {#each _rows as cellsId}
-          <tr class="row">
-            {#each cellsId as cellId}
-              {@const cell = $cells[cellId]}
-              {#if $selection?.type === "toolbar-building"}
-                <CellSelectionToolbarBuilding selection={$selection} {cell} />
-              {:else if $selection?.type === "zum"}
-                <CellSelectionZum selection={$selection} {cell} />
-              {:else}
-                <Cell {cell} />
-              {/if}
-            {/each}
-          </tr>
-        {/each}
-      {/if}
-    </table>
-  </div>
+  <Grid />
   {#if tutorialStep >= 1}
     <LayoutCycles />
   {/if}
@@ -68,15 +41,5 @@
   #layout {
     background-color: #444;
     padding: 56px 0 144px;
-  }
-  #grid-container {
-    width: 100%;
-    overflow: auto;
-  }
-  #grid {
-    margin: 0 auto;
-  }
-  .row {
-    display: flex;
   }
 </style>

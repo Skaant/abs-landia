@@ -4,6 +4,7 @@ export type Cell = {
   id: string;
   x: number;
   y: number;
+  revealed?: true;
   burned?: true;
   intrinsicWighld: number;
   /** Calculated prop from `intrinsic` and modifiers */

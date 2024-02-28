@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import { cells as cellsStore } from "../../stores/map.store";
+import { cells as cellsStore } from "../../stores/cells.store";
 import { BUILDINGS } from "../../enums/buildings.enum";
 import { Cell, CellsIndex } from "../../types/Cell";
 import { addBuildingToStore } from "../helpers/addBuildingToStore";

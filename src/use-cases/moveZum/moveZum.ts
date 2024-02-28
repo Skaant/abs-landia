@@ -1,6 +1,6 @@
 import { get } from "svelte/store";
 import { Cell } from "../../types/Cell";
-import { cells } from "../../stores/map.store";
+import { cells } from "../../stores/cells.store";
 import { zums } from "../../stores/zums.store";
 import { selection } from "../../stores/selection.store";
 

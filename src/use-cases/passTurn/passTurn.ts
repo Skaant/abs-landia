@@ -1,7 +1,7 @@
 import { get } from "svelte/store";
 import { zums } from "../../stores/zums.store";
 import { addDataToEveryZum } from "./helpers/addDataToEveryZum";
-import { cells } from "../../stores/map.store";
+import { cells } from "../../stores/cells.store";
 import { transferEveryZumDataToHolOng } from "./helpers/transferEveryZumDataToHolOng";
 import { cycles } from "../../stores/cycles.store";
 import { globalRessources } from "../../stores/global-ressources.store";

@@ -9,6 +9,7 @@
   import SvgCellWighld5 from "./svg/cells-wighld/SVGCellWighld5.svelte";
 
   const BACKGROUNDS = {
+    hidden: SVGCellWighldBurned,
     burned: SVGCellWighldBurned,
     0: SvgCellWighld0,
     1: SvgCellWighld1,
@@ -20,9 +21,11 @@
 
   export let cell: Cell;
 
-  $: background = cell.burned
-    ? BACKGROUNDS["burned"]
-    : BACKGROUNDS[cell.effectiveWighld];
+  $: background = !cell.revealed
+    ? BACKGROUNDS.hidden
+    : cell.burned
+      ? BACKGROUNDS.burned
+      : BACKGROUNDS[cell.effectiveWighld];
 </script>
 
 <div class="cell-background">

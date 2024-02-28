@@ -16,14 +16,8 @@
     >, et nous avons besoin de lui pour accélerer notre développement.
   </p>
   <p>
-    Nous recevons des technologies que nous stockons à l'intérieur de <b
-      >noyaux de données</b
-    >, pour apprendre à faire pousser de nouveaux bâtiments, ou de nouvelles
-    activités.
-  </p>
-  <p>
-    Pour le moment, nous devons établir un premier contact avec le réseau de
-    conscience collective depuis notre point d'atterrissage.
+    Pour le moment, nous devons établir un premier contact avec le réseau depuis
+    notre point d'atterrissage.
   </p>
   <p>
     <b>

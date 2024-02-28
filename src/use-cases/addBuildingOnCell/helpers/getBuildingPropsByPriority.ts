@@ -14,9 +14,9 @@ const PROP_PRIORITIES = [
 export function getBuildingPropsByPriority(
   props: BuildingDataProps
 ): BuildingProp[] {
-  return Object.values(props).sort((a, b) => {
-    const aIndex = PROP_PRIORITIES.indexOf(a.id);
-    const bIndex = PROP_PRIORITIES.indexOf(b.id);
+  return Object.values<BuildingProp>(props).sort((a, b) => {
+    const aIndex = PROP_PRIORITIES.indexOf(a.id as BUILDING_PROPS);
+    const bIndex = PROP_PRIORITIES.indexOf(b.id as BUILDING_PROPS);
     return bIndex - aIndex;
   });
 }

@@ -1,6 +1,6 @@
 import { get } from "svelte/store";
 import { BUILDINGS } from "../../enums/buildings.enum";
-import { cells } from "../../stores/map.store";
+import { cells } from "../../stores/cells.store";
 import { preUpdateCellsWithBuilding } from "./preUpdateCellsWithBuilding";
 import { generateCells } from "../../helpers/generateCells";
 

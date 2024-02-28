@@ -1,7 +1,7 @@
 import { Cell } from "../types/Cell";
 
 export function cellFactory({
-  wighld,
+  wighld = 0,
   ...cell
 }: Pick<Cell, "x" | "y"> &
   Partial<Cell> & {
@@ -14,8 +14,8 @@ export function cellFactory({
   return {
     id: `${cell.x}-${cell.y}`,
     connectivity: 0.5,
-    intrinsicWighld: wighld || 0,
-    effectiveWighld: wighld || 0,
+    intrinsicWighld: wighld,
+    effectiveWighld: wighld,
     ...cell,
   };
 }
