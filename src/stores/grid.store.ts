@@ -4,7 +4,10 @@ import { generateGrid } from "../helpers/generateGrid";
 import { Cell, CellsIndex } from "../types/Cell";
 
 function createGridStore() {
-  const { subscribe, set, update } = writable<Grid>(generateGrid(3, 1));
+  const grid = generateGrid(3, 1);
+  grid.cells["1-1"].zumId = "zum-alpha";
+
+  const { subscribe, set, update } = writable<Grid>(grid);
 
   return {
     subscribe,

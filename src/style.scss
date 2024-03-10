@@ -12,14 +12,9 @@
   height: 34px;
 }
 .cell {
-  width: 118px;
-  height: 118px;
-  margin: 5px;
-  border-radius: 10px;
-  position: relative;
-  > * {
-    width: calc(100% + 38px);
-    height: calc(100% + 38px);
+  > svg {
+    width: 100%;
+    height: 100%;
   }
   &.clickable-cell {
     cursor: pointer;

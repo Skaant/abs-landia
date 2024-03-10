@@ -1,15 +1,11 @@
 <script lang="ts">
-  export let size: number;
-  export let x: number;
-  export let y: number;
+  export let height: number;
+  export let width: number;
 </script>
 
 <svg
-  width={`${size}px`}
-  height={`${size}px`}
-  {x}
-  {y}
-  version="1.1"
+  width={`${height}px`}
+  height={`${width}px`}
   viewBox="0 0 365 365"
   xmlns="http://www.w3.org/2000/svg"
 >

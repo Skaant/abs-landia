@@ -1,1 +1,1 @@
-export const GRID_CELL_PX = 84;
+export const GRID_CELL_PX = 118;

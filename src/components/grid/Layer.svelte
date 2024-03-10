@@ -3,18 +3,15 @@
   import type { Cell } from "../../types/Cell";
 
   export let rows: Cell[][];
-  export let className: string = "";
 </script>
 
-<g class={`layer layer-${className ? ` ${className}` : ""}`}>
-  {#each rows as cells, y}
-    {#each cells as cell, x}
-      {#if cell}
-        <slot {cell} offsetX={x * GRID_CELL_PX} offsetY={y * GRID_CELL_PX} />
-      {/if}
-    {/each}
+{#each rows as cells, y}
+  {#each cells as cell, x}
+    {#if cell}
+      <slot {cell} offsetX={x * GRID_CELL_PX} offsetY={y * GRID_CELL_PX} />
+    {/if}
   {/each}
-</g>
+{/each}
 
 <style lang="scss">
   .layer:not(.background) {

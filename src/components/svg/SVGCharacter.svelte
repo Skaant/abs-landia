@@ -1,5 +1,11 @@
+<script lang="ts">
+  export let height: number;
+  export let width: number;
+</script>
+
 <svg
-  style="height:100%;width:100%"
+  width={`${width}px`}
+  height={`${height}px`}
   version="1.1"
   viewBox="0 0 512 512"
   xmlns="http://www.w3.org/2000/svg"

@@ -2,19 +2,21 @@
   import { gridSize, rows } from "../../stores/grid.store";
   import { GRID_CELL_PX } from "../../data/grid.data";
   import BackgroundLayer from "./layers/BackgroundLayer.svelte";
+  import ZumsLayer from "./layers/ZumsLayer.svelte";
 
   $: height = $gridSize[0] * GRID_CELL_PX;
   $: width = $gridSize[1] * GRID_CELL_PX;
 </script>
 
 <div id="grid-container">
-  <svg id="grid" viewBox={`0 0 ${height} ${width}`} {height} {width}>
+  <div id="grid" style={`height: ${height}px; width: ${width}px`}>
     <BackgroundLayer rows={$rows} />
+    <ZumsLayer rows={$rows} />
     <!-- <WetnessLayer rows={$rows} />
     {#if $selection?.type === "toolbar-building"}
       <ClickableLayer rows={$rows} selection={$selection} />
     {/if} -->
-  </svg>
+  </div>
 </div>
 
 <style lang="scss">
