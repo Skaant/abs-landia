@@ -1,3 +1,4 @@
+import { getCellsInExactRange } from "../../helpers/getCellsInExactRange";
 import { Building } from "../../types/Building";
 import { CellsIndex } from "../../types/Cell";
 
@@ -13,6 +14,13 @@ export function preUpdateCellsWithBuilding(
   cells: CellsIndex,
   building: Building
 ): CellsIndex {
-  cells[building.cellId].buildingId = building.id;
+  const cell = cells[building.cellId];
+  cell.buildingId = building.id;
+  const adjacentCells = getCellsInExactRange(cell, cells, 1);
+  for (const adjacentCell of adjacentCells) {
+    if (!adjacentCell.revealed) {
+      adjacentCell.revealed = true;
+    }
+  }
   return cells;
 }

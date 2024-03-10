@@ -32,7 +32,7 @@ import { applyCellsRangeDecreasingWighldModification } from "../../helpers/apply
 export function buildingPropsPipe(
   pipeStores: PipeStores,
   props: BuildingDataProps,
-  { cell }: { cell?: Cell } = {}
+  cell: Cell
 ) {
   getBuildingPropsByPriority(props).forEach((prop) => {
     switch (prop.id) {

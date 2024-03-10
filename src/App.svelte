@@ -1,5 +1,5 @@
 <script lang="ts">
-  import "./styles/grid.scss";
+  import "./style.scss";
   import Toolbar from "./components/Toolbar.svelte";
   import LayoutHolOngData from "./components/LayoutHolOngData.svelte";
   import LayoutCycles from "./components/LayoutCycles.svelte";
@@ -10,7 +10,7 @@
   import ResearchesModal from "./components/ResearchesModal.svelte";
   import LayoutTips from "./components/LayoutTips.svelte";
   import TipSwitch from "./components/TipSwitch.svelte";
-  import Grid from "./components/Grid.svelte";
+  import Grid from "./components/grid/Grid.svelte";
 
   $: tutorialStep = $tutorial.step;
   $: researchesOpen = $UIState[UI_ELEMENTS.RESEARCHES];
@@ -41,5 +41,6 @@
   #layout {
     background-color: #444;
     padding: 56px 0 144px;
+    height: 100%;
   }
 </style>

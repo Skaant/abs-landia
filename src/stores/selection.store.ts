@@ -11,7 +11,7 @@ export type SelectionZum = {
   zumId: string;
 };
 
-type Selection = undefined | SelectionToolbarBuilding | SelectionZum;
+export type Selection = undefined | SelectionToolbarBuilding | SelectionZum;
 
 const { subscribe, set, update } = writable<Selection>(undefined);
 

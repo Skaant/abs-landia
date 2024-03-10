@@ -1,9 +1,19 @@
 import { Writable, derived, writable } from "svelte/store";
 import { Grid } from "../types/Grid";
 import { generateGrid } from "../helpers/generateGrid";
-import { Cell } from "../types/Cell";
+import { Cell, CellsIndex } from "../types/Cell";
 
-export const grid = writable<Grid>(generateGrid(3, 1));
+function createGridStore() {
+  const { subscribe, set, update } = writable<Grid>(generateGrid(3, 1));
+
+  return {
+    subscribe,
+    set,
+    update,
+    updateCells: (cells: CellsIndex) => update((grid) => ({ ...grid, cells })),
+  };
+}
+export const grid = createGridStore();
 export const cells = derived(grid, ($grid) => $grid.cells);
 /** UI display order : [-y][x] */
 export const rows = derived<Writable<Grid>, Cell[][]>(grid, ($grid) =>
@@ -15,3 +25,7 @@ export const rows = derived<Writable<Grid>, Cell[][]>(grid, ($grid) =>
     });
   })
 );
+export const gridSize = derived(grid, ($grid) => [
+  Math.abs($grid.xMin) + $grid.xMax + 1,
+  Math.abs($grid.yMin) + $grid.yMax + 1,
+]);

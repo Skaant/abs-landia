@@ -1,15 +1,17 @@
+<script lang="ts">
+  export let size: number;
+  export let x: number;
+  export let y: number;
+</script>
+
 <svg
-  width="365mm"
-  height="365mm"
+  width={`${size}px`}
+  height={`${size}px`}
+  {x}
+  {y}
   viewBox="0 0 365 365"
   version="1.1"
-  id="svg5"
-  sodipodi:docname="SVGCellWighld1.svelte.svg"
-  inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
   xmlns="http://www.w3.org/2000/svg"
-  xmlns:svg="http://www.w3.org/2000/svg"
 >
   <sodipodi:namedview
     id="namedview7"

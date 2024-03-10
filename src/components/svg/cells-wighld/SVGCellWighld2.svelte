@@ -1,6 +1,14 @@
+<script lang="ts">
+  export let size: number;
+  export let x: number;
+  export let y: number;
+</script>
+
 <svg
-  width="365mm"
-  height="365mm"
+  width={`${size}px`}
+  height={`${size}px`}
+  {x}
+  {y}
   viewBox="0 0 365 365"
   version="1.1"
   id="svg10327"

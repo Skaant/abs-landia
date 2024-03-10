@@ -15,9 +15,6 @@ export function unlockResearch(research: RESEARCHES) {
   });
   const _tutorial = get(tutorial);
   if (_tutorial.step === 2) {
-    tutorial.set({
-      ..._tutorial,
-      step: 3,
-    });
+    tutorial.setTutorialStep(3);
   }
 }

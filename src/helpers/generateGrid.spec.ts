@@ -79,7 +79,7 @@ describe("generateGrid", () => {
         expect(cells["-1-1"]).toEqual(cellFactory({ x: -1, y: 1 }));
       });
     });
-    it.only("should generate random wighld if not skipped", () => {
+    it("should generate random wighld if not skipped", () => {
       const { cells } = generateGrid(2);
       expect(
         Object.values(cells).reduce(

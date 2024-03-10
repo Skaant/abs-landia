@@ -1,13 +1,17 @@
 import { cellFactory } from "../factories/cell.factory";
 import { CellsIndex } from "../types/Cell";
+import { getRandomWetness } from "./values/getRandomWetness";
 import { getRandomWighld } from "./values/getRandomWighld";
 
 export function generateGrid(
   radius: number,
   revealRadius?: number,
   /** Used in some specs to avoid random value checking */
+  skipWetness?: true,
+  /** Used in some specs to avoid random value checking */
   skipWighld?: true
 ) {
+  if (!skipWighld && skipWetness) skipWighld = true;
   if (revealRadius !== undefined && revealRadius > radius)
     throw new Error("revealRadius > radius");
   const cells: CellsIndex = {};
@@ -21,6 +25,7 @@ export function generateGrid(
         Math.abs(x) + Math.abs(y) <= revealRadius
           ? { revealed: true }
           : {}),
+        ...(skipWetness ? {} : { wetness: getRandomWetness() }),
         ...(skipWighld ? {} : { wighld: getRandomWighld() }),
       });
     }

@@ -6,6 +6,8 @@ export type Cell = {
   y: number;
   revealed?: true;
   burned?: true;
+  intrinsicWetness: number;
+  effectiveWetness: number;
   intrinsicWighld: number;
   /** Calculated prop from `intrinsic` and modifiers */
   effectiveWighld: number;

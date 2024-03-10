@@ -1,5 +1,4 @@
 import { get } from "svelte/store";
-import { cells as cellsStore } from "../../stores/cells.store";
 import { BUILDINGS } from "../../enums/buildings.enum";
 import { Cell, CellsIndex } from "../../types/Cell";
 import { addBuildingToStore } from "../helpers/addBuildingToStore";
@@ -24,6 +23,7 @@ import {
 } from "../../stores/global-ressources.store";
 import { mutateTips } from "../../stores/helpers/mutateTips";
 import { TIPS_TRANSITIONS } from "../../enums/tips-transitions.enum";
+import { grid } from "../../stores/grid.store";
 
 export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
   // Tutorial step 0
@@ -37,7 +37,7 @@ export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
     type,
   });
   addBuildingToStore(building);
-  let cells = { ...get(cellsStore) };
+  let cells = { ...get(grid).cells };
   cells = preUpdateCellsWithBuilding(cells, building);
 
   // Condition props application
@@ -50,7 +50,7 @@ export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
       globalRessources,
     },
     props,
-    { cell }
+    cell
   );
   cells = pipeResult.cells as CellsIndex;
   globalRessources = pipeResult.globalRessources as GlobalRessources;
@@ -81,6 +81,6 @@ export function addBuildingOnCell(type: BUILDINGS, cell: Cell) {
   // Sauvegarde
 
   globalRessourcesStore.set(globalRessources);
-  cellsStore.set(cells);
+  grid.updateCells(cells);
   selection.set(undefined);
 }

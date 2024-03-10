@@ -1,0 +1,32 @@
+#app {
+  overflow: hidden;
+  height: 100vh;
+  max-height: 100vh;
+}
+.ui-button {
+  font-size: 16px;
+  padding: 4px 12px;
+  border: solid 1px #0006;
+  border-radius: 17px;
+  cursor: pointer;
+  height: 34px;
+}
+.cell {
+  width: 118px;
+  height: 118px;
+  margin: 5px;
+  border-radius: 10px;
+  position: relative;
+  > * {
+    width: calc(100% + 38px);
+    height: calc(100% + 38px);
+  }
+  &.clickable-cell {
+    cursor: pointer;
+    background-color: rgba(167, 221, 32, 0.533);
+  }
+  &.cell-disabled {
+    cursor: not-allowed;
+    background-color: rgba(195, 92, 57, 0.533);
+  }
+}
