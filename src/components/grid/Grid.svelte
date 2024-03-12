@@ -3,6 +3,7 @@
   import { GRID_CELL_PX } from "../../data/grid.data";
   import BackgroundLayer from "./layers/BackgroundLayer.svelte";
   import ZumsLayer from "./layers/ZumsLayer.svelte";
+  import WetnessLayer from "./layers/WetnessLayer.svelte";
 
   $: height = $gridSize[0] * GRID_CELL_PX;
   $: width = $gridSize[1] * GRID_CELL_PX;
@@ -12,8 +13,8 @@
   <div id="grid" style={`height: ${height}px; width: ${width}px`}>
     <BackgroundLayer rows={$rows} />
     <ZumsLayer rows={$rows} />
-    <!-- <WetnessLayer rows={$rows} />
-    {#if $selection?.type === "toolbar-building"}
+    <WetnessLayer rows={$rows} />
+    <!-- {#if $selection?.type === "toolbar-building"}
       <ClickableLayer rows={$rows} selection={$selection} />
     {/if} -->
   </div>

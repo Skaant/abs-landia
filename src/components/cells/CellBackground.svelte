@@ -44,9 +44,5 @@
     this={background}
     height={GRID_CELL_PX}
     width={GRID_CELL_PX}
-    x={offsetX}
-    y={offsetY}
-    on:mouseenter={hover.select({ type: "cell", cell })}
-    on:mouseleave={hover.unselect}
   />
 </Cell>

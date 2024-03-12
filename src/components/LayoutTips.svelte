@@ -33,7 +33,7 @@
     >
       {getTipTypeIcon(_tip.type)}
       {tipsRead[tip]
-        ? "📜"
+        ? ""
         : `👀${
             _tip.type === "quest" || _tip.type === "quest-achieved"
               ? "❗"
@@ -53,8 +53,8 @@
         {_tip.type === "gameplay"
           ? "💡"
           : _tip.type === "quest"
-          ? "🏆"
-          : "🏆✅"}
+            ? "🏆"
+            : "🏆✅"}
         {tipsRead[tip] ? "📜" : `👀${_tip.type === "gameplay" ? "❕" : "❗"}`}
         {_tip.name}
       </button>

@@ -12,6 +12,7 @@ import { tutorial } from "../../stores/tutorial.store";
 import { mutateTips } from "../../stores/helpers/mutateTips";
 import { TIPS_TRANSITIONS } from "../../enums/tips-transitions.enum";
 import { grid } from "../../stores/grid.store";
+import { mutateCellsWetness } from "./helpers/mutateCellsWetness";
 
 export function passTurn() {
   // Store access
@@ -22,6 +23,7 @@ export function passTurn() {
   // MUTATIONS LOGIC
 
   // Random WIGHLD mutation
+  _cells = mutateCellsWetness(_cells);
   _cells = mutateCellsWighld(_cells);
 
   // Ressources production

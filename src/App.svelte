@@ -11,7 +11,7 @@
   import LayoutTips from "./components/LayoutTips.svelte";
   import TipSwitch from "./components/TipSwitch.svelte";
   import Grid from "./components/grid/Grid.svelte";
-  import LayoutHover from "./components/layout/LayoutHover.svelte";
+  import LayoutFooter from "./components/layout/LayoutFooter.svelte";
 
   $: tutorialStep = $tutorial.step;
   $: researchesOpen = $UIState[UI_ELEMENTS.RESEARCHES];
@@ -36,7 +36,7 @@
     <LayoutCycles />
   {/if}
   <Toolbar />
-  <LayoutHover />
+  <LayoutFooter />
 </div>
 
 <style>

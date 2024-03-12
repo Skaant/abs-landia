@@ -7,10 +7,8 @@
   export let rows!: CellType[][];
 </script>
 
-<Layer className="wetness" {rows} let:cell>
+<Layer {rows} let:cell let:offsetX let:offsetY>
   {#if cell?.revealed}
-    <CellWetness {cell} />
-  {:else}
-    <CellEmpty />
+    <CellWetness {cell} {offsetX} {offsetY} />
   {/if}
 </Layer>
