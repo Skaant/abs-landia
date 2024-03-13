@@ -12,12 +12,15 @@
   import TipSwitch from "./components/TipSwitch.svelte";
   import Grid from "./components/grid/Grid.svelte";
   import LayoutFooter from "./components/layout/LayoutFooter.svelte";
+  import LayoutToolbar from "./components/layout/LayoutToolbar.svelte";
+  import LayoutSelection from "./components/layout/LayoutSelection.svelte";
 
   $: tutorialStep = $tutorial.step;
   $: researchesOpen = $UIState[UI_ELEMENTS.RESEARCHES];
 </script>
 
 <div id="layout">
+  <LayoutToolbar />
   {#if $UIState.tip}
     <TipSwitch tip={$UIState.tip} />
   {/if}
@@ -35,14 +38,14 @@
   {#if tutorialStep >= 1}
     <LayoutCycles />
   {/if}
-  <Toolbar />
+  <LayoutSelection />
   <LayoutFooter />
 </div>
 
 <style>
   #layout {
     background-color: #444;
-    padding: 56px 0 144px;
     height: 100%;
+    position: relative;
   }
 </style>

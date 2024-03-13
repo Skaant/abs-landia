@@ -2,6 +2,7 @@
   import { cycles } from "../../stores/cycles.store";
   import { hover } from "../../stores/hover.store";
   import { passTurn } from "../../use-cases/passTurn/passTurn";
+  import { ACTIONS_DATA } from "../../data/actions.data";
 
   $: _hover = $hover;
 </script>
@@ -11,13 +12,27 @@
     {#if _hover?.type === "cell"}
       {@const cell = _hover.cell}
       <span>
-        CASE // {cell.x}, {cell.y} / 🌳 WIGHLD : {cell.effectiveWighld} / 🌫 Humidité
-        : {cell.effectiveWetness}
+        CASE // {cell.x}, {cell.y} /
+        {#if cell.revealed}
+          <span>
+            🌳 WIGHLD : {cell.effectiveWighld} / 💦 Humidité : {cell.effectiveWetness}</span
+          >
+        {:else}
+          <span>Non révélée</span>
+        {/if}
       </span>
     {/if}
     {#if _hover?.type === "zum"}
       {@const zum = _hover.zum}
       <span>ZUM // 💡 DATA : {zum.data}</span>
+    {/if}
+    {#if _hover?.type === "action"}
+      {@const action = ACTIONS_DATA[_hover.action]}
+      <span
+        >ACTION {action.name} // {action.summary}{action.prerequisites
+          ? ` // ${action.prerequisites}`
+          : ""}</span
+      >
     {/if}
   </div>
   <div>

@@ -11,7 +11,7 @@
   export let offsetX: number;
   export let offsetY: number;
 
-  $: selected = $selection?.type === "zum" && $selection?.zumId === zum.id;
+  $: selected = $selection?.type === "zum" && $selection?.zum.id === zum.id;
 </script>
 
 <Cell
@@ -19,22 +19,14 @@
   offsetX={offsetX + GRID_CELL_PX * 0.5}
   offsetY={offsetY + GRID_CELL_PX * 0.1}
   onHover={() => hover.select({ type: "zum", zum })}
+  onClick={() => selection.toggle({ type: "zum", zum })}
 >
   {#if selected}
-    <SvgCharacterSelected />
+    <SvgCharacterSelected
+      width={GRID_CELL_PX * 0.6}
+      height={GRID_CELL_PX * 1}
+    />
   {:else}
     <SvgCharacter width={GRID_CELL_PX * 0.6} height={GRID_CELL_PX * 1} />
   {/if}
 </Cell>
-
-<style lang="scss">
-  .zum {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 65%;
-    height: 65%;
-    display: flex;
-    cursor: pointer;
-  }
-</style>

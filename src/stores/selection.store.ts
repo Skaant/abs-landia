@@ -1,14 +1,14 @@
 import { get, writable } from "svelte/store";
 import { BUILDINGS } from "../enums/buildings.enum";
+import { Zum } from "../types/Zum";
 
 export type SelectionToolbarBuilding = {
   type: "toolbar-building";
   buildingType: BUILDINGS;
 };
-
 export type SelectionZum = {
   type: "zum";
-  zumId: string;
+  zum: Zum;
 };
 
 export type Selection = undefined | SelectionToolbarBuilding | SelectionZum;

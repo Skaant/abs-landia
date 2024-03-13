@@ -8,7 +8,7 @@ export function mutateCellsWighld(cells: CellsIndex): CellsIndex {
       if (random < 5) {
         if (
           cell.intrinsicWighld <= 4 &&
-          cell.intrinsicWetness + 3 > cell.intrinsicWighld
+          cell.intrinsicWighld < cell.intrinsicWetness + 2
         ) {
           cell.intrinsicWighld += 1;
           cells[id].effectiveWighld = cell.intrinsicWighld + initialWighldDiff;

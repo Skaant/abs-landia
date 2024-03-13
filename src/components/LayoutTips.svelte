@@ -5,68 +5,58 @@
   import { getTipTypeIcon } from "../helpers/getTipTypeIcon";
 
   let open = false;
-
-  $: tips = $tutorial.tips;
-  $: tipsRead = $tutorial.tipsRead;
-  $: tipsHistory = $tutorial.tipsHistory;
 </script>
 
-<div id="layout-tips">
-  <button
-    class="ui-button"
-    disabled={!tipsHistory.length}
-    on:click={() => {
-      open = !open;
-    }}
-  >
-    Quêtes et astuces{tipsHistory.length && !open
-      ? ` (${tipsHistory.length})`
-      : ""} 📜💡
-    {open ? "▼" : "▲"}
-  </button>
-  {#each tips as tip}
-    {@const _tip = TIPS_DATA[tip]}
-    <button
-      class="ui-button"
-      on:click={() => selectTip(tip)}
-      title={`Ouvrir ${_tip.name}`}
-    >
-      {getTipTypeIcon(_tip.type)}
-      {tipsRead[tip]
-        ? ""
-        : `👀${
-            _tip.type === "quest" || _tip.type === "quest-achieved"
-              ? "❗"
-              : "❕"
-          }`}
-      {_tip.name}
-    </button>
-  {/each}
-  {#if open}
-    {#each tipsHistory as tip}
+{#if $tutorial.tipsOpen}
+  <div id="layout-tips">
+    {#each $tutorial.tips as tip}
       {@const _tip = TIPS_DATA[tip]}
-      <button
-        class="ui-button tip-archived"
-        on:click={() => selectTip(tip)}
-        title={`Ouvrir ${_tip.name}`}
-      >
-        {_tip.type === "gameplay"
-          ? "💡"
-          : _tip.type === "quest"
-            ? "🏆"
-            : "🏆✅"}
-        {tipsRead[tip] ? "📜" : `👀${_tip.type === "gameplay" ? "❕" : "❗"}`}
+      <button on:click={() => selectTip(tip)} title={`Ouvrir ${_tip.name}`}>
+        {getTipTypeIcon(_tip.type)}
+        {$tutorial.tipsRead[tip]
+          ? ""
+          : `👀${
+              _tip.type === "quest" || _tip.type === "quest-achieved"
+                ? "❗"
+                : "❕"
+            }`}
         {_tip.name}
       </button>
     {/each}
-  {/if}
-</div>
+    {#if $tutorial.tipsHistory.length}
+      <button on:click={() => (open = !open)}>
+        Tutoriels archivés ({$tutorial.tipsHistory.length})
+        {open ? "▲" : "▼"}
+      </button>
+    {/if}
+    {#if open}
+      {#each $tutorial.tipsHistory as tip}
+        {@const _tip = TIPS_DATA[tip]}
+        <button
+          class="tip-archived"
+          on:click={() => selectTip(tip)}
+          title={`Ouvrir ${_tip.name}`}
+        >
+          {_tip.type === "gameplay"
+            ? "💡"
+            : _tip.type === "quest"
+              ? "🏆"
+              : "🏆✅"}
+          {$tutorial.tipsRead[tip]
+            ? "📜"
+            : `👀${_tip.type === "gameplay" ? "❕" : "❗"}`}
+          {_tip.name}
+        </button>
+      {/each}
+    {/if}
+  </div>
+{/if}
 
 <style lang="scss">
   #layout-tips {
     position: fixed;
-    top: 64px;
-    left: 16px;
+    top: 38px;
+    left: 8px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
