@@ -1,4 +1,4 @@
-export function getRandomWighld(wetness: number) {
+export function getRandomWighld(wetness: number = 5) {
   const random = Math.floor(Math.random() * 10);
   return Math.min(
     random < 1

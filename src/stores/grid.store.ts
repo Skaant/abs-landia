@@ -5,7 +5,7 @@ import { Cell, CellsIndex } from "../types/Cell";
 
 function createGridStore() {
   const grid = generateGrid(3, 1);
-  grid.cells["1-1"].zumId = "zum-alpha";
+  grid.cells["1,1"].zumId = "zum-alpha";
 
   const { subscribe, set, update } = writable<Grid>(grid);
 
@@ -24,7 +24,7 @@ export const rows = derived<Writable<Grid>, Cell[][]>(grid, ($grid) =>
     const y = $grid.yMin + i;
     return [...new Array(Math.abs($grid.xMin) + $grid.xMax + 1)].map((_, j) => {
       const x = $grid.xMin + j;
-      return $grid.cells[`${x}-${y}`];
+      return $grid.cells[`${x},${y}`];
     });
   })
 );

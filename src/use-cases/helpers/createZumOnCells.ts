@@ -28,11 +28,11 @@ export function createZumOnCells(
   const _zums: Zum[] = [];
   const initialId = Object.values(get(zums)).length;
   let a = 0;
-  let cellId: string = `${x}-${y}`;
+  let cellId: string = `${x},${y}`;
   for (let i = 0; i < value; i++) {
     while (!cells[cellId] || cells[cellId].zumId) {
       a++;
-      cellId = `${x + AVAILABILITY_ORDER[a].x}-${y + AVAILABILITY_ORDER[a].y}`;
+      cellId = `${x + AVAILABILITY_ORDER[a].x},${y + AVAILABILITY_ORDER[a].y}`;
       if (a === AVAILABILITY_ORDER.length)
         throw new Error("No more availability for ZUMS");
     }
@@ -42,7 +42,7 @@ export function createZumOnCells(
       data: 0,
     });
     a++;
-    cellId = `${x + AVAILABILITY_ORDER[a].x}-${y + AVAILABILITY_ORDER[a].y}`;
+    cellId = `${x + AVAILABILITY_ORDER[a].x},${y + AVAILABILITY_ORDER[a].y}`;
   }
   return _zums;
 }

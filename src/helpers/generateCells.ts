@@ -7,7 +7,7 @@ export function generateCells(x: number, y: number): { [key: number]: Cell } {
   const cells: { [key: number]: Cell } = {};
   for (let i = 0; i < y; i++) {
     for (let j = 0; j < x; j++) {
-      const id = `${i}-${j}`;
+      const id = `${i},${j}`;
       cells[id] = cellFactory({
         x: i,
         y: j,

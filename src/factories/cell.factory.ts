@@ -1,8 +1,10 @@
+import { getRandomWetness } from "../helpers/values/getRandomWetness";
+import { getRandomWighld } from "../helpers/values/getRandomWighld";
 import { Cell } from "../types/Cell";
 
 export function cellFactory({
-  wetness = 0,
-  wighld = 0,
+  wetness,
+  wighld,
   ...cell
 }: Pick<Cell, "x" | "y"> &
   Partial<Cell> & {
@@ -17,13 +19,15 @@ export function cellFactory({
      *  */
     wighld?: number;
   }): Cell {
+  const _wetness = wetness === undefined ? getRandomWetness() : wetness;
+  const _wighld = wighld === undefined ? getRandomWighld(wetness) : wighld;
   return {
-    id: `${cell.x}-${cell.y}`,
+    id: `${cell.x},${cell.y}`,
     connectivity: 0.5,
-    intrinsicWetness: wetness,
-    effectiveWetness: wetness,
-    intrinsicWighld: wighld,
-    effectiveWighld: wighld,
+    intrinsicWetness: _wetness,
+    effectiveWetness: _wetness,
+    intrinsicWighld: _wighld,
+    effectiveWighld: _wighld,
     ...cell,
   };
 }

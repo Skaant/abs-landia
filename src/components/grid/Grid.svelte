@@ -5,15 +5,15 @@
   import ZumsLayer from "./layers/ZumsLayer.svelte";
   import WetnessLayer from "./layers/WetnessLayer.svelte";
 
-  $: height = $gridSize[0] * GRID_CELL_PX;
-  $: width = $gridSize[1] * GRID_CELL_PX;
+  $: height = $gridSize[1] * GRID_CELL_PX;
+  $: width = $gridSize[0] * GRID_CELL_PX;
 </script>
 
 <div id="grid-container">
   <div id="grid" style={`height: ${height}px; width: ${width}px`}>
     <BackgroundLayer rows={$rows} />
-    <ZumsLayer rows={$rows} />
     <WetnessLayer rows={$rows} />
+    <ZumsLayer rows={$rows} />
     <!-- {#if $selection?.type === "toolbar-building"}
       <ClickableLayer rows={$rows} selection={$selection} />
     {/if} -->
@@ -28,7 +28,6 @@
     width: 100%;
     max-width: 840px;
     overflow: auto;
-    display: flex;
   }
   #grid {
     margin: auto;

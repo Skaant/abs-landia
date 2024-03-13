@@ -13,6 +13,7 @@ import { mutateTips } from "../../stores/helpers/mutateTips";
 import { TIPS_TRANSITIONS } from "../../enums/tips-transitions.enum";
 import { grid } from "../../stores/grid.store";
 import { mutateCellsWetness } from "./helpers/mutateCellsWetness";
+import { Zum } from "../../types/Zum";
 
 export function passTurn() {
   // Store access
@@ -36,6 +37,11 @@ export function passTurn() {
   const transfer = transferEveryZumDataToHolOng(_zums, _cells);
   _zums = transfer[0];
   _globalRessources[RESSOURCES.HOL_ONG_DATA].value += transfer[1];
+
+  Object.values(_zums).forEach(
+    (zum) =>
+      (_zums[zum.id] = { ..._zums[zum.id], actions: 1, movements: 3 } as Zum)
+  );
 
   // Tutorial transition to step 2
   if (

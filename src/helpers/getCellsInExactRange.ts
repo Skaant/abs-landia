@@ -10,12 +10,12 @@ export function getCellsInExactRange(
   for (let i = cell.x - range; i <= cell.x + range; i++) {
     const diff = Math.abs(cell.x - i);
     if (diff === range) {
-      const id = `${i}-${cell.y}`;
+      const id = `${i},${cell.y}`;
       if (cells[id]) rangeCells.push(cells[id]);
     } else {
-      const id1 = `${i}-${cell.y - (range - diff)}`;
+      const id1 = `${i},${cell.y - (range - diff)}`;
       if (cells[id1]) rangeCells.push(cells[id1]);
-      const id2 = `${i}-${cell.y + (range - diff)}`;
+      const id2 = `${i},${cell.y + (range - diff)}`;
       if (cells[id2]) rangeCells.push(cells[id2]);
     }
   }

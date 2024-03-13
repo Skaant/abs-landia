@@ -15,10 +15,9 @@ export function generateGrid(
   if (revealRadius !== undefined && revealRadius > radius)
     throw new Error("revealRadius > radius");
   const cells: CellsIndex = {};
-  const wetness = getRandomWetness();
   for (let x = -radius; x <= radius; x++) {
     for (let y = -radius + Math.abs(x); y <= radius - Math.abs(x); y++) {
-      const id = `${x}-${y}`;
+      const id = `${x},${y}`;
       cells[id] = cellFactory({
         x,
         y,
@@ -26,8 +25,6 @@ export function generateGrid(
         Math.abs(x) + Math.abs(y) <= revealRadius
           ? { revealed: true }
           : {}),
-        ...(skipWetness ? {} : { wetness }),
-        ...(skipWighld ? {} : { wighld: getRandomWighld(wetness) }),
       });
     }
   }

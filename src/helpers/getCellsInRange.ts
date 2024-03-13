@@ -5,7 +5,7 @@ export function getCellsInRange(cells: CellsIndex, cell: Cell, range: number) {
   for (let i = cell.x - range + 1; i <= cell.x + range - 1; i++) {
     const diff = Math.abs(cell.x - i);
     if (diff === range - 1) {
-      const id = `${i}-${cell.y}`;
+      const id = `${i},${cell.y}`;
       if (cells[id]) cellsInRange.push(cells[id]);
     } else {
       for (
@@ -13,7 +13,7 @@ export function getCellsInRange(cells: CellsIndex, cell: Cell, range: number) {
         j <= cell.y + (range - diff) - 1;
         j++
       ) {
-        const id = `${i}-${j}`;
+        const id = `${i},${j}`;
         if (cells[id]) cellsInRange.push(cells[id]);
       }
     }

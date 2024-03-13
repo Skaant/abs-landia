@@ -2,8 +2,8 @@
 import { get } from "svelte/store";
 import App from "./App.svelte";
 import { selection } from "./stores/selection.store";
-import { tutorial } from "./stores/tutorial.store";
 import { UIState } from "./stores/ui-state.store";
+import { move } from "./use-cases/_actions/move/move";
 
 const target = document.getElementById("app");
 if (!target) throw new Error("No target element found");
@@ -19,13 +19,9 @@ document.addEventListener("keydown", (e) => {
       selection.set(undefined);
       return;
     }
-    switch (e.key) {
-      case "z":
-      case "q":
-      case "s":
-      case "d":
-        console.log(e.key);
-        return;
+    if (["z", "q", "s", "d"].includes(e.key)) {
+      move(_selection.zum, e.key as "z" | "q" | "s" | "d");
+      return;
     }
   }
   const _UIState = get(UIState);

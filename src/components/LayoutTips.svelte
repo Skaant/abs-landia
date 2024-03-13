@@ -55,11 +55,11 @@
 <style lang="scss">
   #layout-tips {
     position: fixed;
-    top: 38px;
-    left: 8px;
+    top: 64px;
+    right: 8px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
     gap: 12px;
     justify-content: center;
     z-index: 103;

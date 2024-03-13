@@ -1,9 +1,7 @@
 <script lang="ts">
   import "./style.scss";
-  import Toolbar from "./components/Toolbar.svelte";
   import LayoutHolOngData from "./components/LayoutHolOngData.svelte";
   import LayoutCycles from "./components/LayoutCycles.svelte";
-  import LayoutGlobalRessources from "./components/LayoutGlobalRessources.svelte";
   import { tutorial } from "./stores/tutorial.store";
   import { UIState } from "./stores/ui-state.store";
   import { UI_ELEMENTS } from "./enums/ui-elements.enum";
@@ -12,15 +10,15 @@
   import TipSwitch from "./components/TipSwitch.svelte";
   import Grid from "./components/grid/Grid.svelte";
   import LayoutFooter from "./components/layout/LayoutFooter.svelte";
-  import LayoutToolbar from "./components/layout/LayoutToolbar.svelte";
-  import LayoutSelection from "./components/layout/LayoutSelection.svelte";
+  import LayoutSelection from "./components/layout/selections/LayoutSelection.svelte";
+  import LayoutHeader from "./components/layout/LayoutHeader.svelte";
 
   $: tutorialStep = $tutorial.step;
   $: researchesOpen = $UIState[UI_ELEMENTS.RESEARCHES];
 </script>
 
 <div id="layout">
-  <LayoutToolbar />
+  <LayoutHeader />
   {#if $UIState.tip}
     <TipSwitch tip={$UIState.tip} />
   {/if}
@@ -29,9 +27,6 @@
   {/if}
   {#if tutorialStep >= 1}
     <LayoutHolOngData />
-  {/if}
-  {#if tutorialStep >= 2}
-    <LayoutGlobalRessources />
   {/if}
   <LayoutTips />
   <Grid />
@@ -45,7 +40,8 @@
 <style>
   #layout {
     background-color: #444;
-    height: 100%;
+    height: calc(100% - 128px);
     position: relative;
+    padding: 64px 0;
   }
 </style>
