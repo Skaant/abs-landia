@@ -2,8 +2,8 @@ import { get } from "svelte/store";
 import { Zum } from "../../../../types/Zum";
 import { cells } from "../../../../stores/grid.store";
 
-export function isCollectWaDisabled(zum: Zum) {
+export function isHarvestJingDisabled(zum: Zum) {
   const _cells = get(cells);
   const cell = _cells[zum.cellId];
-  return cell.effectiveWetness < 3;
+  return cell.effectiveWighld <= 2;
 }

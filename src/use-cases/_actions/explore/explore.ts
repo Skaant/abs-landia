@@ -3,6 +3,7 @@ import { Zum } from "../../../types/Zum";
 import { grid } from "../../../stores/grid.store";
 import { zums } from "../../../stores/zums.store";
 import { cellFactory } from "../../../factories/cell.factory";
+import { TRIBES } from "../../../enums/tribes.enum";
 
 export function explore(zum: Zum) {
   const _grid = get(grid);
@@ -35,6 +36,7 @@ export function explore(zum: Zum) {
   });
 
   zum.actions -= 1;
+  zum.affinities[TRIBES.NOV] = (zum.affinities[TRIBES.NOV] || 0) + 1;
 
   grid.set(_grid);
   zums.set(_zums);

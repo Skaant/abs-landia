@@ -1,12 +1,12 @@
 import { writable } from "svelte/store";
 import { ZumsIndex } from "../types/Zum";
+import { zumFactory } from "../factories/zum.factory";
+
+const TEST_ZUM_ID = "zum-alpha";
 
 export const zums = writable<ZumsIndex>({
-  ["zum-alpha"]: {
-    id: "zum-alpha",
+  [TEST_ZUM_ID]: zumFactory({
+    id: TEST_ZUM_ID,
     cellId: "1,1",
-    actions: 1,
-    movements: 3,
-    data: 0,
-  },
+  }),
 });

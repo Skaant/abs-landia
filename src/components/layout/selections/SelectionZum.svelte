@@ -19,7 +19,12 @@
     <div>
       🖐 Actions : {zum.actions} / 👣 Mouvements : {zum.movements} / 💡 DATA : {zum.data}
     </div>
-    <div>Affinités</div>
+    <div>
+      Affinités :
+      {#each Object.entries(zum.affinities || {}) as affinity}
+        <button>{affinity[0]} {affinity[1]}</button>
+      {/each}
+    </div>
   </div>
   <div id="zum-actions">
     {#each [ACTIONS.EXPLORE, ACTIONS.COLLECT_WA, ACTIONS.HARVEST_JING, ACTIONS.MEDITATE] as action}
