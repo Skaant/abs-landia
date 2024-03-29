@@ -3,10 +3,12 @@
   import { globalRessources } from "../../stores/global-ressources.store";
   import { RESSOURCES_DATA } from "../../data/ressources.data";
 
-  $: ressources = [RESSOURCES.WA, RESSOURCES.JING].map((ressource) => ({
-    ressource,
-    ...$globalRessources[ressource],
-  }));
+  $: ressources = [RESSOURCES.WA, RESSOURCES.JING, RESSOURCES.HOL_ONG_DATA].map(
+    (ressource) => ({
+      ressource,
+      ...$globalRessources[ressource],
+    })
+  );
 </script>
 
 <div id="global-ressources">
