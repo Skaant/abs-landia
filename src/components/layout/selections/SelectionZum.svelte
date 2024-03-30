@@ -9,8 +9,11 @@
   import { zums } from "../../../stores/zums.store";
   import { ACTIONS_DISABLED } from "./actions-disabled/actions-disabled.switch";
   import { ACTION_HANDLERS } from "./action-handlers/action-handlers.switch";
+  import { UIState } from "../../../stores/ui-state.store";
+  import { TRIBES } from "../../../enums/tribes.enum";
 
   $: zum = $zums[($selection as SelectionZum).zum.id];
+  $: affinities = Object.entries(zum.affinities || {}) as [TRIBES, number][];
 </script>
 
 <div id="selection-zum">
@@ -21,8 +24,10 @@
     </div>
     <div>
       Affinités :
-      {#each Object.entries(zum.affinities || {}) as affinity}
-        <button>{affinity[0]} {affinity[1]}</button>
+      {#each affinities as [tribe, value]}
+        <button on:click={() => UIState.toggleZumTribeAffinities(zum, tribe)}
+          >{tribe} {value}</button
+        >
       {/each}
     </div>
   </div>

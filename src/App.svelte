@@ -12,15 +12,22 @@
   import LayoutFooter from "./components/layout/LayoutFooter.svelte";
   import LayoutSelection from "./components/layout/selections/LayoutSelection.svelte";
   import LayoutHeader from "./components/layout/LayoutHeader.svelte";
+  import ZumAffinitiesModal from "./components/layout/ZumAffinitiesModal.svelte";
 
   $: tutorialStep = $tutorial.step;
   $: researchesOpen = $UIState[UI_ELEMENTS.RESEARCHES];
+  $: zumAffinities = $UIState[UI_ELEMENTS.ZUM_AFFINITIES];
 </script>
 
 <div id="layout">
   <LayoutHeader />
   {#if $UIState.tip}
     <TipSwitch tip={$UIState.tip} />
+  {/if}
+  {#if zumAffinities}
+    {@const zum = zumAffinities.zum}
+    {@const tribe = zumAffinities.tribe}
+    <ZumAffinitiesModal {zum} {tribe} />
   {/if}
   {#if researchesOpen}
     <ResearchesModal />
