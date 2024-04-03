@@ -5,40 +5,49 @@
   import { type Zum } from "../../types/Zum";
   import { TRIBES } from "../../enums/tribes.enum";
   import { ZUM_AFFINITIES } from "../../data/zum-affinities/index";
+  import { getActionBuildingPassiveName } from "../../helpers/getActionBuildingPassiveName";
+  import { hover } from "../../stores/hover.store";
 
   const TIERS_AMOUNT = [0, 5, 20, 50, 100];
 
   export let zum: Zum;
   export let tribe: TRIBES;
 
-  let affinity = ZUM_AFFINITIES[tribe] || [];
+  $: affinity = ZUM_AFFINITIES[tribe] || [];
 </script>
 
 <Modal dismiss={UIState.toggleZumTribeAffinities}>
-  <div id="tribes-menu">
+  <div id="tribes-menu" class="btn-list">
     {#each TRIBES_LIST as tribe}
       {@const affinity = zum.affinities[tribe]}
-      <button disabled={!affinity}>
-        {TRIBES_DATA[tribe].name}{affinity ? `: ${affinity}` : ""}
+      <button on:click={() => UIState.toggleZumTribeAffinities(zum, tribe)}>
+        {TRIBES_DATA[tribe].name}{affinity ? `: ${affinity || 0}` : ""}
       </button>
     {/each}
   </div>
   <h2>
     Affinité de {zum.name} pour la tribu {TRIBES_DATA[tribe].name} : {zum
-      .affinities[tribe]}
+      .affinities[tribe] || 0}
   </h2>
   <div id="zum-affinity-progression">
     {#each [0, 1, 2, 3, 4] as tierIndex}
       {@const tier = affinity[tierIndex] || []}
       <div class="tier">
-        {TIERS_AMOUNT[tierIndex]}
+        <div>{tierIndex} ({TIERS_AMOUNT[tierIndex]})</div>
         {#each tier as item}
-          {item}
+          <div
+            on:mouseenter={() =>
+              item.type === "action" &&
+              hover.set({ type: "action", action: item.id })}
+            on:mouseleave={() => hover.set(null)}
+          >
+            {getActionBuildingPassiveName(item)}
+          </div>
         {/each}
       </div>
     {/each}
   </div>
-  <div id="zum-affinity-links">
+  <div id="zum-affinity-links" class="btn-list">
     <button>Affinité globale pour la tribu {TRIBES_DATA[tribe].name}</button>
     <button>VAULT de recherches de la tribu {TRIBES_DATA[tribe].name}</button>
   </div>

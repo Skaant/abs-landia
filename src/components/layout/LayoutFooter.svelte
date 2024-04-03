@@ -52,5 +52,6 @@
     background-color: #eee;
     display: flex;
     justify-content: space-between;
+    z-index: 105;
   }
 </style>

@@ -8,13 +8,13 @@ type ActionData<T extends ACTIONS> = {
 };
 
 export const ACTIONS_DATA: { [key in ACTIONS]: ActionData<key> } = {
-  [ACTIONS.INSTALL_BUILDING]: {
-    id: ACTIONS.INSTALL_BUILDING,
-    name: "Installer un bâtiment",
+  [ACTIONS.INSTALL_BUILDING_PLANT]: {
+    id: ACTIONS.INSTALL_BUILDING_PLANT,
+    name: "🙇‍♀️🌱 Installer (bâtiment/plante) 🌾",
   },
   [ACTIONS.NURTURE]: {
     id: ACTIONS.NURTURE,
-    name: "Choyer",
+    name: "Choyer 🌾",
   },
   [ACTIONS.EXPLORE]: {
     id: ACTIONS.EXPLORE,

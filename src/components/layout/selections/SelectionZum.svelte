@@ -22,7 +22,7 @@
     <div>
       🖐 Actions : {zum.actions} / 👣 Mouvements : {zum.movements} / 💡 DATA : {zum.data}
     </div>
-    <div>
+    <div class="btn-list">
       Affinités :
       {#each affinities as [tribe, value]}
         <button on:click={() => UIState.toggleZumTribeAffinities(zum, tribe)}
@@ -31,7 +31,7 @@
       {/each}
     </div>
   </div>
-  <div id="zum-actions">
+  <div id="zum-actions" class="btn-list">
     {#each [ACTIONS.EXPLORE, ACTIONS.COLLECT_WA, ACTIONS.HARVEST_JING, ACTIONS.MEDITATE] as action}
       {@const data = ACTIONS_DATA[action]}
       {@const handler = ACTION_HANDLERS[action]}
@@ -57,12 +57,6 @@
     display: flex;
     > :first-child {
       width: 60%;
-    }
-    #zum-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      width: 40%;
     }
   }
 </style>
