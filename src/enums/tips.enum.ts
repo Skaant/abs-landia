@@ -1,3 +1,4 @@
+/** @deprecated Use tips/TIPS */
 export enum TIPS {
   EXPANS = "expans",
   TERRAIN = "terrain",

@@ -1,8 +1,9 @@
 import { writable } from "svelte/store";
-import { TIPS } from "../enums/tips.enum";
+import { TIPS } from "../enums/tips/tips.enum";
 import { UI_ELEMENTS } from "../enums/ui-elements.enum";
 import { Zum } from "../types/Zum";
 import { TRIBES } from "../enums/tribes.enum";
+import { TIPS_TUTORIAL } from "../enums/tips/tips-tutorial.enum";
 
 type UIStateIndex = {
   [UI_ELEMENTS.RESEARCHES]: boolean;
@@ -17,7 +18,7 @@ type UIStateIndex = {
 
 const { subscribe, set, update } = writable<UIStateIndex>({
   [UI_ELEMENTS.RESEARCHES]: false,
-  [UI_ELEMENTS.TIP]: TIPS.ATTERRISSAGE_IMMINENT,
+  [UI_ELEMENTS.TIP]: TIPS_TUTORIAL.WELCOME,
 });
 
 export const UIState = {

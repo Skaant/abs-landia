@@ -35,7 +35,7 @@ Il est produit par divers bâtiments.
   },
   [RESSOURCES.HOL_ONG_DATA]: {
     id: RESSOURCES.HOL_ONG_DATA,
-    name: "🌐💡 Données du HOL-ONG",
+    name: "💡🌐 DATA transférée au HOL-ONG",
   },
   [RESSOURCES.DATA_CORES]: {
     id: RESSOURCES.DATA_CORES,

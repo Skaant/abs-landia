@@ -40,6 +40,10 @@ export function createZumOnCells(
       id: `${initialId + i}`,
       cellId,
       data: 0,
+      actions: 1,
+      movements: 3,
+      affinities: {},
+      name: `Zum ${initialId + i}`,
     });
     a++;
     cellId = `${x + AVAILABILITY_ORDER[a].x},${y + AVAILABILITY_ORDER[a].y}`;

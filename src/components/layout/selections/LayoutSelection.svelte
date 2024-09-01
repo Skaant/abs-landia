@@ -5,12 +5,10 @@
   $: _selection = $selection;
 </script>
 
-{#if $selection}
+{#if _selection?.type === "zum"}
   <div id="layout-selection">
     <div id="selection">
-      {#if _selection.type === "zum"}
-        <SelectionZum />
-      {/if}
+      <SelectionZum />
     </div>
   </div>
 {/if}

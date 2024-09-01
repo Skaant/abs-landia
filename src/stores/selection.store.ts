@@ -4,7 +4,7 @@ import { Zum } from "../types/Zum";
 
 export type SelectionToolbarBuilding = {
   type: "toolbar-building";
-  buildingType: BUILDINGS;
+  building: BUILDINGS;
 };
 export type SelectionZum = {
   type: "zum";

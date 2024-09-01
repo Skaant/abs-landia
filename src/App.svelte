@@ -13,6 +13,7 @@
   import LayoutSelection from "./components/layout/selections/LayoutSelection.svelte";
   import LayoutHeader from "./components/layout/LayoutHeader.svelte";
   import ZumAffinitiesModal from "./components/layout/ZumAffinitiesModal.svelte";
+  import Dialog from "./components/dialog/Dialog.svelte";
 
   $: tutorialStep = $tutorial.step;
   $: researchesOpen = $UIState[UI_ELEMENTS.RESEARCHES];
@@ -22,7 +23,7 @@
 <div id="layout">
   <LayoutHeader />
   {#if $UIState.tip}
-    <TipSwitch tip={$UIState.tip} />
+    <!-- TipSwitch tip={$UIState.tip} /-->
   {/if}
   {#if zumAffinities}
     {@const zum = zumAffinities.zum}
@@ -35,8 +36,11 @@
   {#if tutorialStep >= 1}
     <LayoutHolOngData />
   {/if}
-  <LayoutTips />
-  <Grid />
+  <!-- LayoutTips /-->
+  <div id="grid-dialog">
+    <Grid />
+    <Dialog />
+  </div>
   {#if tutorialStep >= 1}
     <LayoutCycles />
   {/if}
@@ -50,5 +54,11 @@
     height: calc(100% - 128px);
     position: relative;
     padding: 64px 0;
+  }
+  #grid-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 </style>

@@ -4,6 +4,8 @@
   import BackgroundLayer from "./layers/BackgroundLayer.svelte";
   import ZumsLayer from "./layers/ZumsLayer.svelte";
   import WetnessLayer from "./layers/WetnessLayer.svelte";
+  import { selection } from "../../stores/selection.store";
+  import ClickableLayer from "./layers/ClickableLayer.svelte";
 
   $: height = $gridSize[1] * GRID_CELL_PX;
   $: width = $gridSize[0] * GRID_CELL_PX;
@@ -14,20 +16,20 @@
     <BackgroundLayer rows={$rows} />
     <WetnessLayer rows={$rows} />
     <ZumsLayer rows={$rows} />
-    <!-- {#if $selection?.type === "toolbar-building"}
+    {#if $selection?.type === "toolbar-building"}
       <ClickableLayer rows={$rows} selection={$selection} />
-    {/if} -->
+    {/if}
   </div>
 </div>
 
 <style lang="scss">
   #grid-container {
-    margin: auto;
     height: 100%;
     max-height: 840px;
-    width: 100%;
-    max-width: 840px;
+    width: calc(max-content + 42px);
+    max-width: calc(100% - 420px);
     overflow: auto;
+    padding: 24px;
   }
   #grid {
     margin: auto;

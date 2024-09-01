@@ -8,8 +8,13 @@
   export let selection!: Selection;
 </script>
 
-<Layer className="clickable" {rows} let:cell>
+<Layer {rows} let:cell let:offsetX let:offsetY>
   {#if selection?.type === "toolbar-building"}
-    <CellSelectionToolbarBuilding {selection} {cell} />
+    <CellSelectionToolbarBuilding
+      building={selection.building}
+      {cell}
+      {offsetX}
+      {offsetY}
+    />
   {/if}
 </Layer>

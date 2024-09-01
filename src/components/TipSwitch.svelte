@@ -1,19 +1,19 @@
 <script lang="ts">
   import { TIPS } from "../enums/tips.enum";
-  import AtterrissageImminentModal from "./tips/AtterrissageImminentModal.svelte";
-  import AtterrissageReussiModal from "./tips/AtterrissageReussiModal.svelte";
-  import BatimentsModal from "./tips/BatimentsModal.svelte";
-  import BrulureModal from "./tips/BrulureModal.svelte";
-  import ConnexionEtablieModal from "./tips/ConnexionEtablieModal.svelte";
-  import ConnexionRequiseModal from "./tips/ConnexionRequiseModal.svelte";
-  import ExpansModal from "./tips/ExpansModal.svelte";
-  import GenerationIdeesModal from "./tips/GenerationIdeesModal.svelte";
-  import HolZongModal from "./tips/HolZongModal.svelte";
-  import NoyauxDeDonneesModal from "./tips/NoyauxDeDonneesModal.svelte";
-  import PremierPasModal from "./tips/PremierPasModal.svelte";
-  import TerrainModal from "./tips/TerrainModal.svelte";
-  import TransfertIdeesModal from "./tips/TransfertIdeesModal.svelte";
-  import WighldModal from "./tips/WighldModal.svelte";
+  import AtterrissageImminentModal from "./_tips/AtterrissageImminentModal.svelte";
+  import AtterrissageReussiModal from "./_tips/AtterrissageReussiModal.svelte";
+  import BatimentsModal from "./_tips/BatimentsModal.svelte";
+  import BrulureModal from "./_tips/BrulureModal.svelte";
+  import ConnexionEtablieModal from "./_tips/ConnexionEtablieModal.svelte";
+  import ConnexionRequiseModal from "./_tips/ConnexionRequiseModal.svelte";
+  import ExpansModal from "./_tips/ExpansModal.svelte";
+  import GenerationIdeesModal from "./_tips/GenerationIdeesModal.svelte";
+  import HolZongModal from "./_tips/HolZongModal.svelte";
+  import NoyauxDeDonneesModal from "./_tips/NoyauxDeDonneesModal.svelte";
+  import PremierPasModal from "./_tips/PremierPasModal.svelte";
+  import TerrainModal from "./_tips/TerrainModal.svelte";
+  import TransfertIdeesModal from "./_tips/TransfertIdeesModal.svelte";
+  import WighldModal from "./_tips/WighldModal.svelte";
 
   export let tip: TIPS;
 

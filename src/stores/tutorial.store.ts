@@ -1,5 +1,6 @@
 import { writable } from "svelte/store";
-import { TIPS } from "../enums/tips.enum";
+import { TIPS } from "../enums/tips/tips.enum";
+import { TIPS_TUTORIAL } from "../enums/tips/tips-tutorial.enum";
 
 type TutorialState = {
   step: number;
@@ -12,8 +13,8 @@ type TutorialState = {
 const { subscribe, set, update } = writable<TutorialState>({
   step: 0,
   tipsOpen: false,
-  tips: [TIPS.ATTERRISSAGE_IMMINENT, TIPS.EXPANS, TIPS.TERRAIN, TIPS.WIGHLD],
-  tipsRead: { [TIPS.ATTERRISSAGE_IMMINENT]: true },
+  tips: [TIPS_TUTORIAL.WELCOME],
+  tipsRead: { [TIPS_TUTORIAL.WELCOME]: true },
   tipsHistory: [],
 });
 
