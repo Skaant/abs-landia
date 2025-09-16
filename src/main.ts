@@ -1,15 +1,13 @@
 // import './app.css'
 import { get } from "svelte/store";
+import { mount } from "svelte";
 import App from "./App.svelte";
 import { selection } from "./stores/selection.store";
 import { UIState } from "./stores/ui-state.store";
 import { move } from "./use-cases/_actions/move/move";
 
-const target = document.getElementById("app");
-if (!target) throw new Error("No target element found");
-
-const app = new App({
-  target,
+const app = mount(App, {
+  target: document.getElementById("app")!,
 });
 
 document.addEventListener("keydown", (e) => {
