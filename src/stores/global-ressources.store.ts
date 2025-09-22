@@ -9,34 +9,13 @@ export type GlobalRessource = {
 };
 
 export type GlobalRessources = {
-  [ressource in Extract<
-    RESSOURCES,
-    | RESSOURCES.WA
-    | RESSOURCES.JING
-    | RESSOURCES.HOL_ONG_DATA
-    | RESSOURCES.DATA_CORES
-  >]: GlobalRessource;
+  [ressource in Extract<RESSOURCES, RESSOURCES.HOL_ONG_DATA>]: GlobalRessource;
 };
 
 const INITIAL_GLOBAL_RESSOURCES: GlobalRessources = {
-  [RESSOURCES.WA]: {
-    value: 0,
-    maximum: 0,
-    production: 0,
-  },
-  [RESSOURCES.JING]: {
-    value: 0,
-    maximum: 0,
-    production: 0,
-  },
   [RESSOURCES.HOL_ONG_DATA]: {
     value: 0,
     maximum: HOL_ONG_DATA_GOAL,
-    production: 0,
-  },
-  [RESSOURCES.DATA_CORES]: {
-    value: 0,
-    maximum: 10,
     production: 0,
   },
 };

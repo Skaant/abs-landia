@@ -1,13 +1,10 @@
 <script lang="ts">
   import "./style.scss";
-  import LayoutHolOngData from "./components/LayoutHolOngData.svelte";
   import LayoutCycles from "./components/LayoutCycles.svelte";
   import { tutorial } from "./stores/tutorial.store";
   import { UIState } from "./stores/ui-state.store";
   import { UI_ELEMENTS } from "./enums/ui-elements.enum";
   import ResearchesModal from "./components/ResearchesModal.svelte";
-  import LayoutTips from "./components/LayoutTips.svelte";
-  import TipSwitch from "./components/TipSwitch.svelte";
   import Grid from "./components/grid/Grid.svelte";
   import LayoutFooter from "./components/layout/LayoutFooter.svelte";
   import LayoutSelection from "./components/layout/selections/LayoutSelection.svelte";
@@ -21,7 +18,9 @@
 </script>
 
 <div id="layout">
+  {#if tutorialStep >= 1}
   <LayoutHeader />
+  {/if}
   {#if $UIState.tip}
     <!-- TipSwitch tip={$UIState.tip} /-->
   {/if}
@@ -32,9 +31,6 @@
   {/if}
   {#if researchesOpen}
     <ResearchesModal />
-  {/if}
-  {#if tutorialStep >= 1}
-    <LayoutHolOngData />
   {/if}
   <!-- LayoutTips /-->
   <div id="grid-dialog">
